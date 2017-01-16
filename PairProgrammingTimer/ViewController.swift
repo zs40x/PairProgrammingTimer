@@ -8,10 +8,17 @@
 
 import UIKit
 
+enum Developer: Int {
+    case left = 0
+    case right
+}
+
 class ViewController: UIViewController {
     
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 20
+    
+    private var activeDeveloper: Developer = .left
 
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageTrailingConstraint: NSLayoutConstraint!
@@ -26,17 +33,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftImageTopConstraint.constant = activeOffset
-        leftImageBottomConstraint.constant = activeOffset
-        leftImageLeadingConstraint.constant = activeOffset
-        leftImageTrailingConstraint.constant = activeOffset
-        
-        rightImageTopConstraint.constant = inactiveOffset
-        rightImageBottomConstraint.constant = inactiveOffset
-        rightImageLeadingConstraint.constant = inactiveOffset
-        rightImageTrailingConstraint.constant = inactiveOffset
-        
+        updateImageOffsets()
     }
 
+    
+    private func updateImageOffsets() {
+        updateLeftDeveloperOffset(offset: (activeDeveloper == .left ? activeOffset : inactiveOffset))
+        updateRightDeveloperOffset(offset: (activeDeveloper == .right ? activeOffset : inactiveOffset))
+    }
+    
+    private func updateLeftDeveloperOffset(offset: CGFloat) {
+        leftImageTopConstraint.constant = offset
+        leftImageBottomConstraint.constant = offset
+        leftImageLeadingConstraint.constant = offset
+        leftImageTrailingConstraint.constant = offset
+    }
+    
+    private func updateRightDeveloperOffset(offset: CGFloat) {
+        rightImageTopConstraint.constant = offset
+        rightImageBottomConstraint.constant = offset
+        rightImageLeadingConstraint.constant = offset
+        rightImageTrailingConstraint.constant = offset
+    }
 }
 
