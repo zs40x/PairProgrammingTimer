@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let activeOffset: CGFloat = 5
+    private let inactiveOffset: CGFloat = 20
 
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageTrailingConstraint: NSLayoutConstraint!
@@ -22,24 +25,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        leftImageTopConstraint.constant = 5
-        leftImageBottomConstraint.constant = 5
-        leftImageLeadingConstraint.constant = 5
-        leftImageTrailingConstraint.constant = 5
         
-        rightImageTopConstraint.constant = 20
-        rightImageBottomConstraint.constant = 20
-        rightImageLeadingConstraint.constant = 20
-        rightImageTrailingConstraint.constant = 20
+        leftImageTopConstraint.constant = activeOffset
+        leftImageBottomConstraint.constant = activeOffset
+        leftImageLeadingConstraint.constant = activeOffset
+        leftImageTrailingConstraint.constant = activeOffset
+        
+        rightImageTopConstraint.constant = inactiveOffset
+        rightImageBottomConstraint.constant = inactiveOffset
+        rightImageLeadingConstraint.constant = inactiveOffset
+        rightImageTrailingConstraint.constant = inactiveOffset
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
