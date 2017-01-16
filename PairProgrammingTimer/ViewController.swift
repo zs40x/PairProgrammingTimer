@@ -36,6 +36,10 @@ class ViewController: UIViewController {
         updateImageOffsets()
     }
 
+    @IBAction func actionFlipDeveloper(_ sender: Any) {
+        activeDeveloper = (activeDeveloper == .left ? .right : .left)
+        updateImageOffsets()
+    }
     
     private func updateImageOffsets() {
         updateLeftDeveloperOffset(offset: (activeDeveloper == .left ? activeOffset : inactiveOffset))
