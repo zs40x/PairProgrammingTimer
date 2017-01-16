@@ -49,25 +49,26 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-rZ-kgE">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-rZ-kgE">
                                                 <rect key="frame" x="0.0" y="121.5" width="462" height="121.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eA-AS-8Bv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="121.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eA-AS-8Bv">
+                                                        <rect key="frame" x="0.0" y="10.5" width="154" height="100"/>
                                                         <state key="normal" title="Button" image="flip_100"/>
                                                         <connections>
                                                             <action selector="actionFlipDeveloper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FW8-Sa-zTs"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-Pd-Xa3">
-                                                        <rect key="frame" x="154" y="0.0" width="154" height="121.5"/>
+                                                    <button hidden="YES" opaque="NO" contentMode="bottomLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-Pd-Xa3">
+                                                        <rect key="frame" x="154" y="10.5" width="154" height="100"/>
                                                         <state key="normal" title="Button" image="pause_100"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-zD-2UY">
-                                                        <rect key="frame" x="308" y="0.0" width="154" height="121.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-zD-2UY">
+                                                        <rect key="frame" x="308" y="10.5" width="154" height="100"/>
                                                         <state key="normal" title="Button" image="play-100"/>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                             </stackView>
                                         </subviews>
                                     </stackView>
