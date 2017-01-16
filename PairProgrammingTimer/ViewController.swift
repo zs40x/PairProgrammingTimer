@@ -16,7 +16,7 @@ enum Developer: Int {
 class ViewController: UIViewController {
     
     private let activeOffset: CGFloat = 5
-    private let inactiveOffset: CGFloat = 20
+    private let inactiveOffset: CGFloat = 25
     
     private var activeDeveloper: Developer = .left
 
