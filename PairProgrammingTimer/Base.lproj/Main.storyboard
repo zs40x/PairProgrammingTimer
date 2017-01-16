@@ -95,6 +95,16 @@
                             <constraint firstItem="HKl-z4-Q41" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="eO6-u5-i25"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="leftImageBottomConstraint" destination="kIa-M0-6mE" id="Kh4-xB-lrQ"/>
+                        <outlet property="leftImageLeadingConstraint" destination="x4H-0W-5XY" id="LoF-3L-IRP"/>
+                        <outlet property="leftImageTopConstraint" destination="7IR-A2-HQl" id="CyK-zc-acv"/>
+                        <outlet property="leftImageTrailingConstraint" destination="8tb-hf-bYi" id="12J-wN-fNu"/>
+                        <outlet property="rightImageBottomConstraint" destination="eO6-u5-i25" id="O1g-5S-bgX"/>
+                        <outlet property="rightImageLeadingConstraint" destination="XiN-8J-ued" id="kwz-MN-81i"/>
+                        <outlet property="rightImageTopConstraint" destination="127-EU-lYp" id="CMt-Rk-Lkh"/>
+                        <outlet property="rightImageTrailingConstraint" destination="8rb-BA-c6B" id="yTt-TS-crL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
