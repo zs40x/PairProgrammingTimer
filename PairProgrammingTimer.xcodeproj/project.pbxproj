@@ -13,6 +13,7 @@
 		D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAA1E2D42A90005350B /* Assets.xcassets */; };
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
 		D40BCBB91E2D42A90005350B /* PairProgrammingTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */; };
+		D40BCBC41E2D56B20005350B /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBC31E2D56B20005350B /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		D40BCBB41E2D42A90005350B /* PairProgrammingTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PairProgrammingTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairProgrammingTimerTests.swift; sourceTree = "<group>"; };
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				D40BCBAA1E2D42A90005350B /* Assets.xcassets */,
 				D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */,
 				D40BCBAF1E2D42A90005350B /* Info.plist */,
+				D40BCBC31E2D56B20005350B /* Timer.swift */,
 			);
 			path = PairProgrammingTimer;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40BCBC41E2D56B20005350B /* Timer.swift in Sources */,
 				D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */,
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 			);
