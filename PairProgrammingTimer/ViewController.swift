@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     
     private var activeDeveloper: Developer = .left
-
+    
+    @IBOutlet weak var leftDeveloperImageView: UIImageView!
+    @IBOutlet weak var rightDeveloperImageView: UIImageView!
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageBottomConstraint: NSLayoutConstraint!
@@ -39,6 +41,10 @@ class ViewController: UIViewController {
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         activeDeveloper = (activeDeveloper == .left ? .right : .left)
         updateImageOffsets()
+    }
+    
+    private func updateDeveloperImages() {
+        
     }
     
     private func updateImageOffsets() {

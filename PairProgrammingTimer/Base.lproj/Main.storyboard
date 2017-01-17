@@ -113,10 +113,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="leftDeveloperImageView" destination="2RS-np-TWe" id="8zt-ls-Uvg"/>
                         <outlet property="leftImageBottomConstraint" destination="kIa-M0-6mE" id="Kh4-xB-lrQ"/>
                         <outlet property="leftImageLeadingConstraint" destination="x4H-0W-5XY" id="LoF-3L-IRP"/>
                         <outlet property="leftImageTopConstraint" destination="7IR-A2-HQl" id="CyK-zc-acv"/>
                         <outlet property="leftImageTrailingConstraint" destination="8tb-hf-bYi" id="12J-wN-fNu"/>
+                        <outlet property="rightDeveloperImageView" destination="e1K-ol-Bj8" id="JBA-Ni-Cd7"/>
                         <outlet property="rightImageBottomConstraint" destination="OeJ-Pg-kRq" id="UuP-rn-cFI"/>
                         <outlet property="rightImageLeadingConstraint" destination="LUw-Zt-5A9" id="f4b-SU-Afe"/>
                         <outlet property="rightImageTopConstraint" destination="dYX-oL-eMr" id="NVI-R5-MwP"/>
