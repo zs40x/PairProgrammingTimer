@@ -41,10 +41,16 @@ class ViewController: UIViewController {
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         activeDeveloper = (activeDeveloper == .left ? .right : .left)
         updateImageOffsets()
+        updateDeveloperImages()
     }
     
     private func updateDeveloperImages() {
-        
+        rightDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .right)
+        leftDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .left)
+    }
+    
+    private func developerStateImage(isActive: Bool) -> UIImage {
+        return isActive ? UIImage(named: "man_filled_100")! : UIImage(named: "man_100")!
     }
     
     private func updateImageOffsets() {
