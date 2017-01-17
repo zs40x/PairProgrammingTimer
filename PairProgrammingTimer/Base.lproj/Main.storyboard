@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,17 +19,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HKl-z4-Q41">
-                                <rect key="frame" x="30" y="30" width="708" height="984"/>
+                                <rect key="frame" x="30" y="30" width="607" height="335"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-zj-oAr">
-                                        <rect key="frame" x="234" y="0.0" width="240" height="328"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-zj-oAr">
+                                        <rect key="frame" x="0.0" y="112.5" width="202.5" height="110"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_filled_100" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
-                                                <rect key="frame" x="5" y="5" width="230" height="318"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="man_filled_100" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
+                                                <rect key="frame" x="5" y="5" width="215" height="100"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,52 +40,55 @@
                                             <constraint firstItem="2RS-np-TWe" firstAttribute="leading" secondItem="WAn-zj-oAr" secondAttribute="leading" constant="5" id="x4H-0W-5XY"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e96-ze-MeQ">
-                                        <rect key="frame" x="204" y="328" width="300" height="328"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e96-ze-MeQ">
+                                        <rect key="frame" x="202.5" y="75.5" width="202" height="184"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YML-wI-euH">
-                                                <rect key="frame" x="52.5" y="0.0" width="195.5" height="164"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YML-wI-euH">
+                                                <rect key="frame" x="3.5" y="0.0" width="195.5" height="84"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-rZ-kgE">
-                                                <rect key="frame" x="0.0" y="164" width="300" height="164"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-rZ-kgE">
+                                                <rect key="frame" x="0.0" y="84" width="202" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eA-AS-8Bv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="164"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="d7R-VJ-ari"/>
-                                                        </constraints>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eA-AS-8Bv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="67.5" height="100"/>
                                                         <state key="normal" title="Button" image="flip_100"/>
                                                         <connections>
                                                             <action selector="actionFlipDeveloper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FW8-Sa-zTs"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-Pd-Xa3">
-                                                        <rect key="frame" x="100" y="0.0" width="100" height="164"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="SON-ty-3yE"/>
-                                                        </constraints>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Eci-gw-zA5">
+                                                        <rect key="frame" x="67.5" y="0.0" width="0.0" height="100"/>
+                                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="bottomLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-Pd-Xa3">
+                                                        <rect key="frame" x="67.5" y="0.0" width="67" height="100"/>
                                                         <state key="normal" title="Button" image="pause_100"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-zD-2UY">
-                                                        <rect key="frame" x="200" y="0.0" width="100" height="164"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="gMX-p0-bI8"/>
-                                                        </constraints>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-Ty-BgJ">
+                                                        <rect key="frame" x="134.5" y="0.0" width="0.0" height="100"/>
+                                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-zD-2UY">
+                                                        <rect key="frame" x="134.5" y="0.0" width="67.5" height="100"/>
                                                         <state key="normal" title="Button" image="play-100"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="JAb-Pd-Xa3" firstAttribute="width" secondItem="4eA-AS-8Bv" secondAttribute="width" id="Ww4-BN-Xoa"/>
+                                                    <constraint firstItem="8ay-zD-2UY" firstAttribute="width" secondItem="4eA-AS-8Bv" secondAttribute="width" id="aHN-dy-TzL"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMy-Kn-wWD">
-                                        <rect key="frame" x="234" y="656" width="240" height="328"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="aMy-Kn-wWD">
+                                        <rect key="frame" x="404.5" y="87.5" width="202.5" height="160"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_100" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ol-Bj8">
-                                                <rect key="frame" x="30" y="30" width="180" height="268"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="man_100" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ol-Bj8">
+                                                <rect key="frame" x="30" y="30" width="165" height="51.5"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,6 +100,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
                         </subviews>
