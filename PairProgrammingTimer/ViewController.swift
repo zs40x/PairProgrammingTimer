@@ -52,9 +52,20 @@ class ViewController: UIViewController {
         activeDeveloper = (activeDeveloper == .left ? .right : .left)
         updateImageOffsets()
         updateDeveloperImages()
+        
+        if currentState == .active {
+            currentState = .idle
+            toggleState()
+        }
     }
     
     @IBAction func actionStart(_ sender: Any) {
+        
+        toggleState()
+    }
+    
+    private func toggleState() {
+        
         currentState = currentState == .idle ? .active : .idle
         
         if currentState == .active {
