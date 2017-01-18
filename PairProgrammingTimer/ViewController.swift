@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightImageBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonStart: UIButton!
-    
+    @IBOutlet weak var labelTimer: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

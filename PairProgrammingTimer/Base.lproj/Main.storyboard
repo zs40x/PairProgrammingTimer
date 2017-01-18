@@ -112,6 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonStart" destination="8ay-zD-2UY" id="QFF-iv-ofZ"/>
+                        <outlet property="labelTimer" destination="YML-wI-euH" id="wYq-Ob-cpn"/>
                         <outlet property="leftDeveloperImageView" destination="2RS-np-TWe" id="8zt-ls-Uvg"/>
                         <outlet property="leftImageBottomConstraint" destination="kIa-M0-6mE" id="Kh4-xB-lrQ"/>
                         <outlet property="leftImageLeadingConstraint" destination="x4H-0W-5XY" id="LoF-3L-IRP"/>
