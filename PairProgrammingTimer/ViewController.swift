@@ -74,6 +74,8 @@ class ViewController: UIViewController {
             timerElapsesOnDate = Date().addingTimeInterval(countDownMinutes * 60)
             timerElapsed = false
             timer.start(0.25, callDelegateWhenExpired: self)
+        } else {
+            labelTimer.layer.removeAllAnimations()
         }
         
         updateCurrentState()
@@ -124,6 +126,13 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.async {
             AudioServicesPlaySystemSound(1006)
+            
+            UIView.animate(
+                withDuration: 1.2,
+                delay: 0.0,
+                options: [.curveEaseInOut, .autoreverse, .repeat],
+                animations: { [weak self] in self?.labelTimer.alpha = 0.0 },
+                completion: { [weak self] _ in self?.labelTimer.alpha = 1.0 })
         }
         
         timerElapsed = true
