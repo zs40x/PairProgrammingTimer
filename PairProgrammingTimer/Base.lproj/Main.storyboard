@@ -66,6 +66,9 @@
                                                     <button opaque="NO" contentMode="bottomLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-Pd-Xa3">
                                                         <rect key="frame" x="67.5" y="0.0" width="67" height="100"/>
                                                         <state key="normal" title="Button" image="pause_100"/>
+                                                        <connections>
+                                                            <action selector="actionPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hpP-8d-QE7"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-Ty-BgJ">
                                                         <rect key="frame" x="134.5" y="0.0" width="0.0" height="100"/>
@@ -74,6 +77,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-zD-2UY">
                                                         <rect key="frame" x="134.5" y="0.0" width="67.5" height="100"/>
                                                         <state key="normal" title="Button" image="play-100"/>
+                                                        <connections>
+                                                            <action selector="actionStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qci-d7-CXI"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
@@ -113,6 +119,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonPause" destination="JAb-Pd-Xa3" id="H6S-22-3u7"/>
+                        <outlet property="buttonStart" destination="8ay-zD-2UY" id="QFF-iv-ofZ"/>
                         <outlet property="leftDeveloperImageView" destination="2RS-np-TWe" id="8zt-ls-Uvg"/>
                         <outlet property="leftImageBottomConstraint" destination="kIa-M0-6mE" id="Kh4-xB-lrQ"/>
                         <outlet property="leftImageLeadingConstraint" destination="x4H-0W-5XY" id="LoF-3L-IRP"/>

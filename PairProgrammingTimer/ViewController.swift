@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightImageLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightImageBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightImageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonPause: UIButton!
+    @IBOutlet weak var buttonStart: UIButton!
     
     
     override func viewDidLoad() {
@@ -43,6 +45,12 @@ class ViewController: UIViewController {
         activeDeveloper = (activeDeveloper == .left ? .right : .left)
         updateImageOffsets()
         updateDeveloperImages()
+    }
+    
+    @IBAction func actionPause(_ sender: Any) {
+    }
+    
+    @IBAction func actionStart(_ sender: Any) {
     }
     
     private func updateDeveloperImages() {
