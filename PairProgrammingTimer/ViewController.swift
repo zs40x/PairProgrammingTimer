@@ -20,6 +20,7 @@ enum CurrentState: Int {
 
 class ViewController: UIViewController {
     
+    private let countDownMinutes: Double = 0.5
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
         currentState = currentState == .idle ? .active : .idle
         
         if currentState == .active {
-            timerElapsesOnDate = Date().addingTimeInterval(15 * 60)
+            timerElapsesOnDate = Date().addingTimeInterval(countDownMinutes * 60)
             timer.start(0.25, callDelegateWhenExpired: self)
         }
         
@@ -101,14 +102,31 @@ class ViewController: UIViewController {
     
     fileprivate func updateTimer() {
         
-        guard let timerElapsesOnDate = timerElapsesOnDate else { return }
+        var isNegative = false
+        var duration = durationRemaining()
         
-        let interval = DateInterval(start: Date(), end: timerElapsesOnDate)
+        if duration < 0 {
+            duration = duration * -1
+            isNegative = true
+        }
         
-        let minutes = Int(interval.duration) / 60 % 60
-        let seconds = Int(interval.duration) % 60
+        let minutes = Int(duration) / 60 % 60
+        let seconds = Int(duration) % 60
         
-        labelTimer.text = String(format:"%02i:%02i", minutes, seconds)
+        labelTimer.text = String(format:"%@%02i:%02i", isNegative ? "-" : "", minutes, seconds)
+    }
+    
+    private func durationRemaining() -> Double {
+        
+        guard let timerElapsesOnDate = timerElapsesOnDate else { return 0 }
+
+        let currentDate = Date()
+        
+        if(currentDate > timerElapsesOnDate) {
+            return DateInterval(start: timerElapsesOnDate, end: currentDate).duration * -1.0
+        } else {
+            return DateInterval(start: currentDate, end: timerElapsesOnDate).duration
+        }
     }
 }
 
