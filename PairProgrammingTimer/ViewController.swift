@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     
     fileprivate let timer = SystemTimer()
-    private var timerStartedOn: Date?
+    private var timerElapsesOnDate: Date?
     private var activeDeveloper: Developer = .left
     fileprivate var currentState: CurrentState = .idle
     
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         currentState = currentState == .idle ? .active : .idle
         
         if currentState == .active {
-            timerStartedOn = Date()
+            timerElapsesOnDate = Date().addingTimeInterval(15 * 60)
             timer.start(0.25, callDelegateWhenExpired: self)
         }
         
@@ -101,9 +101,9 @@ class ViewController: UIViewController {
     
     fileprivate func updateTimer() {
         
-        guard let timerStartedOn = timerStartedOn else { return }
+        guard let timerElapsesOnDate = timerElapsesOnDate else { return }
         
-        let interval = DateInterval(start: timerStartedOn, end: Date())
+        let interval = DateInterval(start: Date(), end: timerElapsesOnDate)
         
         let minutes = Int(interval.duration) / 60 % 60
         let seconds = Int(interval.duration) % 60
