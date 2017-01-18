@@ -23,9 +23,10 @@ class ViewController: UIViewController {
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
-    private let timer = SystemTimer()
+    fileprivate let timer = SystemTimer()
+    private var timerStartedOn: Date?
     private var activeDeveloper: Developer = .left
-    private var currentState: CurrentState = .idle
+    fileprivate var currentState: CurrentState = .idle
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
@@ -54,6 +55,12 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         currentState = currentState == .idle ? .active : .idle
+        
+        if currentState == .active {
+            timerStartedOn = Date()
+            timer.start(0.25, callDelegateWhenExpired: self)
+        }
+        
         updateCurrentState()
     }
     
@@ -90,6 +97,27 @@ class ViewController: UIViewController {
         rightImageBottomConstraint.constant = offset
         rightImageLeadingConstraint.constant = offset
         rightImageTrailingConstraint.constant = offset
+    }
+    
+    fileprivate func updateTimer() {
+        
+        guard let timerStartedOn = timerStartedOn else { return }
+        
+        let interval = DateInterval(start: timerStartedOn, end: Date())
+        
+        
+    }
+}
+
+extension ViewController: TimerExpiredDelegate {
+    
+    func timerExpired() {
+        
+        updateTimer()
+        
+        if currentState == .active {
+            timer.start(0.25, callDelegateWhenExpired: self)
+        }
     }
 }
 
