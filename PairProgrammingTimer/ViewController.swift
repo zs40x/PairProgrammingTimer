@@ -78,7 +78,7 @@ class ViewController: UIViewController {
     
     private func updateCurrentState() {
         
-        let newImage = currentState == .active ? UIImage(named: "play-100")! : UIImage(named: "pause_100")!
+        let newImage = currentState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")! 
        
         buttonStart.setImage(newImage, for: .normal)
     }
