@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum Developer: Int {
     case left = 0
@@ -20,11 +21,12 @@ enum CurrentState: Int {
 
 class ViewController: UIViewController {
     
-    private let countDownMinutes: Double = 0.5
+    private let countDownMinutes: Double = 0.1
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
     fileprivate let timer = SystemTimer()
+    private var timerElapsed = false
     private var timerElapsesOnDate: Date?
     private var activeDeveloper: Developer = .left
     fileprivate var currentState: CurrentState = .idle
@@ -70,6 +72,7 @@ class ViewController: UIViewController {
         
         if currentState == .active {
             timerElapsesOnDate = Date().addingTimeInterval(countDownMinutes * 60)
+            timerElapsed = false
             timer.start(0.25, callDelegateWhenExpired: self)
         }
         
@@ -78,7 +81,7 @@ class ViewController: UIViewController {
     
     private func updateCurrentState() {
         
-        let newImage = currentState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")! 
+        let newImage = currentState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")!
        
         buttonStart.setImage(newImage, for: .normal)
     }
@@ -109,6 +112,21 @@ class ViewController: UIViewController {
         rightImageBottomConstraint.constant = offset
         rightImageLeadingConstraint.constant = offset
         rightImageTrailingConstraint.constant = offset
+    }
+    
+    fileprivate func timerElapsedCheck() {
+        
+        if timerElapsed { return }
+        
+        guard let timerElapsesOnDate = timerElapsesOnDate else { return }
+        
+        if(Date() < timerElapsesOnDate) { return }
+        
+        DispatchQueue.main.async {
+            AudioServicesPlaySystemSound(1006)
+        }
+        
+        timerElapsed = true
     }
     
     fileprivate func updateTimer() {
@@ -146,6 +164,7 @@ extension ViewController: TimerExpiredDelegate {
     func timerExpired() {
         
         updateTimer()
+        timerElapsedCheck()
         
         if currentState == .active {
             timer.start(0.25, callDelegateWhenExpired: self)
