@@ -105,7 +105,10 @@ class ViewController: UIViewController {
         
         let interval = DateInterval(start: timerStartedOn, end: Date())
         
+        let minutes = Int(interval.duration) / 60 % 60
+        let seconds = Int(interval.duration) % 60
         
+        labelTimer.text = String(format:"%02i:%02i", minutes, seconds)
     }
 }
 
