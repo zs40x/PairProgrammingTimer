@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
+    private let timer = SystemTimer()
     private var activeDeveloper: Developer = .left
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
