@@ -13,6 +13,11 @@ enum Developer: Int {
     case right
 }
 
+enum CurrentState: Int {
+    case idle = 0
+    case active
+}
+
 class ViewController: UIViewController {
     
     private let activeOffset: CGFloat = 5
@@ -20,6 +25,7 @@ class ViewController: UIViewController {
     
     private let timer = SystemTimer()
     private var activeDeveloper: Developer = .left
+    private var currentState: CurrentState = .idle
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
@@ -47,6 +53,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionStart(_ sender: Any) {
+        currentState = currentState == .idle ? .active : .idle
+        updateCurrentState()
+    }
+    
+    private func updateCurrentState() {
+        
+        let newImage = currentState == .active ? UIImage(named: "play-100")! : UIImage(named: "pause_100")!
+       
+        buttonStart.setImage(newImage, for: .normal)
     }
     
     private func updateDeveloperImages() {
