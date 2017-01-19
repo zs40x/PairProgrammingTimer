@@ -38,6 +38,7 @@
 		D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairProgrammingTimerTests.swift; sourceTree = "<group>"; };
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		D40BCBA21E2D42A90005350B /* PairProgrammingTimer */ = {
 			isa = PBXGroup;
 			children = (
+				D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */,
 				D40BCBA31E2D42A90005350B /* AppDelegate.swift */,
 				D40BCBA51E2D42A90005350B /* ViewController.swift */,
 				D40BCBA71E2D42A90005350B /* Main.storyboard */,
@@ -151,6 +153,17 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = Y6U8S5243G;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					D40BCBB31E2D42A90005350B = {
 						CreatedOnToolsVersion = 8.2;
@@ -346,7 +359,7 @@
 				DEVELOPMENT_TEAM = Y6U8S5243G;
 				INFOPLIST_FILE = PairProgrammingTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PairProgrammingTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.devtools.PairProgrammingTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -360,7 +373,7 @@
 				DEVELOPMENT_TEAM = Y6U8S5243G;
 				INFOPLIST_FILE = PairProgrammingTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PairProgrammingTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.devtools.PairProgrammingTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
