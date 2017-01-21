@@ -56,9 +56,10 @@ class ViewController: UIViewController {
         updateDeveloperImages()
         
         if currentState == .active {
-            currentState = .idle
             toggleState()
         }
+        
+        toggleState()
     }
     
     @IBAction func actionStart(_ sender: Any) {
