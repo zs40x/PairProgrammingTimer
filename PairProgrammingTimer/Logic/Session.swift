@@ -9,6 +9,8 @@
 import Foundation
 
 protocol Session {
+    var developer: Developer { get }
+    
     func start()
     func stop()
 }

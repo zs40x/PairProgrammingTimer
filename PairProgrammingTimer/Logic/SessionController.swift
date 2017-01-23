@@ -9,6 +9,8 @@
 import Foundation
 
 protocol SessionControl {
+    var session: Session { get }
+    
     func start()
     func stop()
     func changeDevelopers() -> SessionControl
@@ -25,7 +27,6 @@ class ProgrammingSessionControl: SessionControl {
     convenience init() {
         self.init(withDeveloper: .left)
     }
-    
     
     func start() {
         
