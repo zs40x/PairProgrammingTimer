@@ -11,10 +11,21 @@ import Foundation
 protocol SessionControl {
     func start()
     func stop()
-    func changeDevelopers() -> Session
+    func changeDevelopers() -> SessionControl
 }
 
 class ProgrammingSessionControl: SessionControl {
+    
+    let session: Session
+    
+    init(withDeveloper: Developer) {
+        self.session = DeveloperSession(developer: withDeveloper)
+    }
+    
+    convenience init() {
+        self.init(withDeveloper: .left)
+    }
+    
     
     func start() {
         
@@ -24,8 +35,8 @@ class ProgrammingSessionControl: SessionControl {
         
     }
     
-    func changeDevelopers() -> Session {
+    func changeDevelopers() -> SessionControl {
       
-        return DeveloperSession(developer: .left)
+        return ProgrammingSessionControl(withDeveloper: .left)
     }
 }
