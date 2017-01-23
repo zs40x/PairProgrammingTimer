@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+protocol SessionControl {
+    func start()
+    func stop()
+    func changeDevelopers() -> Session
+}
+
+class ProgrammingSessionControl: SessionControl {
+    
+    func start() {
+        
+    }
+    
+    func stop() {
+        
+    }
+    
+    func changeDevelopers() -> Session {
+      
+        return DeveloperSession(developer: .left)
+    }
+}

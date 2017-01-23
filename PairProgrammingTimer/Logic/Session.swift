@@ -8,3 +8,24 @@
 
 import Foundation
 
+protocol Session {
+    func start()
+    func stop()
+}
+
+class DeveloperSession: Session {
+    
+    let developer: Developer
+    
+    init(developer: Developer) {
+        self.developer = developer
+    }
+    
+    func start() {
+        
+    }
+    
+    func stop() {
+        
+    }
+}
