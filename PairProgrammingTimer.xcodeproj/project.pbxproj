@@ -18,6 +18,7 @@
 		D4B120321E367C58003C93CF /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* SessionController.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */; };
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
+		D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D4B120311E367C58003C93CF /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionController.swift; path = Logic/SessionController.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingSessionController.swift; sourceTree = "<group>"; };
 		D4B120361E37CCB8003C93CF /* FakeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTimer.swift; sourceTree = "<group>"; };
+		D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSessionControlDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +106,10 @@
 		D40BCBB71E2D42A90005350B /* PairProgrammingTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				D4B120381E37D7D2003C93CF /* Fakes */,
 				D4B120331E368028003C93CF /* Logic */,
 				D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */,
 				D40BCBBA1E2D42A90005350B /* Info.plist */,
-				D4B120361E37CCB8003C93CF /* FakeTimer.swift */,
 			);
 			path = PairProgrammingTimerTests;
 			sourceTree = "<group>";
@@ -127,6 +129,15 @@
 				D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */,
 			);
 			name = Logic;
+			sourceTree = "<group>";
+		};
+		D4B120381E37D7D2003C93CF /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				D4B120361E37CCB8003C93CF /* FakeTimer.swift */,
+				D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */,
+			);
+			name = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */,
 				D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */,
 				D40BCBB91E2D42A90005350B /* PairProgrammingTimerTests.swift in Sources */,
 				D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */,

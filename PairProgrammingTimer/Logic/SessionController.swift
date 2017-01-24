@@ -16,8 +16,13 @@ protocol SessionControl {
     func changeDevelopers() -> SessionControl
 }
 
+protocol SessionControlDelegate {
+    func countdownExpired()
+}
+
 class ProgrammingSessionControl: SessionControl {
     
+    var delegate: SessionControlDelegate?
     let session: Session
     private let timer: CountdownTimer
     
@@ -31,7 +36,8 @@ class ProgrammingSessionControl: SessionControl {
     }
     
     func start() {
-        
+       
+        timer.start(15 * 60, callDelegateWhenExpired: self)
     }
     
     func stop() {
@@ -43,5 +49,13 @@ class ProgrammingSessionControl: SessionControl {
         let nextDeveloper: Developer = session.developer == .left ? .right : .left
         
         return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer)
+    }
+}
+
+extension ProgrammingSessionControl: CountdownTimerExpiredDelegate {
+    
+    func timerExpired() {
+        
+        delegate?.countdownExpired()
     }
 }

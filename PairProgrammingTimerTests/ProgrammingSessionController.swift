@@ -12,10 +12,17 @@ import XCTest
 class ProgrammingSessionControllerTests: XCTestCase {
     
     var testInstance: ProgrammingSessionControl?
+    var fakeSessionControlDelegate: FakeSessionControlDelegate?
+    var fakeTimer: FakeTimer?
     
     override func setUp() {
         
-        testInstance = ProgrammingSessionControl(timer: FakeTimer())
+        fakeTimer = FakeTimer()
+        
+        testInstance = ProgrammingSessionControl(timer: fakeTimer!)
+        
+        fakeSessionControlDelegate = FakeSessionControlDelegate()
+        testInstance?.delegate = fakeSessionControlDelegate
     }
 
     func testIsInitializedWithLeftDeveloper() {
@@ -33,5 +40,14 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().session.developer)
     }
     
+    
+    func testDelegateCalledWhenTimerExpired() {
+        
+        // simulate that the timer expired after the countdown interval
+        testInstance?.start()
+        fakeTimer?.expire()
+        
+        XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
+    }
 }
   
