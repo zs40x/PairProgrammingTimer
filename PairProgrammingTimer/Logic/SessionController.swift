@@ -38,6 +38,6 @@ class ProgrammingSessionControl: SessionControl {
     
     func changeDevelopers() -> SessionControl {
       
-        return ProgrammingSessionControl(withDeveloper: .left)
+        return ProgrammingSessionControl(withDeveloper: session.developer == .left ? .right : .left)
     }
 }

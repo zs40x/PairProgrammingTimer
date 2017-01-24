@@ -24,5 +24,15 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(Developer.left, testInstance?.session.developer)
     }
     
+    func testChangeDeveloperChangesSessionToRight() {
+        
+        XCTAssertEqual(Developer.right, testInstance?.changeDevelopers().session.developer)
+    }
+    
+    func testChangeDevelopers2TimesChangesBackToLeft() {
+        
+        XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().session.developer)
+    }
+    
 }
   
