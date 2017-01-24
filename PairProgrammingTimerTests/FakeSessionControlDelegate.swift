@@ -11,7 +11,12 @@ import Foundation
 
 class FakeSessionControlDelegate: SessionControlDelegate {
     
+    private(set) var sessionStartedWasCalled = false
     private(set) var countdownExpiredWasCalled = false
+    
+    func sessionStarted() {
+        sessionStartedWasCalled = true
+    }
     
     func countdownExpired() {
         countdownExpiredWasCalled = true

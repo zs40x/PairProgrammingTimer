@@ -17,6 +17,7 @@ protocol SessionControl {
 }
 
 protocol SessionControlDelegate {
+    func sessionStarted()
     func countdownExpired()
 }
 
@@ -38,6 +39,8 @@ class ProgrammingSessionControl: SessionControl {
     func start() {
        
         timer.start(15 * 60, callDelegateWhenExpired: self)
+        
+        delegate?.sessionStarted()
     }
     
     func stop() {
