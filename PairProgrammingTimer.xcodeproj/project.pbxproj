@@ -17,6 +17,7 @@
 		D4B1202F1E367B86003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1202E1E367B86003C93CF /* Session.swift */; };
 		D4B120321E367C58003C93CF /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* SessionController.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */; };
+		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		D4B1202E1E367B86003C93CF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Logic/Session.swift; sourceTree = "<group>"; };
 		D4B120311E367C58003C93CF /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionController.swift; path = Logic/SessionController.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingSessionController.swift; sourceTree = "<group>"; };
+		D4B120361E37CCB8003C93CF /* FakeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				D4B120331E368028003C93CF /* Logic */,
 				D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */,
 				D40BCBBA1E2D42A90005350B /* Info.plist */,
+				D4B120361E37CCB8003C93CF /* FakeTimer.swift */,
 			);
 			path = PairProgrammingTimerTests;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			files = (
 				D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */,
 				D40BCBB91E2D42A90005350B /* PairProgrammingTimerTests.swift in Sources */,
+				D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

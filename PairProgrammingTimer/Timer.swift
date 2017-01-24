@@ -8,21 +8,21 @@
 
 import Foundation
 
-protocol TimerExpiredDelegate {
+protocol CountdownTimerExpiredDelegate {
     func timerExpired()
 }
 
-protocol Timer {
-    func start(_ durationInSeconds: Double, callDelegateWhenExpired: TimerExpiredDelegate)
+protocol CountdownTimer {
+    func start(_ durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate)
     func stop()
 }
 
-class SystemTimer: Timer {
+class SystemTimer: CountdownTimer {
     
     private var timer = Foundation.Timer()
-    private var expiredDelegate: TimerExpiredDelegate?
+    private var expiredDelegate: CountdownTimerExpiredDelegate?
     
-    func start(_ durationInSeconds: Double, callDelegateWhenExpired: TimerExpiredDelegate) {
+    func start(_ durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
         
         expiredDelegate = callDelegateWhenExpired
         

@@ -9,14 +9,13 @@
 import XCTest
 @testable import PairProgrammingTimer
 
-
 class ProgrammingSessionControllerTests: XCTestCase {
     
     var testInstance: ProgrammingSessionControl?
     
     override func setUp() {
         
-        testInstance = ProgrammingSessionControl()
+        testInstance = ProgrammingSessionControl(timer: FakeTimer())
     }
 
     func testIsInitializedWithLeftDeveloper() {

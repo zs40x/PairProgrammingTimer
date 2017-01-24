@@ -169,7 +169,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: TimerExpiredDelegate {
+extension ViewController: CountdownTimerExpiredDelegate {
     
     func timerExpired() {
         

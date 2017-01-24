@@ -19,13 +19,15 @@ protocol SessionControl {
 class ProgrammingSessionControl: SessionControl {
     
     let session: Session
+    private let timer: CountdownTimer
     
-    init(withDeveloper: Developer) {
+    init(withDeveloper: Developer, timer: CountdownTimer) {
         self.session = DeveloperSession(developer: withDeveloper)
+        self.timer = timer
     }
     
-    convenience init() {
-        self.init(withDeveloper: .left)
+    convenience init(timer: CountdownTimer) {
+        self.init(withDeveloper: .left, timer: timer)
     }
     
     func start() {
@@ -38,6 +40,8 @@ class ProgrammingSessionControl: SessionControl {
     
     func changeDevelopers() -> SessionControl {
       
-        return ProgrammingSessionControl(withDeveloper: session.developer == .left ? .right : .left)
+        let nextDeveloper: Developer = session.developer == .left ? .right : .left
+        
+        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer)
     }
 }
