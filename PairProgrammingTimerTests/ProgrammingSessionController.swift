@@ -47,6 +47,13 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(true, fakeSessionControlDelegate?.sessionStartedWasCalled)
     }
     
+    func testDelegateCalledWhenSessionEnded() {
+        
+        testInstance?.stop()
+        
+        XCTAssertEqual(true, fakeSessionControlDelegate?.sessionEndedWasCalled)
+    }
+    
     func testDelegateCalledWhenTimerExpired() {
         
         // simulate that the timer expired after the countdown interval
