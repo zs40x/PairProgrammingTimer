@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     fileprivate let timer = SystemTimer()
     private var timerElapsed = false
     private var timerElapsesOnDate: Date?
-    private var activeDeveloper: Developer = .left
     fileprivate var currentState: CurrentState = .idle
+    fileprivate var sessionControl: SessionControl = ProgrammingSessionControl(timer: SystemTimer())
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
@@ -46,20 +46,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateImageOffsets()
+        sessionControl.delegate = self
+        updateImageOffsets(activeDeveloper: .left)
     }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
-        activeDeveloper = (activeDeveloper == .left ? .right : .left)
-        updateImageOffsets()
-        updateDeveloperImages()
         
-        if currentState == .active {
-            toggleState()
-        }
-        
-        toggleState()
+        sessionControl = sessionControl.changeDevelopers()
+        sessionControl.delegate = self
     }
     
     @IBAction func actionStart(_ sender: Any) {
@@ -89,7 +83,7 @@ class ViewController: UIViewController {
         buttonStart.setImage(newImage, for: .normal)
     }
     
-    private func updateDeveloperImages() {
+    fileprivate func updateDeveloperImages(activeDeveloper: Developer) {
         rightDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .right)
         leftDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .left)
     }
@@ -98,7 +92,7 @@ class ViewController: UIViewController {
         return isActive ? UIImage(named: "man_filled_100")! : UIImage(named: "man_100")!
     }
     
-    private func updateImageOffsets() {
+    fileprivate func updateImageOffsets(activeDeveloper: Developer) {
         updateLeftDeveloperOffset(offset: (activeDeveloper == .left ? activeOffset : inactiveOffset))
         updateRightDeveloperOffset(offset: (activeDeveloper == .right ? activeOffset : inactiveOffset))
     }
@@ -185,7 +179,9 @@ extension ViewController: CountdownTimerExpiredDelegate {
 extension ViewController: SessionControlDelegate {
     
     func developerChanged(developer: Developer) {
-        
+     
+        updateImageOffsets(activeDeveloper: developer)
+        updateDeveloperImages(activeDeveloper: developer)
     }
     
     func sessionStarted() {

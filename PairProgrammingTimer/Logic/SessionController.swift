@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SessionControl {
+    var delegate: SessionControlDelegate? { get set }
     var session: Session { get }
     
     func start()
