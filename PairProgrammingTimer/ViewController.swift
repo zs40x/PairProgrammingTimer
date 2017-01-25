@@ -182,3 +182,21 @@ extension ViewController: CountdownTimerExpiredDelegate {
     }
 }
 
+extension ViewController: SessionControlDelegate {
+    
+    func developerChanged(developer: Developer) {
+        
+    }
+    
+    func sessionStarted() {
+        
+    }
+    
+    func sessionEnded() {
+        
+    }
+    
+    func countdownExpired() {
+        
+    }
+}
