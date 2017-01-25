@@ -17,6 +17,7 @@ protocol SessionControl {
 }
 
 protocol SessionControlDelegate {
+    func developerChanged(developer: Developer)
     func sessionStarted()
     func sessionEnded()
     func countdownExpired()
@@ -52,6 +53,8 @@ class ProgrammingSessionControl: SessionControl {
     func changeDevelopers() -> SessionControl {
       
         let nextDeveloper: Developer = session.developer == .left ? .right : .left
+        
+        delegate?.developerChanged(developer: nextDeveloper)
         
         return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer)
     }

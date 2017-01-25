@@ -40,6 +40,13 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().session.developer)
     }
     
+    func testDelegateCalledWhenDeveloperWasChanged() {
+        
+        _ = testInstance?.changeDevelopers()
+        
+        XCTAssertEqual(true, fakeSessionControlDelegate?.developerChangedWasCalled)
+    }
+    
     func testDelegateCalledWhenSessionStarted() {
         
         testInstance?.start()
