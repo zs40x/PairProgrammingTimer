@@ -12,7 +12,6 @@
 		D40BCBA91E2D42A90005350B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBA71E2D42A90005350B /* Main.storyboard */; };
 		D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAA1E2D42A90005350B /* Assets.xcassets */; };
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
-		D40BCBB91E2D42A90005350B /* PairProgrammingTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */; };
 		D40BCBC41E2D56B20005350B /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBC31E2D56B20005350B /* Timer.swift */; };
 		D4B1202F1E367B86003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1202E1E367B86003C93CF /* Session.swift */; };
 		D4B120321E367C58003C93CF /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* SessionController.swift */; };
@@ -40,7 +39,6 @@
 		D40BCBAD1E2D42A90005350B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D40BCBAF1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBB41E2D42A90005350B /* PairProgrammingTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PairProgrammingTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairProgrammingTimerTests.swift; sourceTree = "<group>"; };
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			children = (
 				D4B120381E37D7D2003C93CF /* Fakes */,
 				D4B120331E368028003C93CF /* Logic */,
-				D40BCBB81E2D42A90005350B /* PairProgrammingTimerTests.swift */,
 				D40BCBBA1E2D42A90005350B /* Info.plist */,
 			);
 			path = PairProgrammingTimerTests;
@@ -270,7 +267,6 @@
 			files = (
 				D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */,
 				D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */,
-				D40BCBB91E2D42A90005350B /* PairProgrammingTimerTests.swift in Sources */,
 				D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
