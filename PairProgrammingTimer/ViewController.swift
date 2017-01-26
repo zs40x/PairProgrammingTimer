@@ -25,10 +25,7 @@ class ViewController: UIViewController {
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
-    fileprivate let timer = SystemTimer()
-    private var timerElapsed = false
-    private var timerElapsesOnDate: Date?
-    fileprivate var currentState: CurrentState = .idle
+    //fileprivate let timer = SystemTimer()
     fileprivate var sessionControl: SessionControl = ProgrammingSessionControl(timer: SystemTimer())
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
@@ -58,25 +55,10 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         
-        toggleState()
+        sessionControl.start()
     }
     
-    private func toggleState() {
-        
-        currentState = currentState == .idle ? .active : .idle
-        
-        if currentState == .active {
-            timerElapsesOnDate = Date().addingTimeInterval(countDownMinutes * 60)
-            timerElapsed = false
-            timer.start(0.25, callDelegateWhenExpired: self)
-        } else {
-            labelTimer.layer.removeAllAnimations()
-        }
-        
-        updateCurrentState()
-    }
-    
-    private func updateCurrentState() {
+    fileprivate func updateCurrentState(_ currentState: CurrentState) {
         
         let newImage = currentState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")!
        
@@ -113,24 +95,16 @@ class ViewController: UIViewController {
     
     fileprivate func timerElapsedCheck() {
         
-        if timerElapsed { return }
+        /*if timerElapsed { return }
         
         guard let timerElapsesOnDate = timerElapsesOnDate else { return }
         
         if(Date() < timerElapsesOnDate) { return }
         
-        DispatchQueue.main.async {
-            AudioServicesPlaySystemSound(1006)
-            
-            UIView.animate(
-                withDuration: 1.2,
-                delay: 0.0,
-                options: [.curveEaseInOut, .autoreverse, .repeat],
-                animations: { [weak self] in self?.labelTimer.alpha = 0.0 },
-                completion: { [weak self] _ in self?.labelTimer.alpha = 1.0 })
+        
         }
         
-        timerElapsed = true
+        timerElapsed = true*/
     }
     
     fileprivate func updateTimer() {
@@ -151,7 +125,7 @@ class ViewController: UIViewController {
     
     private func durationRemaining() -> Double {
         
-        guard let timerElapsesOnDate = timerElapsesOnDate else { return 0 }
+        /*guard let timerElapsesOnDate = timerElapsesOnDate else { return 0 }
 
         let currentDate = Date()
         
@@ -159,7 +133,8 @@ class ViewController: UIViewController {
             return DateInterval(start: timerElapsesOnDate, end: currentDate).duration * -1.0
         } else {
             return DateInterval(start: currentDate, end: timerElapsesOnDate).duration
-        }
+        }*/
+        return 0.0
     }
 }
 
@@ -170,9 +145,9 @@ extension ViewController: CountdownTimerExpiredDelegate {
         updateTimer()
         timerElapsedCheck()
         
-        if currentState == .active {
+        /*if currentState == .active {
             timer.start(0.25, callDelegateWhenExpired: self)
-        }
+        }*/
     }
 }
 
@@ -185,14 +160,25 @@ extension ViewController: SessionControlDelegate {
     }
     
     func sessionStarted() {
-        
+        updateCurrentState(.active)
     }
     
     func sessionEnded() {
-        
+        labelTimer.layer.removeAllAnimations()
+        updateCurrentState(.idle)
     }
     
     func countdownExpired() {
         
+        DispatchQueue.main.async {
+            AudioServicesPlaySystemSound(1006)
+            
+            UIView.animate(
+                withDuration: 1.2,
+                delay: 0.0,
+                options: [.curveEaseInOut, .autoreverse, .repeat],
+                animations: { [weak self] in self?.labelTimer.alpha = 0.0 },
+                completion: { [weak self] _ in self?.labelTimer.alpha = 1.0 })
+        }
     }
 }
