@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     
     //fileprivate let timer = SystemTimer()
-    fileprivate var sessionControl: SessionControl = ProgrammingSessionControl(timer: SystemTimer())
+    fileprivate var sessionControl: SessionControl = ProgrammingSessionControl(timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false))
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!

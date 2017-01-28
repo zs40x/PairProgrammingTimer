@@ -41,7 +41,7 @@ class ProgrammingSessionControl: SessionControl {
     
     func start() {
        
-        timer.start(15 * 60, callDelegateWhenExpired: self)
+        timer.start(callDelegateWhenExpired: self)
         
         delegate?.sessionStarted()
     }

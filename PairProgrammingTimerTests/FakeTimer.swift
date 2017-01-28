@@ -13,7 +13,7 @@ class FakeTimer: CountdownTimer {
     
     private var delegate: CountdownTimerExpiredDelegate?
     
-    func start(_ durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
+    func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
         delegate = callDelegateWhenExpired
     }
     

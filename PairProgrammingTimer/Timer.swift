@@ -13,32 +13,44 @@ protocol CountdownTimerExpiredDelegate {
 }
 
 protocol CountdownTimer {
-    func start(_ durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate)
+    func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate)
     func stop()
 }
 
 class SystemTimer: CountdownTimer {
     
-    private var timer = Foundation.Timer()
+    private let durationInSeconds: Double
+    private let repeatWhenExpired: Bool
+    private var timer: Foundation.Timer?
     private var expiredDelegate: CountdownTimerExpiredDelegate?
     
-    func start(_ durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
+    init(durationInSeconds: Double, repeatWhenExpired: Bool) {
+        self.durationInSeconds = durationInSeconds
+        self.repeatWhenExpired = repeatWhenExpired
+    }
+    
+    func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
         
         expiredDelegate = callDelegateWhenExpired
         
         NSLog("SystemTimer.start(\(durationInSeconds), callback)")
         
-        timer.invalidate()
+        timer?.invalidate()
         
         timer =
-            Foundation.Timer.scheduledTimer(timeInterval: durationInSeconds, target: self, selector: #selector(SystemTimer.timerExpired), userInfo: nil, repeats: false)
+            Foundation.Timer.scheduledTimer(
+                timeInterval: durationInSeconds,
+                target: self,
+                selector: #selector(SystemTimer.timerExpired),
+                userInfo: nil,
+                repeats: repeatWhenExpired)
     }
     
     func stop() {
         
         NSLog("SystemTimer.stop()")
         
-        timer.invalidate()
+        timer?.invalidate()
     }
     
     @objc func timerExpired() {
