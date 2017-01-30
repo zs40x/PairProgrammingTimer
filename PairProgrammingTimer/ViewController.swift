@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         
-        sessionControl = sessionControl.start()
+        sessionControl = sessionControl.toggleState()
     }
     
     fileprivate func updateCurrentState(_ currentState: CurrentState) {

@@ -57,14 +57,14 @@ class ProgrammingSessionControllerTests: XCTestCase {
     
     func testDelegateCalledWhenSessionStarted() {
         
-        _ = testInstance?.start()
+        _ = testInstance?.toggleState()
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.sessionStartedWasCalled)
     }
     
     func testDelegateCalledWhenSessionEnded() {
         
-        testInstance?.stop()
+        _ = testInstance?.toggleState().toggleState()
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.sessionEndedWasCalled)
     }
@@ -72,7 +72,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     func testDelegateCalledWhenTimerExpired() {
         
         // simulate that the timer expired after the countdown interval
-        _ = testInstance?.start()
+        _ = testInstance?.toggleState()
         fakeTimer?.expire()
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
@@ -82,19 +82,19 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         let expectedEndDate = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
         
-        XCTAssertEqual(expectedEndDate, testInstance?.start().sessionEndsOn)
+        XCTAssertEqual(expectedEndDate, testInstance?.toggleState().sessionEndsOn)
     }
     
     func testTimeRemaingIsSessionDuration() {
         
-        let startedSession = testInstance?.start()
+        let startedSession = testInstance?.toggleState()
         
         XCTAssertEqual(15.0 * 60, startedSession?.timeRemaingInSeconds())
     }
     
     func testTimeRemaingTMinus10Minutes() {
         
-        let startedSession = testInstance?.start()
+        let startedSession = testInstance?.toggleState()
         
         fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(5 * 60)
         
@@ -103,7 +103,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     
     func testTimeRemainingTimerElapsedJustNow() {
         
-        let startedSession = testInstance?.start()
+        let startedSession = testInstance?.toggleState()
         
         fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
         
@@ -112,7 +112,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     
     func testTimeRemaingTimerElapsed5MinutesAgo() {
         
-        let startedSession = testInstance?.start()
+        let startedSession = testInstance?.toggleState()
         
         fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval((sessionDurationInMinutes + 5) * 60)
         

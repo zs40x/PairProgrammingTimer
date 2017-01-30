@@ -13,8 +13,8 @@ protocol SessionControl {
     var developer: Developer { get }
     var sessionEndsOn: Date? { get }
     
-    func start() -> SessionControl
-    func stop()
+    func toggleState() -> SessionControl
+    
     func changeDevelopers() -> SessionControl
     func timeRemaingInSeconds() -> Double
 }
@@ -36,20 +36,30 @@ class ProgrammingSessionControl: SessionControl {
     private let dateTime: DateTime
     private let sessionDurationInMinutes: Double
     
-    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double) {
+    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionControlDelegate?) {
         self.developer = withDeveloper
         self.timer = timer
         self.sessionEndsOn = sessionEndsOn
         self.dateTime = dateTime
         self.sessionDurationInMinutes = sessionDurationInMinutes
+        self.delegate = delegate
     }
     
     convenience init(timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
-        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
+        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: nil)
     }
     
-    func start() -> SessionControl {
+    func toggleState() -> SessionControl {
        
+        if sessionEndsOn != nil {
+            return stop()
+        }
+        
+        return start()
+    }
+    
+    private func start() -> SessionControl {
+        
         timer.start(callDelegateWhenExpired: self)
         
         delegate?.sessionStarted()
@@ -59,9 +69,11 @@ class ProgrammingSessionControl: SessionControl {
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }
     
-    func stop() {
+    private func stop() -> SessionControl {
      
         delegate?.sessionEnded()
+        
+        return self
     }
     
     func changeDevelopers() -> SessionControl {
@@ -87,7 +99,13 @@ class ProgrammingSessionControl: SessionControl {
     }
     
     private func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSessionControl {
-        return ProgrammingSessionControl(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: sessionEndsOn, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
+        return ProgrammingSessionControl(
+            withDeveloper: withDeveloper,
+            timer: timer,
+            sessionEndsOn: sessionEndsOn,
+            dateTime: dateTime,
+            sessionDurationInMinutes: sessionDurationInMinutes,
+            delegate: delegate)
     }
 }
 
