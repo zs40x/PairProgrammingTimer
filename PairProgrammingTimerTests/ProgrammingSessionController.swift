@@ -11,6 +11,7 @@ import XCTest
 
 class ProgrammingSessionControllerTests: XCTestCase {
     
+    let sessionDurationInMinutes = 15.0
     var testInstance: ProgrammingSessionControl?
     var fakeSessionControlDelegate: FakeSessionControlDelegate?
     var fakeTimer: FakeTimer?
@@ -20,7 +21,11 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         fakeTimer = FakeTimer()
         
-        testInstance = ProgrammingSessionControl(timer: fakeTimer!, dateTime: FakeDateTime(dateToReturn: startedOnDate))
+        testInstance =
+            ProgrammingSessionControl(
+                timer: fakeTimer!,
+                dateTime: FakeDateTime(dateToReturn: startedOnDate),
+                sessionDurationInMinutes: sessionDurationInMinutes)
         
         fakeSessionControlDelegate = FakeSessionControlDelegate()
         testInstance?.delegate = fakeSessionControlDelegate
@@ -71,9 +76,11 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
     }
     
-    func testStartedOnDate() {
+    func testEndsOnExpectedDate() {
         
-        XCTAssertEqual(startedOnDate, testInstance?.start().sessionStartedOn)
+        let expectedEndDate = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
+        
+        XCTAssertEqual(expectedEndDate, testInstance?.start().sessionEndsOn)
     }
 }
   

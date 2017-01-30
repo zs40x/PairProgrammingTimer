@@ -21,13 +21,15 @@ enum CurrentState: Int {
 
 class ViewController: UIViewController {
     
-    private let countDownMinutes: Double = 15
+    private static let countDownMinutes: Double = 15
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
-    //fileprivate let timer = SystemTimer()
     fileprivate var sessionControl: SessionControl =
-        ProgrammingSessionControl(timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false), dateTime: SystemDateTime())
+        ProgrammingSessionControl(
+            timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false),
+            dateTime: SystemDateTime(),
+            sessionDurationInMinutes: countDownMinutes)
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!

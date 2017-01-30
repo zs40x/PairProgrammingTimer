@@ -11,7 +11,7 @@ import Foundation
 protocol SessionControl {
     var delegate: SessionControlDelegate? { get set }
     var developer: Developer { get }
-    var sessionStartedOn: Date? { get }
+    var sessionEndsOn: Date? { get }
     
     func start() -> SessionControl
     func stop()
@@ -29,20 +29,22 @@ class ProgrammingSessionControl: SessionControl {
     
     var delegate: SessionControlDelegate?
     let developer: Developer
-    let sessionStartedOn: Date?
+    let sessionEndsOn: Date?
     
     private let timer: CountdownTimer
     private let dateTime: DateTime
+    private let sessionDurationInMinutes: Double
     
-    init(withDeveloper: Developer, timer: CountdownTimer, sessionStartedOn: Date?, dateTime: DateTime) {
+    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double) {
         self.developer = withDeveloper
         self.timer = timer
-        self.sessionStartedOn = sessionStartedOn
+        self.sessionEndsOn = sessionEndsOn
         self.dateTime = dateTime
+        self.sessionDurationInMinutes = sessionDurationInMinutes
     }
     
-    convenience init(timer: CountdownTimer, dateTime: DateTime) {
-        self.init(withDeveloper: .left, timer: timer, sessionStartedOn: nil, dateTime: dateTime)
+    convenience init(timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
+        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
     }
     
     func start() -> SessionControl {
@@ -51,7 +53,9 @@ class ProgrammingSessionControl: SessionControl {
         
         delegate?.sessionStarted()
         
-        return ProgrammingSessionControl(withDeveloper: developer, timer: timer, sessionStartedOn: dateTime.currentDateTime(), dateTime: dateTime)
+        let sessionEndsOn = dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60)
+        
+        return ProgrammingSessionControl(withDeveloper: developer, timer: timer, sessionEndsOn: sessionEndsOn, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
     }
     
     func stop() {
@@ -65,7 +69,7 @@ class ProgrammingSessionControl: SessionControl {
         
         delegate?.developerChanged(developer: nextDeveloper)
         
-        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer, sessionStartedOn: nil, dateTime: dateTime)
+        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
     }
 }
 
