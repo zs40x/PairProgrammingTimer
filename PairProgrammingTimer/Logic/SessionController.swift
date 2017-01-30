@@ -15,7 +15,6 @@ enum SessionState: Int {
 
 protocol SessionControl {
     var developer: Developer { get }
-    var sessionEndsOn: Date? { get }
     var sessionState: SessionState { get }
     
     func toggleState() -> SessionControl
@@ -34,12 +33,14 @@ protocol SessionControlDelegate {
 class ProgrammingSessionControl: SessionControl {
     
     let developer: Developer
-    let sessionEndsOn: Date?
     
     fileprivate let delegate: SessionControlDelegate?
+    
+    private let sessionEndsOn: Date?
     private let timer: CountdownTimer
     private let dateTime: DateTime
     private let sessionDurationInMinutes: Double
+    
     
     init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionControlDelegate?) {
         self.developer = withDeveloper

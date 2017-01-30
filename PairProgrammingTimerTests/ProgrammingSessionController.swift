@@ -91,13 +91,6 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
     }
     
-    func testEndsOnExpectedDate() {
-        
-        let expectedEndDate = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
-        
-        XCTAssertEqual(expectedEndDate, testInstance?.toggleState().sessionEndsOn)
-    }
-    
     func testTimeRemaingIsSessionDuration() {
         
         let startedSession = testInstance?.toggleState()
