@@ -9,7 +9,6 @@
 import Foundation
 
 protocol SessionControl {
-    var delegate: SessionControlDelegate? { get set }
     var developer: Developer { get }
     var sessionEndsOn: Date? { get }
     
@@ -28,10 +27,10 @@ protocol SessionControlDelegate {
 
 class ProgrammingSessionControl: SessionControl {
     
-    var delegate: SessionControlDelegate?
     let developer: Developer
     let sessionEndsOn: Date?
     
+    fileprivate let delegate: SessionControlDelegate?
     private let timer: CountdownTimer
     private let dateTime: DateTime
     private let sessionDurationInMinutes: Double
@@ -45,8 +44,8 @@ class ProgrammingSessionControl: SessionControl {
         self.delegate = delegate
     }
     
-    convenience init(timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
-        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: nil)
+    convenience init(delegate: SessionControlDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
+        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
     }
     
     func toggleState() -> SessionControl {

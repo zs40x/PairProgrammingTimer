@@ -21,15 +21,11 @@ enum CurrentState: Int {
 
 class ViewController: UIViewController {
     
-    private static let countDownMinutes: Double = 15
+    private let countDownMinutes: Double = 15
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
-    fileprivate var sessionControl: SessionControl =
-        ProgrammingSessionControl(
-            timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false),
-            dateTime: SystemDateTime(),
-            sessionDurationInMinutes: countDownMinutes)
+    fileprivate var sessionControl: SessionControl?
     
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.5, repeatWhenExpired: true)
     
@@ -48,19 +44,25 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sessionControl.delegate = self
+        
+        sessionControl =
+            ProgrammingSessionControl(
+                delegate: self,
+                timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false),
+                dateTime: SystemDateTime(),
+                sessionDurationInMinutes: countDownMinutes)
+        
         updateImageOffsets(activeDeveloper: .left)
     }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         
-        sessionControl = sessionControl.changeDevelopers()
-        sessionControl.delegate = self
+        sessionControl = sessionControl?.changeDevelopers()
     }
     
     @IBAction func actionStart(_ sender: Any) {
         
-        sessionControl = sessionControl.toggleState()
+        sessionControl = sessionControl?.toggleState()
     }
     
     fileprivate func updateCurrentState(_ currentState: CurrentState) {
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
     fileprivate func updateRemainingTime() {
         
         var isNegative = false
-        var duration = sessionControl.timeRemaingInSeconds()
+        var duration = sessionControl!.timeRemaingInSeconds()
         
         if duration < 0 {
             duration = duration * -1
