@@ -14,10 +14,6 @@ enum Developer: Int {
     case right
 }
 
-enum CurrentState: Int {
-    case idle = 0
-    case active
-}
 
 class ViewController: UIViewController {
     
@@ -65,9 +61,9 @@ class ViewController: UIViewController {
         sessionControl = sessionControl?.toggleState()
     }
     
-    fileprivate func updateCurrentState(_ currentState: CurrentState) {
+    fileprivate func updateCurrentState(sessionState: SessionState) {
         
-        let newImage = currentState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")!
+        let newImage = sessionState == .active ? UIImage(named: "pause_100")! : UIImage(named: "play-100")!
        
         buttonStart.setImage(newImage, for: .normal)
     }
@@ -135,14 +131,15 @@ extension ViewController: SessionControlDelegate {
     }
     
     func sessionStarted() {
-        updateCurrentState(.active)
         
+        updateCurrentState(sessionState: .active)
         updateTimer.start(callDelegateWhenExpired: self)
     }
     
     func sessionEnded() {
+         
         labelTimer.layer.removeAllAnimations()
-        updateCurrentState(.idle)
+        updateCurrentState(sessionState: .idle)
         
         updateTimer.stop()
     }

@@ -8,9 +8,15 @@
 
 import Foundation
 
+enum SessionState: Int {
+    case idle = 0
+    case active
+}
+
 protocol SessionControl {
     var developer: Developer { get }
     var sessionEndsOn: Date? { get }
+    var sessionState: SessionState { get }
     
     func toggleState() -> SessionControl
     
@@ -48,6 +54,12 @@ class ProgrammingSessionControl: SessionControl {
         self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
     }
     
+    var sessionState: SessionState {
+        get {
+            return sessionEndsOn == nil ? SessionState.idle : SessionState.active
+        }
+    }
+    
     func toggleState() -> SessionControl {
        
         if sessionEndsOn != nil {
@@ -69,7 +81,9 @@ class ProgrammingSessionControl: SessionControl {
     }
     
     private func stop() -> SessionControl {
-     
+        
+        // ToDo: StopTimer when session is stopped
+        
         delegate?.sessionEnded()
         
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: nil)
