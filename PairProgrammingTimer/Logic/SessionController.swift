@@ -86,7 +86,7 @@ class ProgrammingSessionControl: SessionControl {
     
     func timeRemaingInSeconds() -> Double {
         
-        guard let sessionEndsOn = sessionEndsOn else { return 0 }
+        guard let sessionEndsOn = sessionEndsOn else { return sessionDurationInMinutes * 60 }
         
         let currentDate = dateTime.currentDateTime()
         

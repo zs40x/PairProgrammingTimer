@@ -131,6 +131,7 @@ extension ViewController: SessionControlDelegate {
      
         updateImageOffsets(activeDeveloper: developer)
         updateDeveloperImages(activeDeveloper: developer)
+        updateRemainingTime()
     }
     
     func sessionStarted() {

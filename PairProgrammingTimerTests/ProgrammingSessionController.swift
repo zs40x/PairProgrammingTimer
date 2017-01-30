@@ -131,5 +131,17 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         XCTAssertEqual((5 * 60) * -1, startedSession?.timeRemaingInSeconds())
     }
+    
+    func testTimeRemaingAfterStopAndChangingDeveloperIsSessionDuration() {
+        
+        let startedSession = testInstance?.toggleState()
+        
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(60)
+        let stoppedSession = startedSession?.toggleState()
+        
+        let changedDeveloperSession = stoppedSession?.changeDevelopers()
+        
+        XCTAssertEqual(sessionDurationInMinutes * 60, changedDeveloperSession?.timeRemaingInSeconds())
+    }
 }
   
