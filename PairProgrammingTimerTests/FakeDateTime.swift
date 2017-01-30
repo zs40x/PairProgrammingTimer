@@ -11,7 +11,7 @@ import Foundation
 
 class FakeDateTime: DateTime {
     
-    let dateToReturn: Date
+    var dateToReturn: Date
     
     init(dateToReturn: Date) {
         self.dateToReturn = dateToReturn

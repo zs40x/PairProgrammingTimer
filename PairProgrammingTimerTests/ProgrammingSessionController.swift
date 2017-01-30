@@ -15,16 +15,18 @@ class ProgrammingSessionControllerTests: XCTestCase {
     var testInstance: ProgrammingSessionControl?
     var fakeSessionControlDelegate: FakeSessionControlDelegate?
     var fakeTimer: FakeTimer?
+    var fakeDateTime: FakeDateTime?
     let startedOnDate = Date.init(timeIntervalSinceReferenceDate: 0.0) // January 1, 2001, at 12:00 a.m. GMT.
     
     override func setUp() {
         
         fakeTimer = FakeTimer()
+        fakeDateTime = FakeDateTime(dateToReturn: startedOnDate)
         
         testInstance =
             ProgrammingSessionControl(
                 timer: fakeTimer!,
-                dateTime: FakeDateTime(dateToReturn: startedOnDate),
+                dateTime: fakeDateTime!,
                 sessionDurationInMinutes: sessionDurationInMinutes)
         
         fakeSessionControlDelegate = FakeSessionControlDelegate()
@@ -81,6 +83,22 @@ class ProgrammingSessionControllerTests: XCTestCase {
         let expectedEndDate = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
         
         XCTAssertEqual(expectedEndDate, testInstance?.start().sessionEndsOn)
+    }
+    
+    func testTimeRemaingIsSessionDuration() {
+        
+        let startedSession = testInstance?.start()
+        
+        XCTAssertEqual(15.0 * 60, startedSession?.timeRemaingInSeconds())
+    }
+    
+    func testTimeRemaingTMinus10Minutes() {
+        
+        let startedSession = testInstance?.start()
+        
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(5 * 60)
+        
+        XCTAssertEqual(10.0 * 60, startedSession?.timeRemaingInSeconds())
     }
 }
   

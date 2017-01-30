@@ -16,6 +16,7 @@ protocol SessionControl {
     func start() -> SessionControl
     func stop()
     func changeDevelopers() -> SessionControl
+    func timeRemaingInSeconds() -> Double
 }
 
 protocol SessionControlDelegate {
@@ -72,7 +73,20 @@ class ProgrammingSessionControl: SessionControl {
         return makeNewInstance(withDeveloper: nextDeveloper, sessionEndsOn: nil)
     }
     
-    func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSessionControl {
+    func timeRemaingInSeconds() -> Double {
+        
+        guard let sessionEndsOn = sessionEndsOn else { return 0 }
+        
+        let currentDate = dateTime.currentDateTime()
+        
+        if(currentDate > sessionEndsOn) {
+            return DateInterval(start: sessionEndsOn, end: currentDate).duration * -1.0
+        } else {
+            return DateInterval(start: currentDate, end: sessionEndsOn).duration
+        }
+    }
+    
+    private func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSessionControl {
         return ProgrammingSessionControl(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: sessionEndsOn, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
     }
 }
