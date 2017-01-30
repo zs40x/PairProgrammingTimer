@@ -55,7 +55,7 @@ class ProgrammingSessionControl: SessionControl {
         
         let sessionEndsOn = dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60)
         
-        return ProgrammingSessionControl(withDeveloper: developer, timer: timer, sessionEndsOn: sessionEndsOn, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
+        return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }
     
     func stop() {
@@ -69,7 +69,11 @@ class ProgrammingSessionControl: SessionControl {
         
         delegate?.developerChanged(developer: nextDeveloper)
         
-        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
+        return makeNewInstance(withDeveloper: nextDeveloper, sessionEndsOn: nil)
+    }
+    
+    func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSessionControl {
+        return ProgrammingSessionControl(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: sessionEndsOn, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes)
     }
 }
 
