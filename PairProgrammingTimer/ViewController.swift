@@ -31,6 +31,8 @@ class ViewController: UIViewController {
             dateTime: SystemDateTime(),
             sessionDurationInMinutes: countDownMinutes)
     
+    fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.5, repeatWhenExpired: true)
+    
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
         timerElapsed = true*/
     }
     
-    fileprivate func updateTimer() {
+    fileprivate func updateRemainingTime() {
         
         var isNegative = false
         var duration = sessionControl.timeRemaingInSeconds()
@@ -131,12 +133,8 @@ extension ViewController: CountdownTimerExpiredDelegate {
     
     func timerExpired() {
         
-        updateTimer()
+        updateRemainingTime()
         timerElapsedCheck()
-        
-        /*if currentState == .active {
-            timer.start(0.25, callDelegateWhenExpired: self)
-        }*/
     }
 }
 
@@ -150,11 +148,15 @@ extension ViewController: SessionControlDelegate {
     
     func sessionStarted() {
         updateCurrentState(.active)
+        
+        updateTimer.start(callDelegateWhenExpired: self)
     }
     
     func sessionEnded() {
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(.idle)
+        
+        updateTimer.stop()
     }
     
     func countdownExpired() {
