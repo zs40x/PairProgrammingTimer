@@ -100,5 +100,23 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         XCTAssertEqual(10.0 * 60, startedSession?.timeRemaingInSeconds())
     }
+    
+    func testTimeRemainingTimerElapsedJustNow() {
+        
+        let startedSession = testInstance?.start()
+        
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
+        
+        XCTAssertEqual(0.0, startedSession?.timeRemaingInSeconds())
+    }
+    
+    func testTimeRemaingTimerElapsed5MinutesAgo() {
+        
+        let startedSession = testInstance?.start()
+        
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval((sessionDurationInMinutes + 5) * 60)
+        
+        XCTAssertEqual((5 * 60) * -1, startedSession?.timeRemaingInSeconds())
+    }
 }
   
