@@ -22,15 +22,14 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         fakeTimer = FakeTimer()
         fakeDateTime = FakeDateTime(dateToReturn: startedOnDate)
+        fakeSessionControlDelegate = FakeSessionControlDelegate()
         
         testInstance =
             ProgrammingSessionControl(
+                delegate: fakeSessionControlDelegate!,
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
                 sessionDurationInMinutes: sessionDurationInMinutes)
-        
-        fakeSessionControlDelegate = FakeSessionControlDelegate()
-        testInstance?.delegate = fakeSessionControlDelegate
     }
 
     func testIsInitializedWithLeftDeveloper() {
