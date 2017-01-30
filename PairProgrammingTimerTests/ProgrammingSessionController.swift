@@ -47,6 +47,20 @@ class ProgrammingSessionControllerTests: XCTestCase {
         XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().developer)
     }
     
+    func testStartedStoppedSession() {
+        
+        let stoppedSession = testInstance?.toggleState().toggleState()
+        
+        XCTAssertNil(stoppedSession?.sessionEndsOn)
+    }
+    
+    func testStartedStoppedAndRestartedSession() {
+        
+        let restartedSession = testInstance?.toggleState().toggleState().toggleState()
+        
+        XCTAssertNotNil(restartedSession?.sessionEndsOn)
+    }
+    
     func testDelegateCalledWhenDeveloperWasChanged() {
         
         _ = testInstance?.changeDevelopers()

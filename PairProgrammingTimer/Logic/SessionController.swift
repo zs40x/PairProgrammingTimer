@@ -72,7 +72,7 @@ class ProgrammingSessionControl: SessionControl {
      
         delegate?.sessionEnded()
         
-        return self
+        return makeNewInstance(withDeveloper: developer, sessionEndsOn: nil)
     }
     
     func changeDevelopers() -> SessionControl {
