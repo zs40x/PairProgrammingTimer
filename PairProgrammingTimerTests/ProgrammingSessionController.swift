@@ -70,5 +70,10 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
     }
+    
+    func testStartedOnDate() {
+        
+        XCTAssertEqual(startedOnDate, testInstance?.start().sessionStartedOn)
+    }
 }
   

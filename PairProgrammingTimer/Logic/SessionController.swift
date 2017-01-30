@@ -11,6 +11,7 @@ import Foundation
 protocol SessionControl {
     var delegate: SessionControlDelegate? { get set }
     var developer: Developer { get }
+    var sessionStartedOn: Date? { get }
     
     func start() -> SessionControl
     func stop()
@@ -28,8 +29,9 @@ class ProgrammingSessionControl: SessionControl {
     
     var delegate: SessionControlDelegate?
     let developer: Developer
+    let sessionStartedOn: Date?
+    
     private let timer: CountdownTimer
-    private let sessionStartedOn: Date?
     private let dateTime: DateTime
     
     init(withDeveloper: Developer, timer: CountdownTimer, sessionStartedOn: Date?, dateTime: DateTime) {
