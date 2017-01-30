@@ -10,6 +10,8 @@ import Foundation
 
 protocol Session {
     var developer: Developer { get }
+    var startedOn: Date { get }
+    var timeRemaining: Double { get }
     
     func start()
     func stop()
@@ -18,9 +20,19 @@ protocol Session {
 class DeveloperSession: Session {
     
     let developer: Developer
+    let startedOn: Date
+    private let dateTime: DateTime
     
-    init(developer: Developer) {
+    var timeRemaining: Double {
+        get {
+            return 0.0
+        }
+    }
+    
+    init(developer: Developer, startedOn: Date, dateTime: DateTime) {
         self.developer = developer
+        self.startedOn = startedOn
+        self.dateTime = dateTime
     }
     
     func start() {

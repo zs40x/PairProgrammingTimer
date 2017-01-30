@@ -27,17 +27,17 @@ class ProgrammingSessionControllerTests: XCTestCase {
 
     func testIsInitializedWithLeftDeveloper() {
         
-        XCTAssertEqual(Developer.left, testInstance?.session.developer)
+        XCTAssertEqual(Developer.left, testInstance?.developer)
     }
     
     func testChangeDeveloperChangesSessionToRight() {
         
-        XCTAssertEqual(Developer.right, testInstance?.changeDevelopers().session.developer)
+        XCTAssertEqual(Developer.right, testInstance?.changeDevelopers().developer)
     }
     
     func testChangeDevelopers2TimesChangesBackToLeft() {
         
-        XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().session.developer)
+        XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().developer)
     }
     
     func testDelegateCalledWhenDeveloperWasChanged() {

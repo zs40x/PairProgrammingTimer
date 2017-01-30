@@ -10,7 +10,7 @@ import Foundation
 
 protocol SessionControl {
     var delegate: SessionControlDelegate? { get set }
-    var session: Session { get }
+    var developer: Developer { get }
     
     func start()
     func stop()
@@ -27,11 +27,11 @@ protocol SessionControlDelegate {
 class ProgrammingSessionControl: SessionControl {
     
     var delegate: SessionControlDelegate?
-    let session: Session
+    let developer: Developer
     private let timer: CountdownTimer
     
     init(withDeveloper: Developer, timer: CountdownTimer) {
-        self.session = DeveloperSession(developer: withDeveloper)
+        self.developer = withDeveloper
         self.timer = timer
     }
     
@@ -53,7 +53,7 @@ class ProgrammingSessionControl: SessionControl {
     
     func changeDevelopers() -> SessionControl {
       
-        let nextDeveloper: Developer = session.developer == .left ? .right : .left
+        let nextDeveloper: Developer = developer == .left ? .right : .left
         
         delegate?.developerChanged(developer: nextDeveloper)
         
