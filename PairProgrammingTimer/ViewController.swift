@@ -98,20 +98,6 @@ class ViewController: UIViewController {
         rightImageTrailingConstraint.constant = offset
     }
     
-    fileprivate func timerElapsedCheck() {
-        
-        /*if timerElapsed { return }
-        
-        guard let timerElapsesOnDate = timerElapsesOnDate else { return }
-        
-        if(Date() < timerElapsesOnDate) { return }
-        
-        
-        }
-        
-        timerElapsed = true*/
-    }
-    
     fileprivate func updateRemainingTime() {
         
         var isNegative = false
@@ -134,7 +120,6 @@ extension ViewController: CountdownTimerExpiredDelegate {
     func timerExpired() {
         
         updateRemainingTime()
-        timerElapsedCheck()
     }
 }
 
