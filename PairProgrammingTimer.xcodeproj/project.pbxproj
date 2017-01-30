@@ -19,6 +19,7 @@
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
 		D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */; };
 		D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203D1E3CA2C6003C93CF /* DateTime.swift */; };
+		D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120431E3EFE73003C93CF /* FakeDateTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D4B120361E37CCB8003C93CF /* FakeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTimer.swift; sourceTree = "<group>"; };
 		D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSessionControlDelegate.swift; sourceTree = "<group>"; };
 		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDateTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				D4B120361E37CCB8003C93CF /* FakeTimer.swift */,
 				D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */,
+				D4B120431E3EFE73003C93CF /* FakeDateTime.swift */,
 			);
 			name = Fakes;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */,
+				D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */,
 				D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */,
 				D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */,
 			);

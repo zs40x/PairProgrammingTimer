@@ -14,12 +14,13 @@ class ProgrammingSessionControllerTests: XCTestCase {
     var testInstance: ProgrammingSessionControl?
     var fakeSessionControlDelegate: FakeSessionControlDelegate?
     var fakeTimer: FakeTimer?
+    let startedOnDate = Date.init(timeIntervalSinceReferenceDate: 0.0) // January 1, 2001, at 12:00 a.m. GMT.
     
     override func setUp() {
         
         fakeTimer = FakeTimer()
         
-        testInstance = ProgrammingSessionControl(timer: fakeTimer!)
+        testInstance = ProgrammingSessionControl(timer: fakeTimer!, dateTime: FakeDateTime(dateToReturn: startedOnDate))
         
         fakeSessionControlDelegate = FakeSessionControlDelegate()
         testInstance?.delegate = fakeSessionControlDelegate
@@ -49,7 +50,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     
     func testDelegateCalledWhenSessionStarted() {
         
-        testInstance?.start()
+        _ = testInstance?.start()
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.sessionStartedWasCalled)
     }
@@ -64,7 +65,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     func testDelegateCalledWhenTimerExpired() {
         
         // simulate that the timer expired after the countdown interval
-        testInstance?.start()
+        _ = testInstance?.start()
         fakeTimer?.expire()
         
         XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
