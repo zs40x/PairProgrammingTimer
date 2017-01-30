@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     fileprivate func updateTimer() {
         
         var isNegative = false
-        var duration = durationRemaining()
+        var duration = sessionControl.timeRemaingInSeconds()
         
         if duration < 0 {
             duration = duration * -1
@@ -124,20 +124,6 @@ class ViewController: UIViewController {
         let seconds = Int(duration) % 60
         
         labelTimer.text = String(format:"%@%02i:%02i", isNegative ? "-" : "", minutes, seconds)
-    }
-    
-    private func durationRemaining() -> Double {
-        
-        /*guard let timerElapsesOnDate = timerElapsesOnDate else { return 0 }
-
-        let currentDate = Date()
-        
-        if(currentDate > timerElapsesOnDate) {
-            return DateInterval(start: timerElapsesOnDate, end: currentDate).duration * -1.0
-        } else {
-            return DateInterval(start: currentDate, end: timerElapsesOnDate).duration
-        }*/
-        return 0.0
     }
 }
 
