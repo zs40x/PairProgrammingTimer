@@ -26,7 +26,8 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     
     //fileprivate let timer = SystemTimer()
-    fileprivate var sessionControl: SessionControl = ProgrammingSessionControl(timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false))
+    fileprivate var sessionControl: SessionControl =
+        ProgrammingSessionControl(timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false), dateTime: SystemDateTime())
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
@@ -55,7 +56,7 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         
-        sessionControl.start()
+        sessionControl = sessionControl.start()
     }
     
     fileprivate func updateCurrentState(_ currentState: CurrentState) {

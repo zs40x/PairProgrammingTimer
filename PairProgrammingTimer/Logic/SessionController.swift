@@ -12,7 +12,7 @@ protocol SessionControl {
     var delegate: SessionControlDelegate? { get set }
     var developer: Developer { get }
     
-    func start()
+    func start() -> SessionControl
     func stop()
     func changeDevelopers() -> SessionControl
 }
@@ -29,21 +29,27 @@ class ProgrammingSessionControl: SessionControl {
     var delegate: SessionControlDelegate?
     let developer: Developer
     private let timer: CountdownTimer
+    private let sessionStartedOn: Date?
+    private let dateTime: DateTime
     
-    init(withDeveloper: Developer, timer: CountdownTimer) {
+    init(withDeveloper: Developer, timer: CountdownTimer, sessionStartedOn: Date?, dateTime: DateTime) {
         self.developer = withDeveloper
         self.timer = timer
+        self.sessionStartedOn = sessionStartedOn
+        self.dateTime = dateTime
     }
     
-    convenience init(timer: CountdownTimer) {
-        self.init(withDeveloper: .left, timer: timer)
+    convenience init(timer: CountdownTimer, dateTime: DateTime) {
+        self.init(withDeveloper: .left, timer: timer, sessionStartedOn: nil, dateTime: dateTime)
     }
     
-    func start() {
+    func start() -> SessionControl {
        
         timer.start(callDelegateWhenExpired: self)
         
         delegate?.sessionStarted()
+        
+        return ProgrammingSessionControl(withDeveloper: developer, timer: timer, sessionStartedOn: dateTime.currentDateTime(), dateTime: dateTime)
     }
     
     func stop() {
@@ -57,7 +63,7 @@ class ProgrammingSessionControl: SessionControl {
         
         delegate?.developerChanged(developer: nextDeveloper)
         
-        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer)
+        return ProgrammingSessionControl(withDeveloper: nextDeveloper, timer: timer, sessionStartedOn: nil, dateTime: dateTime)
     }
 }
 
