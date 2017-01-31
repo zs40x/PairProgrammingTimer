@@ -96,7 +96,9 @@ class ProgrammingSession: Session {
         
         delegate?.developerChanged(developer: nextDeveloper)
         
-        return makeNewInstance(withDeveloper: nextDeveloper, sessionEndsOn: nil)
+        let newSession = makeNewInstance(withDeveloper: nextDeveloper, sessionEndsOn: nil)
+        
+        return sessionState == .active ? newSession.start() : newSession
     }
     
     func timeRemaingInSeconds() -> Double {

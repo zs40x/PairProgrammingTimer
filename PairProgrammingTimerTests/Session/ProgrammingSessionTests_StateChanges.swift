@@ -26,6 +26,18 @@ class ProgrammingSessionStateChangesTests: ProgrammingSessionTests {
         XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().developer)
     }
     
+    func testChangeDevelopersStateStillIdle() {
+        
+        XCTAssertEqual(SessionState.idle, testInstance?.changeDevelopers().sessionState)
+    }
+    
+    func testChangeDevelopersInRunningSessionAutostartsNextSession() {
+        
+        let startedSession = testInstance?.toggleState()
+        
+        XCTAssertEqual(SessionState.active, startedSession?.changeDevelopers().sessionState)
+    }
+    
     func testStartedStoppedSession() {
         
         let stoppedSession = testInstance?.toggleState().toggleState()
