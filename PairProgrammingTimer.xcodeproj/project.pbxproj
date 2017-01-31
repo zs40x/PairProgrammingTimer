@@ -13,7 +13,7 @@
 		D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAA1E2D42A90005350B /* Assets.xcassets */; };
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
 		D40BCBC41E2D56B20005350B /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBC31E2D56B20005350B /* Timer.swift */; };
-		D4B120321E367C58003C93CF /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* SessionController.swift */; };
+		D4B120321E367C58003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* Session.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */; };
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
 		D4B1203C1E37D85E003C93CF /* FakeSessionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */; };
@@ -43,7 +43,7 @@
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
-		D4B120311E367C58003C93CF /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionController.swift; path = Logic/SessionController.swift; sourceTree = "<group>"; };
+		D4B120311E367C58003C93CF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Logic/Session.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingSessionController.swift; sourceTree = "<group>"; };
 		D4B120361E37CCB8003C93CF /* FakeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTimer.swift; sourceTree = "<group>"; };
 		D4B1203B1E37D85E003C93CF /* FakeSessionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSessionControlDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		D4B120301E367BA4003C93CF /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				D4B120311E367C58003C93CF /* SessionController.swift */,
+				D4B120311E367C58003C93CF /* Session.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 				D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */,
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
-				D4B120321E367C58003C93CF /* SessionController.swift in Sources */,
+				D4B120321E367C58003C93CF /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

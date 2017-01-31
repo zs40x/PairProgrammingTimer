@@ -13,13 +13,13 @@ enum SessionState: Int {
     case active
 }
 
-protocol SessionControl {
+protocol Session {
     var developer: Developer { get }
     var sessionState: SessionState { get }
     
-    func toggleState() -> SessionControl
+    func toggleState() -> Session
     
-    func changeDevelopers() -> SessionControl
+    func changeDevelopers() -> Session
     func timeRemaingInSeconds() -> Double
 }
 
@@ -30,7 +30,7 @@ protocol SessionControlDelegate {
     func countdownExpired()
 }
 
-class ProgrammingSessionControl: SessionControl {
+class ProgrammingSession: Session {
     
     let developer: Developer
     
@@ -61,7 +61,7 @@ class ProgrammingSessionControl: SessionControl {
         }
     }
     
-    func toggleState() -> SessionControl {
+    func toggleState() -> Session {
        
         if sessionEndsOn != nil {
             return stop()
@@ -70,7 +70,7 @@ class ProgrammingSessionControl: SessionControl {
         return start()
     }
     
-    private func start() -> SessionControl {
+    private func start() -> Session {
         
         timer.start(callDelegateWhenExpired: self)
         
@@ -81,7 +81,7 @@ class ProgrammingSessionControl: SessionControl {
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }
     
-    private func stop() -> SessionControl {
+    private func stop() -> Session {
         
         // ToDo: StopTimer when session is stopped
         
@@ -90,7 +90,7 @@ class ProgrammingSessionControl: SessionControl {
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: nil)
     }
     
-    func changeDevelopers() -> SessionControl {
+    func changeDevelopers() -> Session {
       
         let nextDeveloper: Developer = developer == .left ? .right : .left
         
@@ -112,8 +112,8 @@ class ProgrammingSessionControl: SessionControl {
         }
     }
     
-    private func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSessionControl {
-        return ProgrammingSessionControl(
+    private func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSession {
+        return ProgrammingSession(
             withDeveloper: withDeveloper,
             timer: timer,
             sessionEndsOn: sessionEndsOn,
@@ -123,7 +123,7 @@ class ProgrammingSessionControl: SessionControl {
     }
 }
 
-extension ProgrammingSessionControl: CountdownTimerExpiredDelegate {
+extension ProgrammingSession: CountdownTimerExpiredDelegate {
     
     func timerExpired() {
         

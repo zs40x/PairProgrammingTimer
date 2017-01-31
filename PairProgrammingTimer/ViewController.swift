@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
-    fileprivate var sessionControl: SessionControl?
+    fileprivate var sessionControl: Session?
     
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.5, repeatWhenExpired: true)
     
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         sessionControl =
-            ProgrammingSessionControl(
+            ProgrammingSession(
                 delegate: self,
                 timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
