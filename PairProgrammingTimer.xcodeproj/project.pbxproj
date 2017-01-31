@@ -13,6 +13,8 @@
 		D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAA1E2D42A90005350B /* Assets.xcassets */; };
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
 		D40BCBC41E2D56B20005350B /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBC31E2D56B20005350B /* Timer.swift */; };
+		D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */; };
+		D4A172451E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172441E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift */; };
 		D4B120321E367C58003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* Session.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */; };
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
@@ -42,6 +44,8 @@
 		D40BCBB41E2D42A90005350B /* PairProgrammingTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PairProgrammingTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_Delegate.swift; path = Session/ProgrammingSessionTests_Delegate.swift; sourceTree = "<group>"; };
+		D4A172441E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_RemainingTime.swift; path = Session/ProgrammingSessionTests_RemainingTime.swift; sourceTree = "<group>"; };
 		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
 		D4B120311E367C58003C93CF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Logic/Session.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests.swift; path = Session/ProgrammingSessionTests.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */,
+				D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */,
+				D4A172441E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -268,7 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A172451E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift in Sources */,
 				D4B1203C1E37D85E003C93CF /* FakeSessionDelegate.swift in Sources */,
+				D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */,
 				D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */,
 				D4B120351E36803B003C93CF /* ProgrammingSessionTests.swift in Sources */,
 				D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */,
