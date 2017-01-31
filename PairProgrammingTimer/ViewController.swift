@@ -17,7 +17,7 @@ enum Developer: Int {
 
 class ViewController: UIViewController {
     
-    private let countDownMinutes: Double = 15
+    private let countDownMinutes: Double = 0.1
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         sessionControl =
             ProgrammingSession(
                 delegate: self,
-                timer: SystemTimer(durationInSeconds: 15 * 60, repeatWhenExpired: false),
+                timer: SystemTimer(durationInSeconds: countDownMinutes * 60, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
                 sessionDurationInMinutes: countDownMinutes)
         
