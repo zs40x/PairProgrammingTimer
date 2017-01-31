@@ -23,7 +23,7 @@ protocol Session {
     func timeRemaingInSeconds() -> Double
 }
 
-protocol SessionControlDelegate {
+protocol SessionDelegate {
     func developerChanged(developer: Developer)
     func sessionStarted()
     func sessionEnded()
@@ -34,7 +34,7 @@ class ProgrammingSession: Session {
     
     let developer: Developer
     
-    fileprivate let delegate: SessionControlDelegate?
+    fileprivate let delegate: SessionDelegate?
     
     private let sessionEndsOn: Date?
     private let timer: CountdownTimer
@@ -42,7 +42,7 @@ class ProgrammingSession: Session {
     private let sessionDurationInMinutes: Double
     
     
-    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionControlDelegate?) {
+    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionDelegate?) {
         self.developer = withDeveloper
         self.timer = timer
         self.sessionEndsOn = sessionEndsOn
@@ -51,7 +51,7 @@ class ProgrammingSession: Session {
         self.delegate = delegate
     }
     
-    convenience init(delegate: SessionControlDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
+    convenience init(delegate: SessionDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
         self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
     }
     

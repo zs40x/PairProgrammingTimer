@@ -121,7 +121,7 @@ extension ViewController: CountdownTimerExpiredDelegate {
     }
 }
 
-extension ViewController: SessionControlDelegate {
+extension ViewController: SessionDelegate {
     
     func developerChanged(developer: Developer) {
      

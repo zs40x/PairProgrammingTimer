@@ -9,7 +9,7 @@
 import Foundation
 @testable import PairProgrammingTimer
 
-class FakeSessionControlDelegate: SessionControlDelegate {
+class FakeSessionDelegate: SessionDelegate {
     
     private(set) var developerChangedWasCalled = false
     private(set) var sessionStartedWasCalled = false

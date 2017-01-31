@@ -13,7 +13,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
     
     let sessionDurationInMinutes = 15.0
     var testInstance: ProgrammingSession?
-    var fakeSessionControlDelegate: FakeSessionControlDelegate?
+    var fakeSessionDelegate: FakeSessionDelegate?
     var fakeTimer: FakeTimer?
     var fakeDateTime: FakeDateTime?
     let startedOnDate = Date.init(timeIntervalSinceReferenceDate: 0.0) // January 1, 2001, at 12:00 a.m. GMT.
@@ -22,11 +22,11 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         fakeTimer = FakeTimer()
         fakeDateTime = FakeDateTime(dateToReturn: startedOnDate)
-        fakeSessionControlDelegate = FakeSessionControlDelegate()
+        fakeSessionDelegate = FakeSessionDelegate()
         
         testInstance =
             ProgrammingSession(
-                delegate: fakeSessionControlDelegate!,
+                delegate: fakeSessionDelegate!,
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
                 sessionDurationInMinutes: sessionDurationInMinutes)
@@ -65,21 +65,21 @@ class ProgrammingSessionControllerTests: XCTestCase {
         
         _ = testInstance?.changeDevelopers()
         
-        XCTAssertEqual(true, fakeSessionControlDelegate?.developerChangedWasCalled)
+        XCTAssertEqual(true, fakeSessionDelegate?.developerChangedWasCalled)
     }
     
     func testDelegateCalledWhenSessionStarted() {
         
         _ = testInstance?.toggleState()
         
-        XCTAssertEqual(true, fakeSessionControlDelegate?.sessionStartedWasCalled)
+        XCTAssertEqual(true, fakeSessionDelegate?.sessionStartedWasCalled)
     }
     
     func testDelegateCalledWhenSessionEnded() {
         
         _ = testInstance?.toggleState().toggleState()
         
-        XCTAssertEqual(true, fakeSessionControlDelegate?.sessionEndedWasCalled)
+        XCTAssertEqual(true, fakeSessionDelegate?.sessionEndedWasCalled)
     }
     
     func testDelegateCalledWhenTimerExpired() {
@@ -88,7 +88,7 @@ class ProgrammingSessionControllerTests: XCTestCase {
         _ = testInstance?.toggleState()
         fakeTimer?.expire()
         
-        XCTAssertEqual(true, fakeSessionControlDelegate?.countdownExpiredWasCalled)
+        XCTAssertEqual(true, fakeSessionDelegate?.countdownExpiredWasCalled)
     }
     
     func testTimeRemaingIsSessionDuration() {
