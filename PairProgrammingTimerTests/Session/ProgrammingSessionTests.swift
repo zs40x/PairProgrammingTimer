@@ -9,7 +9,7 @@
 import XCTest
 @testable import PairProgrammingTimer
 
-class ProgrammingSessionControllerTests: XCTestCase {
+class ProgrammingSessionTests: XCTestCase {
     
     let sessionDurationInMinutes = 15.0
     var testInstance: ProgrammingSession?
