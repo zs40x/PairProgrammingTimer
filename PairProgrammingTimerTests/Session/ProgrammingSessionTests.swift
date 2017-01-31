@@ -31,34 +31,5 @@ class ProgrammingSessionTests: XCTestCase {
                 dateTime: fakeDateTime!,
                 sessionDurationInMinutes: sessionDurationInMinutes)
     }
-
-    func testIsInitializedWithLeftDeveloper() {
-        
-        XCTAssertEqual(Developer.left, testInstance?.developer)
-    }
-    
-    func testChangeDeveloperChangesSessionToRight() {
-        
-        XCTAssertEqual(Developer.right, testInstance?.changeDevelopers().developer)
-    }
-    
-    func testChangeDevelopers2TimesChangesBackToLeft() {
-        
-        XCTAssertEqual(Developer.left, testInstance?.changeDevelopers().changeDevelopers().developer)
-    }
-    
-    func testStartedStoppedSession() {
-        
-        let stoppedSession = testInstance?.toggleState().toggleState()
-        
-        XCTAssertEqual(SessionState.idle, stoppedSession?.sessionState)
-    }
-    
-    func testStartedStoppedAndRestartedSession() {
-        
-        let restartedSession = testInstance?.toggleState().toggleState().toggleState()
-        
-        XCTAssertEqual(SessionState.active, restartedSession?.sessionState)
-    }
 }
   
