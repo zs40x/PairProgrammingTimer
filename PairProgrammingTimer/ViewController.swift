@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     fileprivate var sessionControl: Session?
     
-    fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.5, repeatWhenExpired: true)
+    fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
