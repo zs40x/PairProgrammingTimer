@@ -17,7 +17,7 @@ enum Developer: Int {
 
 class ViewController: UIViewController {
     
-    private let countDownMinutes: Double = 0.1
+    private let countDownMinutes: Double = 15
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     
