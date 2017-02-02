@@ -98,18 +98,9 @@ class ViewController: UIViewController {
     
     fileprivate func updateRemainingTime() {
         
-        var isNegative = false
-        var duration = sessionControl!.timeRemaingInSeconds()
+        guard let remainingSeconds = sessionControl?.timeRemaingInSeconds() else { return }
         
-        if duration < 0 {
-            duration = duration * -1
-            isNegative = true
-        }
-        
-        let minutes = Int(duration) / 60 % 60
-        let seconds = Int(duration) % 60
-        
-        labelTimer.text = String(format:"%@%02i:%02i", isNegative ? "-" : "", minutes, seconds)
+        labelTimer.text = SecondsToHumanReadableDuration(seconds: remainingSeconds).humanReadableTime()
     }
 }
 
