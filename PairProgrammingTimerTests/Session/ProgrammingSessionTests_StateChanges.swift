@@ -45,6 +45,13 @@ class ProgrammingSessionStateChangesTests: ProgrammingSessionTests {
         XCTAssertEqual(SessionState.idle, stoppedSession?.sessionState)
     }
     
+    func testTimerIsStoppedWithSession() {
+        
+        _ = testInstance?.toggleState().toggleState()
+        
+        XCTAssertTrue((fakeTimer?.stopCalled)!)
+    }
+    
     func testStartedStoppedAndRestartedSession() {
         
         let restartedSession = testInstance?.toggleState().toggleState().toggleState()

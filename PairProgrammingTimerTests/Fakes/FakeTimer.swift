@@ -11,13 +11,16 @@ import Foundation
 
 class FakeTimer: CountdownTimer {
     
+    var stopCalled = false
     private var delegate: CountdownTimerExpiredDelegate?
     
     func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
         delegate = callDelegateWhenExpired
     }
     
-    func stop() { }
+    func stop() {
+        stopCalled = false
+    }
     
     func expire() {
         delegate?.timerExpired()

@@ -83,7 +83,7 @@ class ProgrammingSession: Session {
     
     private func stop() -> Session {
         
-        // ToDo: StopTimer when session is stopped
+        timer.stop()
         
         delegate?.sessionEnded()
         
