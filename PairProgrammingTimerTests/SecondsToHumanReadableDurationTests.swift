@@ -9,11 +9,16 @@
 import XCTest
 @testable import PairProgrammingTimer
 
-class SecondsToHumanReadableDurationTests: XCTest {
+class SecondsToHumanReadableDurationTests: XCTestCase {
     
-    func testDisplayZero() {
+    func testDisplaysZero() {
         
         XCTAssertEqual("00:00", runTest(seconds: 0))
+    }
+    
+    func testDisplaysOneSecond() {
+        
+        XCTAssertEqual("00:01", runTest(seconds: 1))
     }
     
     private func runTest(seconds: Double) -> String {
