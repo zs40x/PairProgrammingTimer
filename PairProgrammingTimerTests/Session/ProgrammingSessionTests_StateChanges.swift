@@ -49,7 +49,7 @@ class ProgrammingSessionStateChangesTests: ProgrammingSessionTests {
         
         _ = testInstance?.toggleState().toggleState()
         
-        XCTAssertTrue((fakeTimer?.stopCalled)!)
+        XCTAssertTrue(fakeTimer!.stopCalled)
     }
     
     func testStartedStoppedAndRestartedSession() {

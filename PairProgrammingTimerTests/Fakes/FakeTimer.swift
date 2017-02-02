@@ -19,7 +19,7 @@ class FakeTimer: CountdownTimer {
     }
     
     func stop() {
-        stopCalled = false
+        stopCalled = true
     }
     
     func expire() {
