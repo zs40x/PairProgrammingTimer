@@ -18,9 +18,19 @@ class SecondsToHumanReadableDuration {
     
     public func humanReadableTime() -> String {
         
+        let seconds = secondsForCalculation()
+        
         let displayMinutes = Int(seconds.truncatingRemainder(dividingBy: 3600) / 60)
         let displaySeconds = Int(seconds.truncatingRemainder(dividingBy: 60))
         
-        return String(format:"%02i:%02i", displayMinutes, displaySeconds)
+        return String(format:"%@%02i:%02i", isNegative() ? "-" : "",  displayMinutes, displaySeconds)
+    }
+    
+    private func secondsForCalculation() -> Double {
+        return seconds < 0 ? seconds * -1 : seconds
+    }
+    
+    private func isNegative() -> Bool {
+        return seconds < 0
     }
 }
