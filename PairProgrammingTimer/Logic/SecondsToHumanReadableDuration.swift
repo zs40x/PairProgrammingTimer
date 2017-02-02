@@ -31,6 +31,6 @@ class SecondsToHumanReadableDuration {
     }
     
     private func isNegative() -> Bool {
-        return seconds < 0
+        return seconds <= -1
     }
 }

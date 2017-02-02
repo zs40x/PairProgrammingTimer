@@ -33,6 +33,10 @@ class SecondsToHumanReadableDurationTests: XCTestCase {
         XCTAssertEqual("-00:01", runTest(seconds: -1))
     }
     
+    func testNegativeBeforeSecondsMinusIsPositive() {
+        XCTAssertEqual("00:00", runTest(seconds: -0.9))
+    }
+    
     private func runTest(seconds: Double) -> String {
         return SecondsToHumanReadableDuration(seconds: seconds).humanReadableTime()
     }
