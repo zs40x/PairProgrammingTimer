@@ -50,6 +50,15 @@ class ViewController: UIViewController {
         
         updateImageOffsets(activeDeveloper: .left)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if !AppDelegate.current().localNotificationsEnabled {
+            let alert = UIAlertController(title: "Notifications disabled", message: "To recreive notifications when the app is not in the foreground enable them in the system settings", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         

@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    class func current() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     var window: UIWindow?
-
+    var localNotificationsEnabled = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {
+            (granted, error) in
+            
+            self.localNotificationsEnabled = granted;
+            
+            if granted { return }
+            
+            NSLog("Warning: local notifications are disabled")
+        }
+        
         return true
     }
 
