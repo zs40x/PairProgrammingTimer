@@ -9,12 +9,6 @@
 import UIKit
 import AVFoundation
 
-enum Developer: Int {
-    case left = 0
-    case right
-}
-
-
 class ViewController: UIViewController {
     
     private let countDownMinutes: Double = 15
