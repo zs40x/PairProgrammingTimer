@@ -16,7 +16,7 @@
 		D444A67C1E7A4B64000E6682 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A67B1E7A4B64000E6682 /* Developer.swift */; };
 		D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */; };
 		D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6801E7B97CC000E6682 /* SessionState.swift */; };
-		D444A6831E7B98BE000E6682 /* Notofications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6821E7B98BE000E6682 /* Notofications.swift */; };
+		D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6821E7B98BE000E6682 /* Notifications.swift */; };
 		D444A6851E7B996E000E6682 /* SessionDelegateNotificationsDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6841E7B996E000E6682 /* SessionDelegateNotificationsDecoratorTests.swift */; };
 		D444A6871E7B999F000E6682 /* FakeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6861E7B999F000E6682 /* FakeNotifications.swift */; };
 		D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */; };
@@ -56,7 +56,7 @@
 		D444A67B1E7A4B64000E6682 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Developer.swift; path = Data/Developer.swift; sourceTree = "<group>"; };
 		D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationDecorator.swift; path = Logic/SessionDelegateNotificationDecorator.swift; sourceTree = "<group>"; };
 		D444A6801E7B97CC000E6682 /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionState.swift; path = Data/SessionState.swift; sourceTree = "<group>"; };
-		D444A6821E7B98BE000E6682 /* Notofications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notofications.swift; sourceTree = "<group>"; };
+		D444A6821E7B98BE000E6682 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		D444A6841E7B996E000E6682 /* SessionDelegateNotificationsDecoratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationsDecoratorTests.swift; path = Session/SessionDelegateNotificationsDecoratorTests.swift; sourceTree = "<group>"; };
 		D444A6861E7B999F000E6682 /* FakeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeNotifications.swift; sourceTree = "<group>"; };
 		D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_Delegate.swift; path = Session/ProgrammingSessionTests_Delegate.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			children = (
 				D4B1203D1E3CA2C6003C93CF /* DateTime.swift */,
 				D40BCBC31E2D56B20005350B /* Timer.swift */,
-				D444A6821E7B98BE000E6682 /* Notofications.swift */,
+				D444A6821E7B98BE000E6682 /* Notifications.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */,
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 				D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */,
-				D444A6831E7B98BE000E6682 /* Notofications.swift in Sources */,
+				D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
 				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */,
