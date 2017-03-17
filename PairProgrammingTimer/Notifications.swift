@@ -15,9 +15,6 @@ protocol Notifications {
     func cancelPending()
 }
 
-// ToDo: empty implementation when notifications are disabled
-
-
 class LocalNotifications: Notifications {
     
     private let timeInterval: Double
@@ -56,5 +53,7 @@ class LocalNotifications: Notifications {
         let center = UNUserNotificationCenter.current()
         
         center.removeAllPendingNotificationRequests()
+        
+        NSLog("Eventually pending local notifications removed")
     }
 }
