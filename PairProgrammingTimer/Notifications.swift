@@ -17,6 +17,7 @@ protocol Notifications {
 
 class LocalNotifications: Notifications {
     
+    private let notificationIdentifier = "PPTimer_TimerExpired"
     private let timeInterval: Double
     
     init(timeInterval: Double) {
@@ -34,9 +35,8 @@ class LocalNotifications: Notifications {
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.timeInterval, repeats: false)
         
-        let identifier = "TimeExpired"
-        let request = UNNotificationRequest(identifier: identifier,
-                                            content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: self.notificationIdentifier, content: content, trigger: trigger)
+        
         center.add(request, withCompletionHandler: { (error) in
             if let error = error {
                 NSLog("Error creating notification: \(error)")
