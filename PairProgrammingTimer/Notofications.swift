@@ -1,5 +1,5 @@
 //
-//  SessionDelegateNotificationDelegate.swift
+//  Notofication.swift
 //  PairProgrammingTimer
 //
 //  Created by Stefan Mehnert on 17/03/2017.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol Notifications {
+    func register()
+    func cancelPending()
+}

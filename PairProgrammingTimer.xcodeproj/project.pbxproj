@@ -14,8 +14,9 @@
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
 		D40BCBC41E2D56B20005350B /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBC31E2D56B20005350B /* Timer.swift */; };
 		D444A67C1E7A4B64000E6682 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A67B1E7A4B64000E6682 /* Developer.swift */; };
-		D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDelegate.swift */; };
+		D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */; };
 		D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6801E7B97CC000E6682 /* SessionState.swift */; };
+		D444A6831E7B98BE000E6682 /* Notofications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444A6821E7B98BE000E6682 /* Notofications.swift */; };
 		D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */; };
 		D4A172451E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172441E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift */; };
 		D4A172471E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172461E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift */; };
@@ -51,8 +52,9 @@
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		D444A67B1E7A4B64000E6682 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Developer.swift; path = Data/Developer.swift; sourceTree = "<group>"; };
-		D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationDelegate.swift; path = Logic/SessionDelegateNotificationDelegate.swift; sourceTree = "<group>"; };
+		D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationDecorator.swift; path = Logic/SessionDelegateNotificationDecorator.swift; sourceTree = "<group>"; };
 		D444A6801E7B97CC000E6682 /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionState.swift; path = Data/SessionState.swift; sourceTree = "<group>"; };
+		D444A6821E7B98BE000E6682 /* Notofications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notofications.swift; sourceTree = "<group>"; };
 		D4A172421E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_Delegate.swift; path = Session/ProgrammingSessionTests_Delegate.swift; sourceTree = "<group>"; };
 		D4A172441E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_RemainingTime.swift; path = Session/ProgrammingSessionTests_RemainingTime.swift; sourceTree = "<group>"; };
 		D4A172461E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_StateChanges.swift; path = Session/ProgrammingSessionTests_StateChanges.swift; sourceTree = "<group>"; };
@@ -116,8 +118,6 @@
 				D40BCBAA1E2D42A90005350B /* Assets.xcassets */,
 				D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */,
 				D40BCBAF1E2D42A90005350B /* Info.plist */,
-				D40BCBC31E2D56B20005350B /* Timer.swift */,
-				D4B1203D1E3CA2C6003C93CF /* DateTime.swift */,
 			);
 			path = PairProgrammingTimer;
 			sourceTree = "<group>";
@@ -145,6 +145,9 @@
 		D444A67A1E4A4647000E6682 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				D4B1203D1E3CA2C6003C93CF /* DateTime.swift */,
+				D40BCBC31E2D56B20005350B /* Timer.swift */,
+				D444A6821E7B98BE000E6682 /* Notofications.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -162,7 +165,7 @@
 			children = (
 				D4B120311E367C58003C93CF /* Session.swift */,
 				D4A172481E43A54600B655A9 /* SecondsToHumanReadableDuration.swift */,
-				D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDelegate.swift */,
+				D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -308,9 +311,10 @@
 				D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */,
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 				D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */,
+				D444A6831E7B98BE000E6682 /* Notofications.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
-				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDelegate.swift in Sources */,
+				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */,
 				D4A172491E43A54600B655A9 /* SecondsToHumanReadableDuration.swift in Sources */,
 				D444A67C1E7A4B64000E6682 /* Developer.swift in Sources */,
 			);
