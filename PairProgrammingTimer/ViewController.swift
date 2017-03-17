@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         sessionControl =
             ProgrammingSession(
-                delegate: self,
+                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications()),
                 timer: SystemTimer(durationInSeconds: countDownMinutes * 60, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
                 sessionDurationInMinutes: countDownMinutes)
