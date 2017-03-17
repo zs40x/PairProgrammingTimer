@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum SessionState: Int {
-    case idle = 0
-    case active
-}
-
 protocol Session {
     var developer: Developer { get }
     var sessionState: SessionState { get }
