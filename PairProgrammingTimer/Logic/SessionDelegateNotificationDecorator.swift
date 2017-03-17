@@ -10,8 +10,8 @@ import Foundation
 
 class SessionDelegateNotificationDecorator {
     
-    private let other: SessionDelegate
-    private let notifications: Notifications
+    fileprivate let other: SessionDelegate
+    fileprivate let notifications: Notifications
     
     init(other: SessionDelegate, notifications: Notifications) {
         self.other = other
@@ -22,18 +22,20 @@ class SessionDelegateNotificationDecorator {
 extension SessionDelegateNotificationDecorator: SessionDelegate {
     
     func developerChanged(developer: Developer) {
-        
+        other.developerChanged(developer: developer)
     }
     
     func sessionStarted() {
-        
+        notifications.register()
+        other.sessionStarted()
     }
     
     func sessionEnded() {
-        
+        notifications.cancelPending()
+        other.sessionEnded()
     }
     
     func countdownExpired() {
-        
+        other.countdownExpired()
     }
 }
