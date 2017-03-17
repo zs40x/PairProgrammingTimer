@@ -55,8 +55,6 @@ class SystemTimer: CountdownTimer {
     
     @objc func timerExpired() {
         
-        NSLog("SystemTimer.timerExpired()")
-        
         guard let delegate = expiredDelegate else { return }
         
         delegate.timerExpired()
