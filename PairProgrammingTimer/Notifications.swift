@@ -12,3 +12,20 @@ protocol Notifications {
     func register()
     func cancelPending()
 }
+
+
+class LocalNotifications {
+    
+    
+}
+
+extension LocalNotifications: Notifications {
+    
+    func register() {
+        
+    }
+    
+    func cancelPending() {
+        
+    }
+}
