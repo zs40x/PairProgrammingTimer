@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     private let countDownMinutes: Double = 15
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
+    private var disableNotificationWarningShown = false
     
     fileprivate var sessionControl: Session?
-    
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
@@ -44,15 +44,6 @@ class ViewController: UIViewController {
         
         updateImageOffsets(activeDeveloper: .left)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if !AppDelegate.current().localNotificationsEnabled {
-            let alert = UIAlertController(title: "Notifications disabled", message: "To recreive notifications when the app is not in the foreground enable them in the system settings", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         
@@ -60,6 +51,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionStart(_ sender: Any) {
+        
+        if     !AppDelegate.current().localNotificationsEnabled
+            && sessionControl?.sessionState == .idle
+            && !disableNotificationWarningShown {
+            let alert =
+                UIAlertController(
+                    title: "Notifications disabled",
+                    message: "To recreive notifications when the app is not in the foreground enable them in the system settings.",
+                    preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
+            self.present(alert, animated: true, completion: nil)
+            
+            disableNotificationWarningShown = true
+        }
         
         sessionControl = sessionControl?.toggleState()
     }
