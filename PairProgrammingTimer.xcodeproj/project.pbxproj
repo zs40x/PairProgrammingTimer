@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4031F171E84586C0068F075 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4031F161E84586C0068F075 /* Settings.bundle */; };
 		D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA31E2D42A90005350B /* AppDelegate.swift */; };
 		D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA51E2D42A90005350B /* ViewController.swift */; };
 		D40BCBA91E2D42A90005350B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBA71E2D42A90005350B /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4031F161E84586C0068F075 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D40BCBA01E2D42A90005350B /* PairProgrammingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PairProgrammingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBA31E2D42A90005350B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D40BCBA51E2D42A90005350B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				D40BCBAA1E2D42A90005350B /* Assets.xcassets */,
 				D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */,
 				D40BCBAF1E2D42A90005350B /* Info.plist */,
+				D4031F161E84586C0068F075 /* Settings.bundle */,
 			);
 			path = PairProgrammingTimer;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4031F171E84586C0068F075 /* Settings.bundle in Resources */,
 				D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */,
 				D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */,
 				D40BCBA91E2D42A90005350B /* Main.storyboard in Resources */,
