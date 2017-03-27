@@ -23,9 +23,7 @@ class SecondsToHumanReadableDurationTests: XCTestCase {
     
     func testDisplay15MinutesAnd30Seconds() {
         
-        let t15MinutesInSeconds = Double((15 * 60) + 30)
-        
-        XCTAssertEqual("15:30", runTest(seconds: t15MinutesInSeconds))
+        XCTAssertEqual("15:30", runTest(seconds: asSeconds(hours: 0, minutes: 15, seconds: 30)))
     }
     
     func testNegativeMinute() {
@@ -34,10 +32,15 @@ class SecondsToHumanReadableDurationTests: XCTestCase {
     }
     
     func testNegativeBeforeSecondsMinusIsPositive() {
+        
         XCTAssertEqual("00:00", runTest(seconds: -0.9))
     }
     
     private func runTest(seconds: Double) -> String {
         return SecondsToHumanReadableDuration(seconds: seconds).humanReadableTime()
+    }
+    
+    private func asSeconds(hours: Int, minutes: Int, seconds: Int = 0) -> Double{
+        return Double((hours * 60 * 60) + (minutes * 60) + seconds)
     }
 }
