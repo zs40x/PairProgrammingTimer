@@ -36,6 +36,12 @@ class SecondsToHumanReadableDurationTests: XCTestCase {
         XCTAssertEqual("00:00", runTest(seconds: -0.9))
     }
     
+    func testLongerThan60Minutes() {
+        
+        XCTAssertEqual("170:30", runTest(seconds: asSeconds(hours: 2, minutes: 50, seconds: 30)))
+    }
+    
+    
     private func runTest(seconds: Double) -> String {
         return SecondsToHumanReadableDuration(seconds: seconds).humanReadableTime()
     }
