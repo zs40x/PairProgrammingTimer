@@ -20,7 +20,7 @@ class SecondsToHumanReadableDuration {
         
         let seconds = secondsForCalculation()
         
-        let displayMinutes = Int(seconds.truncatingRemainder(dividingBy: 3600) / 60)
+        let displayMinutes = Int(seconds / 60)
         let displaySeconds = Int(seconds.truncatingRemainder(dividingBy: 60))
         
         return String(format:"%@%02i:%02i", isNegative() ? "-" : "",  displayMinutes, displaySeconds)
