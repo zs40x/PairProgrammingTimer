@@ -183,7 +183,9 @@ extension ViewController : UNUserNotificationCenterDelegate {
         
         NSLog("userNotificationCenter.didReceive: \(response.actionIdentifier)")
         
-        if response.actionIdentifier == Notification.Action.stopSession {
+        if response.actionIdentifier == Notification.Action.stopSession
+            && sessionControl?.sessionState == SessionState.active {
+            
             sessionControl = sessionControl?.toggleState()
         }
         
