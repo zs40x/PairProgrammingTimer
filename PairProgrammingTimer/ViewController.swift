@@ -122,9 +122,10 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = self
         
         let actionStop = UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
+        let actionChangeDeveloper = UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
         
         let stopSessionCategory =
-            UNNotificationCategory(identifier: Notification.Category.sessionExpired, actions: [actionStop], intentIdentifiers: [], options: [])
+            UNNotificationCategory(identifier: Notification.Category.sessionExpired, actions: [actionStop, actionChangeDeveloper], intentIdentifiers: [], options: [])
         
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
@@ -183,10 +184,18 @@ extension ViewController : UNUserNotificationCenterDelegate {
         
         NSLog("userNotificationCenter.didReceive: \(response.actionIdentifier)")
         
-        if response.actionIdentifier == Notification.Action.stopSession
-            && sessionControl?.sessionState == SessionState.active {
-            
+        if sessionControl?.sessionState == SessionState.idle {
+            NSLog("Igoring action, session idle")
+            return
+        }
+        
+        switch response.actionIdentifier {
+        case Notification.Action.stopSession:
             sessionControl = sessionControl?.toggleState()
+        case Notification.Action.changeDeveloper:
+            sessionControl = sessionControl?.changeDevelopers()
+        default:
+            NSLog("Invalid actionIdentifier: \(response.actionIdentifier)")
         }
         
         completionHandler()

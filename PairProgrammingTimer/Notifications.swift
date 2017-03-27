@@ -12,6 +12,7 @@ import UserNotifications
 struct Notification {
     struct Action {
         static let stopSession = "stopSession"
+        static let changeDeveloper = "changeDeveloper"
     }
     struct Category {
         static let sessionExpired = "sessionExpired"
