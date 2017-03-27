@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import UserNotifications
 
 class ViewController: UIViewController {
     
@@ -46,6 +47,8 @@ class ViewController: UIViewController {
         labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDurationInMinutes * 60).humanReadableTime()
         
         updateImageOffsets(activeDeveloper: .left)
+        
+        initializeNotifications()
     }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
@@ -113,6 +116,18 @@ class ViewController: UIViewController {
         
         labelTimer.text = SecondsToHumanReadableDuration(seconds: remainingSeconds).humanReadableTime()
     }
+    
+    private func initializeNotifications() {
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        let actionStop = UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
+        
+        let stopSessionCategory =
+            UNNotificationCategory(identifier: Notification.Category.sessionExpired, actions: [actionStop], intentIdentifiers: [], options: [])
+        
+        UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
+    }
 }
 
 extension ViewController: CountdownTimerExpiredDelegate {
@@ -159,5 +174,19 @@ extension ViewController: SessionDelegate {
                 animations: { [weak self] in self?.labelTimer.alpha = 0.0 },
                 completion: { [weak self] _ in self?.labelTimer.alpha = 1.0 })
         }
+    }
+}
+
+extension ViewController : UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        NSLog("userNotificationCenter.didReceive: \(response.actionIdentifier)")
+        
+        if response.actionIdentifier == Notification.Action.stopSession {
+            sessionControl = sessionControl?.toggleState()
+        }
+        
+        completionHandler()
     }
 }

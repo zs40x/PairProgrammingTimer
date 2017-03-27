@@ -9,6 +9,14 @@
 import Foundation
 import UserNotifications
 
+struct Notification {
+    struct Action {
+        static let stopSession = "stopSession"
+    }
+    struct Category {
+        static let sessionExpired = "sessionExpired"
+    }
+}
 
 protocol Notifications {
     func register()
@@ -32,10 +40,12 @@ class LocalNotifications: Notifications {
         content.title = "PairProgrammingTimer"
         content.body = "Session timer expired!"
         content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = Notification.Category.sessionExpired
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.timeInterval, repeats: false)
         
         let request = UNNotificationRequest(identifier: self.notificationIdentifier, content: content, trigger: trigger)
+        
         
         center.add(request, withCompletionHandler: { (error) in
             if let error = error {
