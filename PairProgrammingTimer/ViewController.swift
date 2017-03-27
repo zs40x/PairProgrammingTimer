@@ -11,7 +11,6 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    private let countDownMinutes: Double = 15
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     private var disableNotificationWarningShown = false
@@ -35,12 +34,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let sessionDuration = Double(UserDefaults().integer(forKey: "session_duration"))
+        
         sessionControl =
             ProgrammingSession(
-                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: countDownMinutes * 60)),
-                timer: SystemTimer(durationInSeconds: countDownMinutes * 60, repeatWhenExpired: false),
+                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration * 60)),
+                timer: SystemTimer(durationInSeconds: sessionDuration * 60, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
-                sessionDurationInMinutes: countDownMinutes)
+                sessionDurationInMinutes: sessionDuration)
+        
+        labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDuration * 60).humanReadableTime()
         
         updateImageOffsets(activeDeveloper: .left)
     }
