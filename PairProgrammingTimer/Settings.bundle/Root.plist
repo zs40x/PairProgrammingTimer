@@ -23,7 +23,8 @@
 			<string>15</string>
 			<key>Titles</key>
 			<array>
-				<string>5 Minutes</string>
+                <string>1 Minute</string>
+                <string>5 Minutes</string>
                 <string>15 Minutes</string>
                 <string>30 Minutes</string>
                 <string>45 Minutes</string>
@@ -33,7 +34,8 @@
 			</array>
 			<key>Values</key>
 			<array>
-				<string>5</string>
+                <string>1</string>
+                <string>5</string>
                 <string>15</string>
                 <string>30</string>
                 <string>45</string>
