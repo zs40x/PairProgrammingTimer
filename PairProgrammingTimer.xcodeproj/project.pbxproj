@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D4031F171E84586C0068F075 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4031F161E84586C0068F075 /* Settings.bundle */; };
+		D4031F1A1E8AE7060068F075 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4031F191E8AE7060068F075 /* AppSettings.swift */; };
 		D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA31E2D42A90005350B /* AppDelegate.swift */; };
 		D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA51E2D42A90005350B /* ViewController.swift */; };
 		D40BCBA91E2D42A90005350B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBA71E2D42A90005350B /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		D4031F161E84586C0068F075 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D4031F191E8AE7060068F075 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		D40BCBA01E2D42A90005350B /* PairProgrammingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PairProgrammingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBA31E2D42A90005350B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D40BCBA51E2D42A90005350B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4031F181E8AE6800068F075 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D4031F191E8AE7060068F075 /* AppSettings.swift */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
 		D40BCB971E2D42A90005350B = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				D444A67A1E4A4647000E6682 /* API */,
+				D4031F181E8AE6800068F075 /* Configuration */,
 				D444A6791E4A461A000E6682 /* Data */,
 				D4B120301E367BA4003C93CF /* Logic */,
 				D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */,
@@ -324,6 +335,7 @@
 				D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
+				D4031F1A1E8AE7060068F075 /* AppSettings.swift in Sources */,
 				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */,
 				D4A172491E43A54600B655A9 /* SecondsToHumanReadableDuration.swift in Sources */,
 				D444A67C1E7A4B64000E6682 /* Developer.swift in Sources */,

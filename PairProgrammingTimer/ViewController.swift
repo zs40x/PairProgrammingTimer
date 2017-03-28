@@ -35,16 +35,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sessionDurationInMinutes = Double(UserDefaults().integer(forKey: "session_duration"))
+        let sessionDuration = AppSettings().SessionDuration()
         
         sessionControl =
             ProgrammingSession(
-                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDurationInMinutes * 60)),
-                timer: SystemTimer(durationInSeconds: sessionDurationInMinutes * 60, repeatWhenExpired: false),
+                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
+                timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
-                sessionDurationInMinutes: sessionDurationInMinutes)
+                sessionDurationInMinutes: sessionDuration.TotalMinutes)
         
-        labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDurationInMinutes * 60).humanReadableTime()
+        labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDuration.TotalSeconds).humanReadableTime()
         
         updateImageOffsets(activeDeveloper: .left)
         
