@@ -46,8 +46,8 @@ class ProgrammingSession: Session {
         self.delegate = delegate
     }
     
-    convenience init(delegate: SessionDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
-        self.init(withDeveloper: .left, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
+    convenience init(withDeveloper: Developer, delegate: SessionDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
+        self.init(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
     }
     
     var sessionState: SessionState {

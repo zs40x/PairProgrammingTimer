@@ -18,9 +18,15 @@ struct ProgrammingSessionDuration {
     }
 }
 
+private enum ConfigurationKey: String {
+    case CurrentDeveloper = "CurrentDeveloper"
+    case SessionDuration = "session_duration"
+}
+
 class AppSettings {
     
     private let defaultDurationInMinutes = 15
+    private let userDefaults = UserDefaults()
     
     public func SessionDuration() -> ProgrammingSessionDuration {
         
@@ -28,8 +34,17 @@ class AppSettings {
     }
     
     private func ConfiguredSessionDuration() -> Int {
-        let configuredDuration = UserDefaults().integer(forKey: "session_duration")
+        let configuredDuration = userDefaults.integer(forKey: ConfigurationKey.SessionDuration.rawValue)
         
         return configuredDuration > 0 ? configuredDuration : defaultDurationInMinutes
+    }
+    
+    public func SaveCurrentDeveloper(_ developer: Developer) {
+        
+        userDefaults.set(developer.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
+    }
+    
+    public func CurrentDeveloper() -> Developer {
+        return Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!
     }
 }

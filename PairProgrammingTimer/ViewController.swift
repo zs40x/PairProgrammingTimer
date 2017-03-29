@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     private var disableNotificationWarningShown = false
     
+    fileprivate let appSettings = AppSettings()
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
     
@@ -35,10 +36,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sessionDuration = AppSettings().SessionDuration()
+        let sessionDuration = appSettings.SessionDuration()
         
         sessionControl =
             ProgrammingSession(
+                withDeveloper: appSettings.CurrentDeveloper(),
                 delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
@@ -46,7 +48,8 @@ class ViewController: UIViewController {
         
         labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDuration.TotalSeconds).humanReadableTime()
         
-        updateImageOffsets(activeDeveloper: .left)
+        updateImageOffsets(activeDeveloper: sessionControl!.developer)
+        updateDeveloperImages(activeDeveloper: sessionControl!.developer)
         
         initializeNotifications()
     }
@@ -146,6 +149,8 @@ extension ViewController: SessionDelegate {
         updateImageOffsets(activeDeveloper: developer)
         updateDeveloperImages(activeDeveloper: developer)
         updateRemainingTime()
+        
+        appSettings.SaveCurrentDeveloper(developer)
     }
     
     func sessionStarted() {
