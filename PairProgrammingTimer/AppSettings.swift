@@ -28,12 +28,14 @@ class AppSettings {
         }
     }
     
-    var CurrentDeveloper: Developer {
+    var LastState: AppState {
         get {
-            return Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!
+            return AppState(
+                    currentDeveloper: Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!
+                )
         }
-        set (developer) {
-            userDefaults.set(developer.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
+        set (appState) {
+            userDefaults.set(appState.currentDeveloper.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
         }
     }
 }

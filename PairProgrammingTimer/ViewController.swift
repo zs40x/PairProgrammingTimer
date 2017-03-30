@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
         sessionControl =
             ProgrammingSession(
-                withDeveloper: appSettings.CurrentDeveloper,
+                withDeveloper: appSettings.LastState.currentDeveloper,
                 delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
@@ -153,7 +153,7 @@ extension ViewController: SessionDelegate {
      
         updateUserInterface(developer: developer)
         
-        appSettings.CurrentDeveloper = developer
+        appSettings.LastState = AppState(currentDeveloper: developer)
     }
     
     func sessionStarted() {
