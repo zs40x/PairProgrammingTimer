@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sessionDuration = appSettings.SessionDuration
+        let sessionDuration = appSettings.ConfiguredSessionDuration
         
         sessionControl =
             ProgrammingSession(

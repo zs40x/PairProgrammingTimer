@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct ProgrammingSessionDuration {
-    let TotalMinutes: Double
-    let TotalSeconds: Double
-    
-    init(minutes: Int) {
-        self.TotalMinutes = Double(minutes)
-        self.TotalSeconds = Double(minutes * 60)
-    }
-}
-
 private enum ConfigurationKey: String {
     case CurrentDeveloper = "CurrentDeveloper"
     case SessionDuration = "session_duration"
@@ -28,13 +18,13 @@ class AppSettings {
     private let defaultDurationInMinutes = 15
     private let userDefaults = UserDefaults()
     
-    public var SessionDuration : ProgrammingSessionDuration {
+    public var ConfiguredSessionDuration : SessionDuration {
         get {
             let configuredSessionDuration = userDefaults.integer(forKey: ConfigurationKey.SessionDuration.rawValue)
             
-            guard configuredSessionDuration > 0 else { return ProgrammingSessionDuration(minutes: defaultDurationInMinutes) }
+            guard configuredSessionDuration > 0 else { return SessionDuration(minutes: defaultDurationInMinutes) }
             
-            return ProgrammingSessionDuration(minutes: configuredSessionDuration)
+            return SessionDuration(minutes: configuredSessionDuration)
         }
     }
     
