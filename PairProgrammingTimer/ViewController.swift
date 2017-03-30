@@ -46,10 +46,7 @@ class ViewController: UIViewController {
                 dateTime: SystemDateTime(),
                 sessionDurationInMinutes: sessionDuration.TotalMinutes)
         
-        labelTimer.text = SecondsToHumanReadableDuration(seconds: sessionDuration.TotalSeconds).humanReadableTime()
-        
-        updateImageOffsets(activeDeveloper: sessionControl!.developer)
-        updateDeveloperImages(activeDeveloper: sessionControl!.developer)
+        updateUserInterface(developer: sessionControl!.developer)
         
         initializeNotifications()
     }
@@ -85,7 +82,15 @@ class ViewController: UIViewController {
         buttonStart.setImage(newImage, for: .normal)
     }
     
-    fileprivate func updateDeveloperImages(activeDeveloper: Developer) {
+    fileprivate func updateUserInterface(developer: Developer) {
+        
+        updateRemainingTime()
+        updateImageOffsets(activeDeveloper: developer)
+        updateDeveloperImages(activeDeveloper: developer)
+        
+    }
+    
+    private func updateDeveloperImages(activeDeveloper: Developer) {
         rightDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .right)
         leftDeveloperImageView.image = developerStateImage(isActive: activeDeveloper == .left)
     }
@@ -94,7 +99,7 @@ class ViewController: UIViewController {
         return isActive ? UIImage(named: "man_filled_100")! : UIImage(named: "man_100")!
     }
     
-    fileprivate func updateImageOffsets(activeDeveloper: Developer) {
+    private func updateImageOffsets(activeDeveloper: Developer) {
         updateLeftDeveloperOffset(offset: (activeDeveloper == .left ? activeOffset : inactiveOffset))
         updateRightDeveloperOffset(offset: (activeDeveloper == .right ? activeOffset : inactiveOffset))
     }
@@ -146,9 +151,7 @@ extension ViewController: SessionDelegate {
     
     func developerChanged(developer: Developer) {
      
-        updateImageOffsets(activeDeveloper: developer)
-        updateDeveloperImages(activeDeveloper: developer)
-        updateRemainingTime()
+        updateUserInterface(developer: developer)
         
         appSettings.SaveCurrentDeveloper(developer)
     }
