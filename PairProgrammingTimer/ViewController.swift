@@ -36,11 +36,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sessionDuration = appSettings.SessionDuration()
+        let sessionDuration = appSettings.SessionDuration
         
         sessionControl =
             ProgrammingSession(
-                withDeveloper: appSettings.CurrentDeveloper(),
+                withDeveloper: appSettings.CurrentDeveloper,
                 delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
@@ -153,7 +153,7 @@ extension ViewController: SessionDelegate {
      
         updateUserInterface(developer: developer)
         
-        appSettings.SaveCurrentDeveloper(developer)
+        appSettings.CurrentDeveloper = developer
     }
     
     func sessionStarted() {

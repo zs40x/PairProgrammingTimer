@@ -28,23 +28,22 @@ class AppSettings {
     private let defaultDurationInMinutes = 15
     private let userDefaults = UserDefaults()
     
-    public func SessionDuration() -> ProgrammingSessionDuration {
-        
-        return ProgrammingSessionDuration(minutes: ConfiguredSessionDuration())
+    public var SessionDuration : ProgrammingSessionDuration {
+        get {
+            let configuredSessionDuration = userDefaults.integer(forKey: ConfigurationKey.SessionDuration.rawValue)
+            
+            guard configuredSessionDuration > 0 else { return ProgrammingSessionDuration(minutes: defaultDurationInMinutes) }
+            
+            return ProgrammingSessionDuration(minutes: configuredSessionDuration)
+        }
     }
     
-    private func ConfiguredSessionDuration() -> Int {
-        let configuredDuration = userDefaults.integer(forKey: ConfigurationKey.SessionDuration.rawValue)
-        
-        return configuredDuration > 0 ? configuredDuration : defaultDurationInMinutes
-    }
-    
-    public func SaveCurrentDeveloper(_ developer: Developer) {
-        
-        userDefaults.set(developer.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
-    }
-    
-    public func CurrentDeveloper() -> Developer {
-        return Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!
+    var CurrentDeveloper: Developer {
+        get {
+            return Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!
+        }
+        set (developer) {
+            userDefaults.set(developer.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
+        }
     }
 }
