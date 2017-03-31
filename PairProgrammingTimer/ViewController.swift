@@ -137,6 +137,17 @@ class ViewController: UIViewController {
         
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
+    
+    fileprivate func persistAppState(developer: Developer?) {
+        
+        guard let sessionControl = sessionControl else { return }
+        
+        appSettings.LastState =
+            AppState(
+                    currentDeveloper: developer ?? sessionControl.developer,
+                    sessionState: sessionControl.sessionState
+                )
+    }
 }
 
 extension ViewController: CountdownTimerExpiredDelegate {
@@ -153,7 +164,7 @@ extension ViewController: SessionDelegate {
      
         updateUserInterface(developer: developer)
         
-        appSettings.LastState = AppState(currentDeveloper: developer)
+        persistAppState(developer: developer)
     }
     
     func sessionStarted() {

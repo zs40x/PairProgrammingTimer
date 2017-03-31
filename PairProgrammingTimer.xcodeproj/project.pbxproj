@@ -158,10 +158,10 @@
 		D444A6791E4A461A000E6682 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D4031F1D1E8D83320068F075 /* AppState.swift */,
 				D444A67B1E7A4B64000E6682 /* Developer.swift */,
 				D444A6801E7B97CC000E6682 /* SessionState.swift */,
 				D4031F1B1E8D82970068F075 /* SessionDuration.swift */,
-				D4031F1D1E8D83320068F075 /* AppState.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";

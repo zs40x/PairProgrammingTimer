@@ -11,8 +11,10 @@ import Foundation
 class AppState {
     
     let currentDeveloper: Developer
+    let sessionState: SessionState
     
-    init(currentDeveloper: Developer) {
+    init(currentDeveloper: Developer, sessionState: SessionState) {
         self.currentDeveloper = currentDeveloper
+        self.sessionState = sessionState
     }
 }
