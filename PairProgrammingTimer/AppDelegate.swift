@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if granted { return }
             
-            NSLog("Warning: local notifications are disabled: \(error)")
+            NSLog("Warning: local notifications are disabled: \(error!)")
         }
         
         return true
