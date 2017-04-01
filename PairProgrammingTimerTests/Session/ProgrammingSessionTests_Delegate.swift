@@ -25,6 +25,14 @@ class ProgrammingSessionDelegateTests: ProgrammingSessionTests {
         XCTAssertEqual(true, fakeSessionDelegate?.sessionStartedWasCalled)
     }
     
+    func testDelegateCalledWhenSessionStartWithEndDateTime() {
+        
+        _ = testInstance?.toggleState()
+        
+        XCTAssertNotNil(fakeSessionDelegate?.sessionStartedWasCalledWithEndDateTime)
+        XCTAssertEqual(fakeSessionDelegate?.sessionStartedWasCalledWithEndDateTime, startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60))
+    }
+    
     func testDelegateCalledWhenSessionEnded() {
         
         _ = testInstance?.toggleState().toggleState()

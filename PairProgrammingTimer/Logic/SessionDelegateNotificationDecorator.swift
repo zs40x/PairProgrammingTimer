@@ -25,9 +25,9 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
         other.developerChanged(developer: developer)
     }
     
-    func sessionStarted() {
+    func sessionStarted(sessionEndsOn: Date) {
         notifications.register()
-        other.sessionStarted()
+        other.sessionStarted(sessionEndsOn: sessionEndsOn)
     }
     
     func sessionEnded() {

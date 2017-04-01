@@ -20,7 +20,7 @@ protocol Session {
 
 protocol SessionDelegate {
     func developerChanged(developer: Developer)
-    func sessionStarted()
+    func sessionStarted(sessionEndsOn: Date)
     func sessionEnded()
     func countdownExpired()
 }
@@ -69,9 +69,9 @@ class ProgrammingSession: Session {
         
         timer.start(callDelegateWhenExpired: self)
         
-        delegate?.sessionStarted()
-        
         let sessionEndsOn = dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60)
+        
+        delegate?.sessionStarted(sessionEndsOn: sessionEndsOn)
         
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }

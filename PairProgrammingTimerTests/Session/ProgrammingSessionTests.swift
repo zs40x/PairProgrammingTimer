@@ -23,9 +23,10 @@ class ProgrammingSessionTests: XCTestCase {
         fakeTimer = FakeTimer()
         fakeDateTime = FakeDateTime(dateToReturn: startedOnDate)
         fakeSessionDelegate = FakeSessionDelegate()
-        
+
         testInstance =
             ProgrammingSession(
+                withDeveloper: Developer.left,
                 delegate: fakeSessionDelegate!,
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,

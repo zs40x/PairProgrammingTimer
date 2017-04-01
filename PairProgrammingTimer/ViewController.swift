@@ -167,7 +167,7 @@ extension ViewController: SessionDelegate {
         persistAppState(developer: developer)
     }
     
-    func sessionStarted() {
+    func sessionStarted(sessionEndsOn: Date) {
         
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .active)
