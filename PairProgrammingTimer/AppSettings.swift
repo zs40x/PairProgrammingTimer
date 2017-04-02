@@ -11,6 +11,7 @@ import Foundation
 private enum ConfigurationKey: String {
     case CurrentDeveloper = "CurrentDeveloper"
     case SessionState = "SessionState"
+    case SessionEndsOn = "SessionEndsOn"
     case SessionDuration = "session_duration"
 }
 
@@ -33,12 +34,14 @@ class AppSettings {
         get {
             return AppState(
                     currentDeveloper: Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!,
-                    sessionState: SessionState(rawValue: userDefaults.integer(forKey: ConfigurationKey.SessionState.rawValue))!
+                    sessionState: SessionState(rawValue: userDefaults.integer(forKey: ConfigurationKey.SessionState.rawValue))!,
+                    sessionEndsOn: userDefaults.object(forKey: ConfigurationKey.SessionEndsOn.rawValue) as? Date ?? Date()
                 )
         }
         set (appState) {
             userDefaults.set(appState.currentDeveloper.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
             userDefaults.set(appState.sessionState.rawValue, forKey: ConfigurationKey.SessionState.rawValue)
+            userDefaults.set(appState.sessionEndsOn, forKey: ConfigurationKey.SessionEndsOn.rawValue)
         }
     }
 }

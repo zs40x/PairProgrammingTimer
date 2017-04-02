@@ -12,9 +12,11 @@ class AppState {
     
     let currentDeveloper: Developer
     let sessionState: SessionState
+    let sessionEndsOn: Date
     
-    init(currentDeveloper: Developer, sessionState: SessionState) {
+    init(currentDeveloper: Developer, sessionState: SessionState, sessionEndsOn: Date) {
         self.currentDeveloper = currentDeveloper
         self.sessionState = sessionState
+        self.sessionEndsOn = sessionEndsOn
     }
 }

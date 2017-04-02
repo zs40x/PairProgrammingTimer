@@ -138,14 +138,15 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
     
-    fileprivate func persistAppState(developer: Developer?) {
+    fileprivate func persistAppState(developer: Developer?, sessionEndsOn: Date) {
         
         guard let sessionControl = sessionControl else { return }
         
         appSettings.LastState =
             AppState(
                     currentDeveloper: developer ?? sessionControl.developer,
-                    sessionState: sessionControl.sessionState
+                    sessionState: sessionControl.sessionState,
+                    sessionEndsOn: sessionEndsOn
                 )
     }
 }
@@ -164,7 +165,7 @@ extension ViewController: SessionDelegate {
      
         updateUserInterface(developer: developer)
         
-        persistAppState(developer: developer)
+        persistAppState(developer: developer, sessionEndsOn: Date())
     }
     
     func sessionStarted(sessionEndsOn: Date) {
@@ -172,6 +173,8 @@ extension ViewController: SessionDelegate {
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .active)
         updateTimer.start(callDelegateWhenExpired: self)
+        
+        persistAppState(developer: sessionControl?.developer, sessionEndsOn: sessionEndsOn)
     }
     
     func sessionEnded() {
