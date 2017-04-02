@@ -96,7 +96,7 @@ class ViewController: UIViewController {
     }
     
     private func developerStateImage(isActive: Bool) -> UIImage {
-        return isActive ? UIImage(named: "man_filled_100")! : UIImage(named: "man_100")!
+        return isActive ? UIImage(named: "developer_active")! : UIImage(named: "developer_inactive")!
     }
     
     private func updateImageOffsets(activeDeveloper: Developer) {
