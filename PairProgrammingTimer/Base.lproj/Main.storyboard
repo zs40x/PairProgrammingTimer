@@ -26,10 +26,10 @@
                                 <rect key="frame" x="30" y="30" width="508" height="280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-zj-oAr">
-                                        <rect key="frame" x="0.0" y="52" width="169.5" height="176"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="280"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_filled_100" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
-                                                <rect key="frame" x="5" y="5" width="159.5" height="166"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_active" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
+                                                <rect key="frame" x="5" y="5" width="159.5" height="270"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +50,9 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="58"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="94"/>
                                                 </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-rZ-kgE">
@@ -85,10 +88,10 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="aMy-Kn-wWD">
-                                        <rect key="frame" x="338.5" y="52" width="169.5" height="176"/>
+                                        <rect key="frame" x="338.5" y="0.0" width="169.5" height="280"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_100" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ol-Bj8">
-                                                <rect key="frame" x="30" y="30" width="109.5" height="116"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ol-Bj8">
+                                                <rect key="frame" x="30" y="30" width="109.5" height="220"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,9 +137,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="developer_active" width="446" height="428"/>
+        <image name="developer_inactive" width="464" height="444"/>
         <image name="flip_100" width="100" height="100"/>
-        <image name="man_100" width="100" height="100"/>
-        <image name="man_filled_100" width="100" height="100"/>
         <image name="play-100" width="100" height="100"/>
     </resources>
 </document>
