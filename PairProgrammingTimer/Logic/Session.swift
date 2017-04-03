@@ -8,14 +8,17 @@
 
 import Foundation
 
-protocol Session {
+protocol Session  {
     var developer: Developer { get }
     var sessionState: SessionState { get }
     
     func toggleState() -> Session
-    
     func changeDevelopers() -> Session
+    func restoreState(sessionState: SessionState, sessionEndsOn: Date) -> Session
+    
     func timeRemaingInSeconds() -> Double
+    
+    func isEqualTo(otherSession: Session) -> Bool
 }
 
 protocol SessionDelegate {
@@ -28,10 +31,10 @@ protocol SessionDelegate {
 class ProgrammingSession: Session {
     
     let developer: Developer
+    let sessionEndsOn: Date?
     
     fileprivate let delegate: SessionDelegate?
     
-    private let sessionEndsOn: Date?
     private let timer: CountdownTimer
     private let dateTime: DateTime
     private let sessionDurationInMinutes: Double
@@ -58,22 +61,25 @@ class ProgrammingSession: Session {
     
     func toggleState() -> Session {
        
-        if sessionEndsOn != nil {
+        if sessionState == .active {
             return stop()
         }
         
         return start()
     }
     
-    private func start() -> Session {
+    fileprivate func startSession(sessionEndsOn: Date) -> Session {
         
         timer.start(callDelegateWhenExpired: self)
-        
-        let sessionEndsOn = dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60)
         
         delegate?.sessionStarted(sessionEndsOn: sessionEndsOn)
         
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
+    }
+    
+    private func start() -> Session {
+        
+        return startSession(sessionEndsOn: dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60))
     }
     
     private func stop() -> Session {
@@ -96,6 +102,21 @@ class ProgrammingSession: Session {
         return sessionState == .active ? newSession.start() : newSession
     }
     
+    func restoreState(sessionState: SessionState, sessionEndsOn: Date) -> Session {
+        
+        guard sessionState == .active else { return self }
+        
+        return RestoredProgrammingSession(
+                    withDeveloper: developer,
+                    timer: timer,
+                    sessionEndsOn: sessionEndsOn,
+                    dateTime: dateTime,
+                    sessionDurationInMinutes: sessionDurationInMinutes,
+                    delegate: delegate
+                ).makeRestoredSession(sessionEndsOn: sessionEndsOn)
+
+    }
+    
     func timeRemaingInSeconds() -> Double {
         
         guard let sessionEndsOn = sessionEndsOn else { return sessionDurationInMinutes * 60 }
@@ -109,6 +130,16 @@ class ProgrammingSession: Session {
         }
     }
     
+    func isEqualTo(otherSession: Session) -> Bool {
+        
+        guard let otherProgrammingSession = otherSession as? ProgrammingSession else { return false }
+        
+        return self.sessionEndsOn == otherProgrammingSession.sessionEndsOn
+                && self.developer == otherProgrammingSession.developer
+                && self.sessionDurationInMinutes == otherProgrammingSession.sessionDurationInMinutes
+                && self.sessionState == otherProgrammingSession.sessionState
+    }
+    
     private func makeNewInstance(withDeveloper: Developer, sessionEndsOn: Date?) -> ProgrammingSession {
         return ProgrammingSession(
             withDeveloper: withDeveloper,
@@ -118,6 +149,7 @@ class ProgrammingSession: Session {
             sessionDurationInMinutes: sessionDurationInMinutes,
             delegate: delegate)
     }
+
 }
 
 extension ProgrammingSession: CountdownTimerExpiredDelegate {
@@ -125,5 +157,13 @@ extension ProgrammingSession: CountdownTimerExpiredDelegate {
     func timerExpired() {
         
         delegate?.countdownExpired()
+    }
+}
+
+class RestoredProgrammingSession : ProgrammingSession {
+    
+    func makeRestoredSession(sessionEndsOn: Date) -> Session {
+        
+        return startSession(sessionEndsOn: sessionEndsOn)
     }
 }

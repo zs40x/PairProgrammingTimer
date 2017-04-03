@@ -37,14 +37,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let sessionDuration = appSettings.ConfiguredSessionDuration
+        let lastState = appSettings.LastState
         
         sessionControl =
             ProgrammingSession(
-                withDeveloper: appSettings.LastState.currentDeveloper,
+                withDeveloper: lastState.currentDeveloper,
                 delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
                 sessionDurationInMinutes: sessionDuration.TotalMinutes)
+
+        sessionControl =
+            sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)
         
         updateUserInterface(developer: sessionControl!.developer)
         
@@ -138,14 +142,14 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
     
-    fileprivate func persistAppState(developer: Developer?, sessionEndsOn: Date) {
+    fileprivate func persistAppState(developer: Developer?, sessionState: SessionState, sessionEndsOn: Date) {
         
         guard let sessionControl = sessionControl else { return }
         
         appSettings.LastState =
             AppState(
                     currentDeveloper: developer ?? sessionControl.developer,
-                    sessionState: sessionControl.sessionState,
+                    sessionState: sessionState,
                     sessionEndsOn: sessionEndsOn
                 )
     }
@@ -165,7 +169,7 @@ extension ViewController: SessionDelegate {
      
         updateUserInterface(developer: developer)
         
-        persistAppState(developer: developer, sessionEndsOn: Date())
+        persistAppState(developer: developer, sessionState: sessionControl!.sessionState, sessionEndsOn: Date())
     }
     
     func sessionStarted(sessionEndsOn: Date) {
@@ -174,7 +178,7 @@ extension ViewController: SessionDelegate {
         updateCurrentState(sessionState: .active)
         updateTimer.start(callDelegateWhenExpired: self)
         
-        persistAppState(developer: sessionControl?.developer, sessionEndsOn: sessionEndsOn)
+        persistAppState(developer: sessionControl?.developer, sessionState: .active, sessionEndsOn: sessionEndsOn)
     }
     
     func sessionEnded() {
@@ -183,6 +187,8 @@ extension ViewController: SessionDelegate {
         updateCurrentState(sessionState: .idle)
         
         updateTimer.stop()
+        
+        persistAppState(developer: sessionControl?.developer, sessionState: .idle, sessionEndsOn: Date())
     }
     
     func countdownExpired() {
