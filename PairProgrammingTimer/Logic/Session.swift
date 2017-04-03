@@ -106,6 +106,8 @@ class ProgrammingSession: Session {
         
         guard sessionState == .active else { return self }
         
+        guard sessionEndsOn.timeIntervalSince(dateTime.currentDateTime()) / 60 > -120 else { return self }
+        
         return RestoredProgrammingSession(
                     withDeveloper: developer,
                     timer: timer,
