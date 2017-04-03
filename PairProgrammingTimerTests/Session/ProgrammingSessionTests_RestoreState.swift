@@ -29,7 +29,7 @@ class ProgrammingSessionRestoreStateTests: ProgrammingSessionTests {
     
     func testActiveSessionNotRestoredWhenItsTooOld() {
         
-        let endDateInThePast = startedOnDate.addingTimeInterval((90 * 60) * -1)
+        let endDateInThePast = startedOnDate.addingTimeInterval((120 * 60) * -1)
         
         XCTAssertTrue(testInstance!.isEqualTo(otherSession: testInstance!.restoreState(sessionState: .active, sessionEndsOn: endDateInThePast)))
     }
