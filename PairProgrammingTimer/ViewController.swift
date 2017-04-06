@@ -117,7 +117,7 @@ class ViewController: UIViewController {
                 delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
-                sessionDurationInMinutes: sessionDuration.TotalMinutes)
+                sessionDuration: sessionDuration)
         
         sessionControl =
             sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)
@@ -178,7 +178,7 @@ class ViewController: UIViewController {
     @objc private func configurationChanged(notification: NSNotification) {
         
         guard let sessionControl = sessionControl else { return }
-        guard AppSettings().ConfiguredSessionDuration.TotalMinutes != sessionControl.sessionDurationInMinutes else { return }
+        guard AppSettings().ConfiguredSessionDuration != sessionControl.sessionDuration else { return }
         
         NSLog("NotificationCenter triggered configurationChanged() -- reinitializing programmingSession.")
         

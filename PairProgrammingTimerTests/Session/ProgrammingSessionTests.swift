@@ -30,7 +30,8 @@ class ProgrammingSessionTests: XCTestCase {
                 delegate: fakeSessionDelegate!,
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
-                sessionDurationInMinutes: sessionDurationInMinutes)
+                sessionDuration: SessionDuration(minutes: Int(sessionDurationInMinutes))
+            )
     }
 }
   

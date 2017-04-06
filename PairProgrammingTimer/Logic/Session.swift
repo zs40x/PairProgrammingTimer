@@ -11,7 +11,7 @@ import Foundation
 protocol Session  {
     var developer: Developer { get }
     var sessionState: SessionState { get }
-    var sessionDurationInMinutes: Double { get }
+    var sessionDuration: SessionDuration { get }
     
     func toggleState() -> Session
     func changeDevelopers() -> Session
@@ -33,24 +33,24 @@ class ProgrammingSession: Session {
     
     let developer: Developer
     let sessionEndsOn: Date?
-    let sessionDurationInMinutes: Double
+    let sessionDuration: SessionDuration
     
     fileprivate let delegate: SessionDelegate?
     
     private let timer: CountdownTimer
     private let dateTime: DateTime
     
-    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionDelegate?) {
+    init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDuration: SessionDuration, delegate:SessionDelegate?) {
         self.developer = withDeveloper
         self.timer = timer
         self.sessionEndsOn = sessionEndsOn
         self.dateTime = dateTime
-        self.sessionDurationInMinutes = sessionDurationInMinutes
+        self.sessionDuration = sessionDuration
         self.delegate = delegate
     }
     
-    convenience init(withDeveloper: Developer, delegate: SessionDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDurationInMinutes: Double) {
-        self.init(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDurationInMinutes: sessionDurationInMinutes, delegate: delegate)
+    convenience init(withDeveloper: Developer, delegate: SessionDelegate?, timer: CountdownTimer, dateTime: DateTime, sessionDuration: SessionDuration) {
+        self.init(withDeveloper: withDeveloper, timer: timer, sessionEndsOn: nil, dateTime: dateTime, sessionDuration: sessionDuration, delegate: delegate)
     }
     
     var sessionState: SessionState {
@@ -79,7 +79,7 @@ class ProgrammingSession: Session {
     
     private func start() -> Session {
         
-        return startSession(sessionEndsOn: dateTime.currentDateTime().addingTimeInterval(sessionDurationInMinutes * 60))
+        return startSession(sessionEndsOn: dateTime.currentDateTime().addingTimeInterval(sessionDuration.TotalSeconds))
     }
     
     private func stop() -> Session {
@@ -113,7 +113,7 @@ class ProgrammingSession: Session {
                     timer: timer,
                     sessionEndsOn: sessionEndsOn,
                     dateTime: dateTime,
-                    sessionDurationInMinutes: sessionDurationInMinutes,
+                    sessionDuration: sessionDuration,
                     delegate: delegate
                 ).makeRestoredSession(sessionEndsOn: sessionEndsOn)
 
@@ -121,7 +121,7 @@ class ProgrammingSession: Session {
     
     func timeRemaingInSeconds() -> Double {
         
-        guard let sessionEndsOn = sessionEndsOn else { return sessionDurationInMinutes * 60 }
+        guard let sessionEndsOn = sessionEndsOn else { return sessionDuration.TotalSeconds }
         
         let currentDate = dateTime.currentDateTime()
         
@@ -138,7 +138,7 @@ class ProgrammingSession: Session {
         
         return self.sessionEndsOn == otherProgrammingSession.sessionEndsOn
                 && self.developer == otherProgrammingSession.developer
-                && self.sessionDurationInMinutes == otherProgrammingSession.sessionDurationInMinutes
+                && self.sessionDuration == otherProgrammingSession.sessionDuration
                 && self.sessionState == otherProgrammingSession.sessionState
     }
     
@@ -148,7 +148,7 @@ class ProgrammingSession: Session {
             timer: timer,
             sessionEndsOn: sessionEndsOn,
             dateTime: dateTime,
-            sessionDurationInMinutes: sessionDurationInMinutes,
+            sessionDuration: sessionDuration,
             delegate: delegate)
     }
 

@@ -17,3 +17,9 @@ struct SessionDuration {
         self.TotalSeconds = Double(minutes * 60)
     }
 }
+
+extension SessionDuration: Equatable {}
+
+func ==(lhs: SessionDuration, rhs: SessionDuration) -> Bool {
+    return lhs.TotalSeconds == rhs.TotalSeconds
+}
