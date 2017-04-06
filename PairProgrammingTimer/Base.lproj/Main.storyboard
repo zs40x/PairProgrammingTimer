@@ -28,16 +28,27 @@
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-zj-oAr">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="209"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_active" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
-                                                <rect key="frame" x="5" y="5" width="313" height="199"/>
-                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RWC-aW-0FI">
+                                                <rect key="frame" x="5" y="30" width="313" height="149"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_active" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="313" height="115.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-Ny-rtf">
+                                                        <rect key="frame" x="120" y="115.5" width="73" height="33.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="2RS-np-TWe" firstAttribute="top" secondItem="WAn-zj-oAr" secondAttribute="top" constant="5" id="7IR-A2-HQl"/>
-                                            <constraint firstAttribute="trailing" secondItem="2RS-np-TWe" secondAttribute="trailing" constant="5" id="8tb-hf-bYi"/>
-                                            <constraint firstAttribute="bottom" secondItem="2RS-np-TWe" secondAttribute="bottom" constant="5" id="kIa-M0-6mE"/>
-                                            <constraint firstItem="2RS-np-TWe" firstAttribute="leading" secondItem="WAn-zj-oAr" secondAttribute="leading" constant="5" id="x4H-0W-5XY"/>
+                                            <constraint firstItem="RWC-aW-0FI" firstAttribute="leading" secondItem="WAn-zj-oAr" secondAttribute="leading" constant="5" id="Oin-UZ-8DT"/>
+                                            <constraint firstItem="RWC-aW-0FI" firstAttribute="top" secondItem="WAn-zj-oAr" secondAttribute="top" constant="30" id="RN0-KL-tan"/>
+                                            <constraint firstAttribute="trailing" secondItem="RWC-aW-0FI" secondAttribute="trailing" constant="5" id="Vsc-Zq-8YZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="RWC-aW-0FI" secondAttribute="bottom" constant="30" id="kgT-Qv-FFw"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e96-ze-MeQ">
@@ -135,10 +146,10 @@
                         <outlet property="buttonStart" destination="8ay-zD-2UY" id="QFF-iv-ofZ"/>
                         <outlet property="labelTimer" destination="YML-wI-euH" id="wYq-Ob-cpn"/>
                         <outlet property="leftDeveloperImageView" destination="2RS-np-TWe" id="8zt-ls-Uvg"/>
-                        <outlet property="leftImageBottomConstraint" destination="kIa-M0-6mE" id="Kh4-xB-lrQ"/>
-                        <outlet property="leftImageLeadingConstraint" destination="x4H-0W-5XY" id="LoF-3L-IRP"/>
-                        <outlet property="leftImageTopConstraint" destination="7IR-A2-HQl" id="CyK-zc-acv"/>
-                        <outlet property="leftImageTrailingConstraint" destination="8tb-hf-bYi" id="12J-wN-fNu"/>
+                        <outlet property="leftImageBottomConstraint" destination="kgT-Qv-FFw" id="ir2-sA-FlA"/>
+                        <outlet property="leftImageLeadingConstraint" destination="Oin-UZ-8DT" id="NuU-Dt-Gnk"/>
+                        <outlet property="leftImageTopConstraint" destination="RN0-KL-tan" id="YGd-TS-uY4"/>
+                        <outlet property="leftImageTrailingConstraint" destination="Vsc-Zq-8YZ" id="cJ3-bj-bpW"/>
                         <outlet property="rightDeveloperImageView" destination="e1K-ol-Bj8" id="JBA-Ni-Cd7"/>
                         <outlet property="rightImageBottomConstraint" destination="Bjc-9N-Ft6" id="g1E-An-BY8"/>
                         <outlet property="rightImageLeadingConstraint" destination="ujP-OS-gfo" id="mpB-rR-PDg"/>
