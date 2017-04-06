@@ -35,6 +35,7 @@
 		D4B1203C1E37D85E003C93CF /* FakeSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */; };
 		D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203D1E3CA2C6003C93CF /* DateTime.swift */; };
 		D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120431E3EFE73003C93CF /* FakeDateTime.swift */; };
+		D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeSessionDelegate.swift; path = Fakes/FakeSessionDelegate.swift; sourceTree = "<group>"; };
 		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDateTime.swift; path = Fakes/FakeDateTime.swift; sourceTree = "<group>"; };
+		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				D444A67B1E7A4B64000E6682 /* Developer.swift */,
 				D444A6801E7B97CC000E6682 /* SessionState.swift */,
 				D4031F1B1E8D82970068F075 /* SessionDuration.swift */,
+				D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
+				D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */,
 				D4031F1A1E8AE7060068F075 /* AppSettings.swift in Sources */,
 				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */,
 				D4A172491E43A54600B655A9 /* SecondsToHumanReadableDuration.swift in Sources */,

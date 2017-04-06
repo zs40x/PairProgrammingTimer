@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         initializeNotifications()
         initializeConfigurationChangeNotification()
         
+        let developerNames = AppSettings().LastState.developerNames
+        leftDevloperName.text = developerNames.left
+        rightDeveloperName.text = developerNames.right
+        
         updateUserInterface(developer: sessionControl!.developer)
     }
     
@@ -102,7 +106,8 @@ class ViewController: UIViewController {
             AppState(
                 currentDeveloper: developer ?? sessionControl.developer,
                 sessionState: sessionState,
-                sessionEndsOn: sessionEndsOn
+                sessionEndsOn: sessionEndsOn,
+                developerNames: DeveloperNames(left: leftDevloperName.text ?? "", right: rightDeveloperName.text ?? "")
         )
     }
     
