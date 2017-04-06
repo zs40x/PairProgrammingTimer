@@ -212,6 +212,11 @@ extension ViewController : UNUserNotificationCenterDelegate {
         
         NSLog("userNotificationCenter.didReceive: \(response.actionIdentifier)")
         
+        let lastState = appSettings.LastState
+        
+        sessionControl =
+            sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)
+        
         if sessionControl?.sessionState == SessionState.idle {
             NSLog("Igoring action, session idle")
             return
