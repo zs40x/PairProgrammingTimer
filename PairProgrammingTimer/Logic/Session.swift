@@ -11,6 +11,7 @@ import Foundation
 protocol Session  {
     var developer: Developer { get }
     var sessionState: SessionState { get }
+    var sessionDurationInMinutes: Double { get }
     
     func toggleState() -> Session
     func changeDevelopers() -> Session
@@ -32,13 +33,12 @@ class ProgrammingSession: Session {
     
     let developer: Developer
     let sessionEndsOn: Date?
+    let sessionDurationInMinutes: Double
     
     fileprivate let delegate: SessionDelegate?
     
     private let timer: CountdownTimer
     private let dateTime: DateTime
-    private let sessionDurationInMinutes: Double
-    
     
     init(withDeveloper: Developer, timer: CountdownTimer, sessionEndsOn: Date?, dateTime: DateTime, sessionDurationInMinutes: Double, delegate:SessionDelegate?) {
         self.developer = withDeveloper

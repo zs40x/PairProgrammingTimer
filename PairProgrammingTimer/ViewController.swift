@@ -9,12 +9,14 @@
 import UIKit
 import AVFoundation
 import UserNotifications
+import NotificationCenter
 
 class ViewController: UIViewController {
     
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
     private var disableNotificationWarningShown = false
+    
     
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
@@ -38,8 +40,14 @@ class ViewController: UIViewController {
         initializeNotifications()
         initializeProgrammingSession()
         
+        NotificationCenter
+            .default
+            .addObserver(self, selector: #selector(ViewController.configurationChanged), name: UserDefaults.didChangeNotification, object: nil)
+
+        
         updateUserInterface(developer: sessionControl!.developer)
     }
+    
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         
@@ -156,6 +164,16 @@ class ViewController: UIViewController {
                     sessionState: sessionState,
                     sessionEndsOn: sessionEndsOn
                 )
+    }
+    
+    @objc private func configurationChanged(notification: NSNotification) {
+        
+        guard let sessionControl = sessionControl else { return }
+        guard AppSettings().ConfiguredSessionDuration.TotalMinutes != sessionControl.sessionDurationInMinutes else { return }
+        
+        NSLog("NotificationCenter triggered configurationChanged() -- reinitializing programmingSession.")
+        
+        initializeProgrammingSession()
     }
 }
 
