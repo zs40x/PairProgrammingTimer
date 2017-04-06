@@ -23,7 +23,7 @@ protocol Session  {
 
 protocol SessionDelegate {
     func developerChanged(developer: Developer)
-    func sessionStarted(sessionEndsOn: Date)
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer)
     func sessionEnded()
     func countdownExpired()
 }
@@ -72,7 +72,7 @@ class ProgrammingSession: Session {
         
         timer.start(callDelegateWhenExpired: self)
         
-        delegate?.sessionStarted(sessionEndsOn: sessionEndsOn)
+        delegate?.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: developer)
         
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }

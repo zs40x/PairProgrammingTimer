@@ -166,22 +166,28 @@ extension ViewController: CountdownTimerExpiredDelegate {
 extension ViewController: SessionDelegate {
     
     func developerChanged(developer: Developer) {
+        
+        NSLog("SessionDelegage.developerChanged()")
      
         updateUserInterface(developer: developer)
         
         persistAppState(developer: developer, sessionState: sessionControl!.sessionState, sessionEndsOn: Date())
     }
     
-    func sessionStarted(sessionEndsOn: Date) {
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
+        
+        NSLog("SessionDelegage.sessionStarted()")
         
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .active)
         updateTimer.start(callDelegateWhenExpired: self)
         
-        persistAppState(developer: sessionControl?.developer, sessionState: .active, sessionEndsOn: sessionEndsOn)
+        persistAppState(developer: forDeveloper, sessionState: .active, sessionEndsOn: sessionEndsOn)
     }
     
     func sessionEnded() {
+        
+        NSLog("SessionDelegage.sessionEnded()")
          
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .idle)
@@ -192,6 +198,8 @@ extension ViewController: SessionDelegate {
     }
     
     func countdownExpired() {
+        
+        NSLog("SessionDelegage.countdownExpired()")
         
         DispatchQueue.main.async {
             AudioServicesPlaySystemSound(1006)
@@ -212,7 +220,7 @@ extension ViewController : UNUserNotificationCenterDelegate {
         
         NSLog("userNotificationCenter.didReceive: \(response.actionIdentifier)")
         
-        let lastState = appSettings.LastState
+        let lastState = AppSettings().LastState
         
         sessionControl =
             sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)

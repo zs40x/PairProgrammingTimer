@@ -47,7 +47,6 @@ class LocalNotifications: Notifications {
         
         let request = UNNotificationRequest(identifier: self.notificationIdentifier, content: content, trigger: trigger)
         
-        
         center.add(request, withCompletionHandler: { (error) in
             if let error = error {
                 NSLog("Error creating notification: \(error)")

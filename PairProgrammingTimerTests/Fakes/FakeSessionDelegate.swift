@@ -16,14 +16,16 @@ class FakeSessionDelegate: SessionDelegate {
     private(set) var sessionEndedWasCalled = false
     private(set) var countdownExpiredWasCalled = false
     private(set) var sessionStartedWasCalledWithEndDateTime: Date?
+    private(set) var sessionStartedForDeveloper: Developer?
     
     func developerChanged(developer: Developer) {
         developerChangedWasCalled = true
     }
     
-    func sessionStarted(sessionEndsOn: Date) {
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
         sessionStartedWasCalled = true
         sessionStartedWasCalledWithEndDateTime = sessionEndsOn
+        sessionStartedForDeveloper = forDeveloper
     }
     
     func sessionEnded() {
