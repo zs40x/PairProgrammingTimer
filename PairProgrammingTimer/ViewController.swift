@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
+    @IBOutlet weak var leftDevloperName: UILabel!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
+    @IBOutlet weak var rightDeveloperName: UILabel!
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageBottomConstraint: NSLayoutConstraint!

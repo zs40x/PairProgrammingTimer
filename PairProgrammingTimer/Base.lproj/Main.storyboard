@@ -34,8 +34,8 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_active" translatesAutoresizingMaskIntoConstraints="NO" id="2RS-np-TWe">
                                                         <rect key="frame" x="0.0" y="0.0" width="344" height="138.33333333333334"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-Ny-rtf">
-                                                        <rect key="frame" x="135.66666666666666" y="138.33333333333337" width="72.666666666666686" height="33.666666666666657"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="- left -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-Ny-rtf">
+                                                        <rect key="frame" x="130.66666666666666" y="138.33333333333337" width="82.666666666666686" height="33.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -114,8 +114,8 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="developer_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-ol-Bj8">
                                                         <rect key="frame" x="0.0" y="0.0" width="344" height="138.33333333333337"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlP-pt-j7H">
-                                                        <rect key="frame" x="135.66666666666666" y="138.33333333333337" width="72.666666666666686" height="33.666666666666629"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="- right -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlP-pt-j7H">
+                                                        <rect key="frame" x="121.33333333333333" y="138.33333333333337" width="101.33333333333336" height="33.666666666666629"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -149,11 +149,13 @@
                         <outlet property="buttonStart" destination="8ay-zD-2UY" id="QFF-iv-ofZ"/>
                         <outlet property="labelTimer" destination="YML-wI-euH" id="wYq-Ob-cpn"/>
                         <outlet property="leftDeveloperImageView" destination="2RS-np-TWe" id="8zt-ls-Uvg"/>
+                        <outlet property="leftDevloperName" destination="MOo-Ny-rtf" id="W37-rg-axN"/>
                         <outlet property="leftImageBottomConstraint" destination="kgT-Qv-FFw" id="ir2-sA-FlA"/>
                         <outlet property="leftImageLeadingConstraint" destination="Oin-UZ-8DT" id="NuU-Dt-Gnk"/>
                         <outlet property="leftImageTopConstraint" destination="RN0-KL-tan" id="YGd-TS-uY4"/>
                         <outlet property="leftImageTrailingConstraint" destination="Vsc-Zq-8YZ" id="cJ3-bj-bpW"/>
                         <outlet property="rightDeveloperImageView" destination="e1K-ol-Bj8" id="JBA-Ni-Cd7"/>
+                        <outlet property="rightDeveloperName" destination="dlP-pt-j7H" id="Psx-Z0-K0I"/>
                         <outlet property="rightImageBottomConstraint" destination="Bjc-9N-Ft6" id="g1E-An-BY8"/>
                         <outlet property="rightImageLeadingConstraint" destination="ujP-OS-gfo" id="mpB-rR-PDg"/>
                         <outlet property="rightImageTopConstraint" destination="96U-q4-tPE" id="ipG-Jq-yCx"/>
