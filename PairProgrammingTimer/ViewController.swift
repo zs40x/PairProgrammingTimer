@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     private var disableNotificationWarningShown = false
     
-    fileprivate let appSettings = AppSettings()
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
     
@@ -36,23 +35,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sessionDuration = appSettings.ConfiguredSessionDuration
-        let lastState = appSettings.LastState
-        
-        sessionControl =
-            ProgrammingSession(
-                withDeveloper: lastState.currentDeveloper,
-                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
-                timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
-                dateTime: SystemDateTime(),
-                sessionDurationInMinutes: sessionDuration.TotalMinutes)
-
-        sessionControl =
-            sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)
+        initializeNotifications()
+        initializeProgrammingSession()
         
         updateUserInterface(developer: sessionControl!.developer)
-        
-        initializeNotifications()
     }
 
     @IBAction func actionFlipDeveloper(_ sender: Any) {
@@ -92,6 +78,24 @@ class ViewController: UIViewController {
         updateImageOffsets(activeDeveloper: developer)
         updateDeveloperImages(activeDeveloper: developer)
         
+    }
+    
+    private func initializeProgrammingSession() {
+        
+        let appSettings = AppSettings()
+        let sessionDuration = appSettings.ConfiguredSessionDuration
+        let lastState = appSettings.LastState
+        
+        sessionControl =
+            ProgrammingSession(
+                withDeveloper: lastState.currentDeveloper,
+                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
+                timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
+                dateTime: SystemDateTime(),
+                sessionDurationInMinutes: sessionDuration.TotalMinutes)
+        
+        sessionControl =
+            sessionControl?.restoreState(sessionState: lastState.sessionState, sessionEndsOn: lastState.sessionEndsOn)
     }
     
     private func updateDeveloperImages(activeDeveloper: Developer) {
@@ -146,7 +150,7 @@ class ViewController: UIViewController {
         
         guard let sessionControl = sessionControl else { return }
         
-        appSettings.LastState =
+        AppSettings().LastState =
             AppState(
                     currentDeveloper: developer ?? sessionControl.developer,
                     sessionState: sessionState,
