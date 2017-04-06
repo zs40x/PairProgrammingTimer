@@ -17,9 +17,9 @@ class ViewController: UIViewController {
     private let inactiveOffset: CGFloat = 25
     private var disableNotificationWarningShown = false
     
-    
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
+    
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
@@ -34,16 +34,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonStart: UIButton!
     @IBOutlet weak var labelTimer: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initializeNotifications()
         initializeProgrammingSession()
-        
-        NotificationCenter
-            .default
-            .addObserver(self, selector: #selector(ViewController.configurationChanged), name: UserDefaults.didChangeNotification, object: nil)
-
+        initializeNotifications()
+        initializeConfigurationChangeNotification()
         
         updateUserInterface(developer: sessionControl!.developer)
     }
@@ -87,6 +84,26 @@ class ViewController: UIViewController {
         updateDeveloperImages(activeDeveloper: developer)
         
     }
+    
+    fileprivate func updateRemainingTime() {
+        
+        guard let remainingSeconds = sessionControl?.timeRemaingInSeconds() else { return }
+        
+        labelTimer.text = SecondsToHumanReadableDuration(seconds: remainingSeconds).humanReadableTime()
+    }
+    
+    fileprivate func persistAppState(developer: Developer?, sessionState: SessionState, sessionEndsOn: Date) {
+        
+        guard let sessionControl = sessionControl else { return }
+        
+        AppSettings().LastState =
+            AppState(
+                currentDeveloper: developer ?? sessionControl.developer,
+                sessionState: sessionState,
+                sessionEndsOn: sessionEndsOn
+        )
+    }
+    
     
     private func initializeProgrammingSession() {
         
@@ -133,14 +150,7 @@ class ViewController: UIViewController {
         rightImageLeadingConstraint.constant = offset
         rightImageTrailingConstraint.constant = offset
     }
-    
-    fileprivate func updateRemainingTime() {
-        
-        guard let remainingSeconds = sessionControl?.timeRemaingInSeconds() else { return }
-        
-        labelTimer.text = SecondsToHumanReadableDuration(seconds: remainingSeconds).humanReadableTime()
-    }
-    
+
     private func initializeNotifications() {
         
         UNUserNotificationCenter.current().delegate = self
@@ -154,16 +164,15 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
     
-    fileprivate func persistAppState(developer: Developer?, sessionState: SessionState, sessionEndsOn: Date) {
+    private func initializeConfigurationChangeNotification() {
         
-        guard let sessionControl = sessionControl else { return }
-        
-        AppSettings().LastState =
-            AppState(
-                    currentDeveloper: developer ?? sessionControl.developer,
-                    sessionState: sessionState,
-                    sessionEndsOn: sessionEndsOn
-                )
+        NotificationCenter
+            .default
+            .addObserver(
+                self,
+                selector: #selector(ViewController.configurationChanged),
+                name: UserDefaults.didChangeNotification,
+                object: nil)
     }
     
     @objc private func configurationChanged(notification: NSNotification) {
@@ -174,6 +183,7 @@ class ViewController: UIViewController {
         NSLog("NotificationCenter triggered configurationChanged() -- reinitializing programmingSession.")
         
         initializeProgrammingSession()
+        updateRemainingTime()
     }
 }
 
