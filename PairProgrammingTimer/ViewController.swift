@@ -56,13 +56,14 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         
-        if     !AppDelegate.current().localNotificationsEnabled
-            && sessionControl?.sessionState == .idle
-            && !disableNotificationWarningShown {
+        if !AppDelegate.current().localNotificationsEnabled
+                && sessionControl?.sessionState == .idle
+                && !disableNotificationWarningShown {
+            
             let alert =
                 UIAlertController(
                     title: "Notifications disabled",
-                    message: "To recreive notifications when the app is not in the foreground enable them in the system settings.",
+                    message: "To receive notifications when the app is not in the foreground please enable them in the system settings.",
                     preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
             self.present(alert, animated: true, completion: nil)
@@ -185,11 +186,17 @@ class ViewController: UIViewController {
         
         UNUserNotificationCenter.current().delegate = self
         
-        let actionStop = UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
-        let actionChangeDeveloper = UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
+        let actionStop =
+            UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
+        
+        let actionChangeDeveloper =
+            UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
         
         let stopSessionCategory =
-            UNNotificationCategory(identifier: Notification.Category.sessionExpired, actions: [actionStop, actionChangeDeveloper], intentIdentifiers: [], options: [])
+            UNNotificationCategory(
+                identifier: Notification.Category.sessionExpired,
+                actions: [actionStop, actionChangeDeveloper],
+                intentIdentifiers: [], options: [])
         
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
