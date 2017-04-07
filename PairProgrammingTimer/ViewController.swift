@@ -242,18 +242,20 @@ class ViewController: UIViewController {
     private func changeDeveloperName(targetDeveloperLabel: UILabel) {
         let alertController = UIAlertController(title: NSLocalizedString("EnterDeveloperName", comment: ""), message: "", preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { (_) in
-            let field = alertController.textFields![0] as UITextField
-            guard let developerName = field.text else { return }
-            targetDeveloperLabel.text = developerName
-            AppSettings().developerNames = DeveloperNames(left: self.leftDevloperName.text! , right: self.rightDeveloperName.text!)
-        }
-        
         alertController.addTextField(configurationHandler: { textField in
             textField.placeholder = NSLocalizedString("Name", comment: "")
         })
         
-        alertController.addAction(confirmAction)
+        alertController.addAction(
+            UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { (_) in
+                let field = alertController.textFields![0] as UITextField
+                guard let developerName = field.text else { return }
+                targetDeveloperLabel.text = developerName
+                AppSettings().developerNames = DeveloperNames(left: self.leftDevloperName.text! , right: self.rightDeveloperName.text!)
+            })
+
+        alertController.addAction(
+            UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .destructive, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }

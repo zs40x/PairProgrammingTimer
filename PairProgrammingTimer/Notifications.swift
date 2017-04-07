@@ -39,7 +39,7 @@ class LocalNotifications: Notifications {
         
         let content = UNMutableNotificationContent()
         content.title = "PairProgrammingTimer"
-        content.body = "Session timer expired!"
+        content.body = NSLocalizedString("SessionTimerExpired", comment: "Session timer expired!")
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = Notification.Category.sessionExpired
 

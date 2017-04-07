@@ -1,6 +1,9 @@
 /* Change developer */
 "ChangeDeveloper" = "Entwickler wechseln";
 
+/* Cancel */
+"Cancel" = "Abbrechen";
+
 /* No comment provided by engineer. */
 "Confirm" = "Bestätigen";
 
@@ -15,6 +18,9 @@
 
 /* Ask user to enable the notifications */
 "PleaseEnableNotifications" = "Um eine abgelaufene Sitzung zu melden wenn die App nicht geöffnet ist müssen die Benachrichtigungen aktiviert sein. Bitte aktivieren Sie diese in den Einstellungen der App.";
+
+/* Session timer expired! */
+"SessionTimerExpired" = "Sitzung abgelaufen!";
 
 /* Stop Session */
 "StopSession" = "Sitzung beenden";
