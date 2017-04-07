@@ -2,7 +2,7 @@
 "ChangeDeveloper" = "Change developer";
 
 /* No comment provided by engineer. */
-"Confirm" = "Bestätigen";
+"Confirm" = "Confirm";
 
 /* No comment provided by engineer. */
 "EnterDeveloperName" = "Developer name?";
@@ -17,4 +17,4 @@
 "PleaseEnableNotifications" = "To receive notifications when the app is not in the foreground please enable them in the system settings.";
 
 /* Stop Session */
-"StopSession" = "Sitzung beenden";
+"StopSession" = "Stop session";
