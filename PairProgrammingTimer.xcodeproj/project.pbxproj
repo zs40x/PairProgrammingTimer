@@ -83,6 +83,8 @@
 		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDateTime.swift; path = Fakes/FakeDateTime.swift; sourceTree = "<group>"; };
 		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
+		D4F3A6691E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		D4F3A66A1E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +392,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D40BCBA81E2D42A90005350B /* Base */,
+				D4F3A6691E97773A004F79C4 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D40BCBAD1E2D42A90005350B /* Base */,
+				D4F3A66A1E97773A004F79C4 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -458,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4eA-AS-8Bv"; */
+"4eA-AS-8Bv.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8ay-zD-2UY"; */
+"8ay-zD-2UY.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "- left -"; ObjectID = "MOo-Ny-rtf"; */
+"MOo-Ny-rtf.text" = "- left -";
+
+/* Class = "UILabel"; text = "120:00"; ObjectID = "YML-wI-euH"; */
+"YML-wI-euH.text" = "120:00";
+
+/* Class = "UILabel"; text = "- right -"; ObjectID = "dlP-pt-j7H"; */
+"dlP-pt-j7H.text" = "- right -";
