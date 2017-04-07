@@ -19,5 +19,8 @@
 /* Ask user to enable the notifications */
 "PleaseEnableNotifications" = "To receive notifications when the app is not in the foreground please enable them in the system settings.";
 
+/* Session timer expired! */
+"SessionTimerExpired" = "Session timer expired!";
+
 /* Stop Session */
 "StopSession" = "Stop session";

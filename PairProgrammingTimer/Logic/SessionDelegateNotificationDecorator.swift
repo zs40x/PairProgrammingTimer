@@ -26,7 +26,7 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
     }
     
     func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
-        notifications.register()
+        notifications.register(developerName: developerName(forDeveloper))
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper)
     }
     
@@ -37,5 +37,11 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
     
     func countdownExpired() {
         other.countdownExpired()
+    }
+    
+    private func developerName(_ developer: Developer) -> String {
+        let developerNames = AppSettings().developerNames
+        
+        return developer == .left ? developerNames.left : developerNames.right
     }
 }

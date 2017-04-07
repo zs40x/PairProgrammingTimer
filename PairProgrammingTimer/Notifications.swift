@@ -20,7 +20,7 @@ struct Notification {
 }
 
 protocol Notifications {
-    func register()
+    func register(developerName: String)
     func cancelPending()
 }
 
@@ -33,13 +33,13 @@ class LocalNotifications: Notifications {
         self.timeInterval = timeInterval
     }
  
-    func register() {
+    func register(developerName: String) {
         
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
         content.title = "PairProgrammingTimer"
-        content.body = NSLocalizedString("SessionTimerExpired", comment: "Session timer expired!")
+        content.body = "@" + developerName + " -> " + NSLocalizedString("SessionTimerExpired", comment: "Session timer expired!")
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = Notification.Category.sessionExpired
 
