@@ -12,6 +12,8 @@ private enum ConfigurationKey: String {
     case CurrentDeveloper = "CurrentDeveloper"
     case SessionState = "SessionState"
     case SessionEndsOn = "SessionEndsOn"
+    case LeftDeveloperName = "LeftDeveloperName"
+    case RightDeveloperName = "RightDeveloperName"
     case SessionDuration = "session_duration"
 }
 
@@ -42,6 +44,18 @@ class AppSettings {
             userDefaults.set(appState.currentDeveloper.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
             userDefaults.set(appState.sessionState.rawValue, forKey: ConfigurationKey.SessionState.rawValue)
             userDefaults.set(appState.sessionEndsOn, forKey: ConfigurationKey.SessionEndsOn.rawValue)
+        }
+    }
+    
+    var developerNames: DeveloperNames {
+        get {
+            return DeveloperNames(
+                    left: userDefaults.string(forKey: ConfigurationKey.LeftDeveloperName.rawValue) ?? "Developer 1",
+                    right: userDefaults.string(forKey: ConfigurationKey.RightDeveloperName.rawValue) ?? "Developer 2")
+        }
+        set(developerNames) {
+            userDefaults.set(developerNames.left, forKey: ConfigurationKey.LeftDeveloperName.rawValue)
+            userDefaults.set(developerNames.right, forKey: ConfigurationKey.RightDeveloperName.rawValue)
         }
     }
 }

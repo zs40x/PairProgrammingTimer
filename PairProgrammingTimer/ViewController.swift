@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
+    @IBOutlet weak var leftDevloperName: UILabel!
     @IBOutlet weak var rightDeveloperImageView: UIImageView!
+    @IBOutlet weak var rightDeveloperName: UILabel!
     @IBOutlet weak var leftImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftImageBottomConstraint: NSLayoutConstraint!
@@ -38,6 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeDeveloperNames()
         initializeProgrammingSession()
         initializeNotifications()
         initializeConfigurationChangeNotification()
@@ -53,13 +56,14 @@ class ViewController: UIViewController {
     
     @IBAction func actionStart(_ sender: Any) {
         
-        if     !AppDelegate.current().localNotificationsEnabled
-            && sessionControl?.sessionState == .idle
-            && !disableNotificationWarningShown {
+        if !AppDelegate.current().localNotificationsEnabled
+                && sessionControl?.sessionState == .idle
+                && !disableNotificationWarningShown {
+            
             let alert =
                 UIAlertController(
                     title: "Notifications disabled",
-                    message: "To recreive notifications when the app is not in the foreground enable them in the system settings.",
+                    message: "To receive notifications when the app is not in the foreground please enable them in the system settings.",
                     preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
             self.present(alert, animated: true, completion: nil)
@@ -101,7 +105,7 @@ class ViewController: UIViewController {
                 currentDeveloper: developer ?? sessionControl.developer,
                 sessionState: sessionState,
                 sessionEndsOn: sessionEndsOn
-        )
+            )
     }
     
     
@@ -150,16 +154,49 @@ class ViewController: UIViewController {
         rightImageLeadingConstraint.constant = offset
         rightImageTrailingConstraint.constant = offset
     }
+    
+    private func initializeDeveloperNames() {
+        
+        let developerNames = AppSettings().developerNames
+        
+        initializeDeveloperName(
+            name: developerNames.left,
+            imageView: leftDeveloperImageView,
+            label: leftDevloperName,
+            action: #selector(self.leftDevloperImageTapped))
+        
+        initializeDeveloperName(
+            name: developerNames.right,
+            imageView: rightDeveloperImageView,
+            label: rightDeveloperName,
+            action: #selector(self.rightDeveloperImageTapped))
+    }
+    
+    private func initializeDeveloperName(name: String, imageView: UIImageView, label: UILabel, action: Selector) {
+        
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        
+        label.text = name
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+    }
 
     private func initializeNotifications() {
         
         UNUserNotificationCenter.current().delegate = self
         
-        let actionStop = UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
-        let actionChangeDeveloper = UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
+        let actionStop =
+            UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
+        
+        let actionChangeDeveloper =
+            UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
         
         let stopSessionCategory =
-            UNNotificationCategory(identifier: Notification.Category.sessionExpired, actions: [actionStop, actionChangeDeveloper], intentIdentifiers: [], options: [])
+            UNNotificationCategory(
+                identifier: Notification.Category.sessionExpired,
+                actions: [actionStop, actionChangeDeveloper],
+                intentIdentifiers: [], options: [])
         
         UNUserNotificationCenter.current().setNotificationCategories([stopSessionCategory])
     }
@@ -184,6 +221,36 @@ class ViewController: UIViewController {
         
         initializeProgrammingSession()
         updateRemainingTime()
+    }
+    
+    @objc private func leftDevloperImageTapped() {
+        
+        changeDeveloperName(targetDeveloperLabel: leftDevloperName)
+    }
+    
+    @objc private func rightDeveloperImageTapped() {
+        
+        changeDeveloperName(targetDeveloperLabel: rightDeveloperName)
+    }
+    
+    private func changeDeveloperName(targetDeveloperLabel: UILabel) {
+        let alertController = UIAlertController(title: "Developer Name?", message: "", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            let field = alertController.textFields![0] as UITextField
+            guard let developerName = field.text else { return }
+            targetDeveloperLabel.text = developerName
+            AppSettings().developerNames = DeveloperNames(left: self.leftDevloperName.text! , right: self.rightDeveloperName.text!)
+        }
+        
+        alertController.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Name"
+            textField.text = targetDeveloperLabel.text!
+        })
+        
+        alertController.addAction(confirmAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
 
