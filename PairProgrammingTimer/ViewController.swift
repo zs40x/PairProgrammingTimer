@@ -62,8 +62,8 @@ class ViewController: UIViewController {
             
             let alert =
                 UIAlertController(
-                    title: "Notifications disabled",
-                    message: "To receive notifications when the app is not in the foreground please enable them in the system settings.",
+                    title: NSLocalizedString("NotificationsDisabled", comment: "Notifications are disabled"),
+                    message: NSLocalizedString("PleaseEnableNotifications", comment: "Ask user to enable the notifications"),
                     preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
             self.present(alert, animated: true, completion: nil)
@@ -187,10 +187,16 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = self
         
         let actionStop =
-            UNNotificationAction(identifier: Notification.Action.stopSession, title: "Stop session", options: [])
+            UNNotificationAction(
+                identifier: Notification.Action.stopSession,
+                title: NSLocalizedString("StopSession", comment: "Stop Session"),
+                options: [])
         
         let actionChangeDeveloper =
-            UNNotificationAction(identifier: Notification.Action.changeDeveloper, title: "Change developer", options: [])
+            UNNotificationAction(
+                identifier: Notification.Action.changeDeveloper,
+                title: NSLocalizedString("ChangeDeveloper", comment: "Change developer"),
+                options: [])
         
         let stopSessionCategory =
             UNNotificationCategory(
@@ -234,9 +240,9 @@ class ViewController: UIViewController {
     }
     
     private func changeDeveloperName(targetDeveloperLabel: UILabel) {
-        let alertController = UIAlertController(title: "Developer Name?", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("EnterDeveloperName", comment: ""), message: "", preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { (_) in
             let field = alertController.textFields![0] as UITextField
             guard let developerName = field.text else { return }
             targetDeveloperLabel.text = developerName
@@ -244,8 +250,7 @@ class ViewController: UIViewController {
         }
         
         alertController.addTextField(configurationHandler: { textField in
-            textField.placeholder = "Name"
-            textField.text = targetDeveloperLabel.text!
+            textField.placeholder = NSLocalizedString("Name", comment: "")
         })
         
         alertController.addAction(confirmAction)

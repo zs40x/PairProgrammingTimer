@@ -1,0 +1,20 @@
+/* Change developer */
+"ChangeDeveloper" = "Change developer";
+
+/* No comment provided by engineer. */
+"Confirm" = "Bestätigen";
+
+/* No comment provided by engineer. */
+"EnterDeveloperName" = "Developer name?";
+
+/* No comment provided by engineer. */
+"Name" = "Name";
+
+/* Notifications are disabled */
+"NotificationsDisabled" = "Notifications disabled";
+
+/* Ask user to enable the notifications */
+"PleaseEnableNotifications" = "To receive notifications when the app is not in the foreground please enable them in the system settings.";
+
+/* Stop Session */
+"StopSession" = "Sitzung beenden";
