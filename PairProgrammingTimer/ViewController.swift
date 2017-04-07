@@ -40,17 +40,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeDeveloperNames()
         initializeProgrammingSession()
         initializeNotifications()
         initializeConfigurationChangeNotification()
-        
-        let developerNames = AppSettings().developerNames
-        leftDevloperName.text = developerNames.left
-        rightDeveloperName.text = developerNames.right
-        
-        let leftDevTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.leftDevloperImageTapped))
-        leftDeveloperImageView.isUserInteractionEnabled = true
-        leftDeveloperImageView.addGestureRecognizer(leftDevTapGestureRecognizer)
         
         updateUserInterface(developer: sessionControl!.developer)
     }
@@ -160,6 +153,33 @@ class ViewController: UIViewController {
         rightImageLeadingConstraint.constant = offset
         rightImageTrailingConstraint.constant = offset
     }
+    
+    private func initializeDeveloperNames() {
+        
+        let developerNames = AppSettings().developerNames
+        
+        initializeDeveloperName(
+            name: developerNames.left,
+            imageView: leftDeveloperImageView,
+            label: leftDevloperName,
+            action: #selector(self.leftDevloperImageTapped))
+        
+        initializeDeveloperName(
+            name: developerNames.right,
+            imageView: rightDeveloperImageView,
+            label: rightDeveloperName,
+            action: #selector(self.rightDeveloperImageTapped))
+    }
+    
+    private func initializeDeveloperName(name: String, imageView: UIImageView, label: UILabel, action: Selector) {
+        
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+        
+        label.text = name
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+    }
 
     private func initializeNotifications() {
         
@@ -198,27 +218,32 @@ class ViewController: UIViewController {
     
     @objc private func leftDevloperImageTapped() {
         
+        changeDeveloperName(targetDeveloperLabel: leftDevloperName)
+    }
+    
+    @objc private func rightDeveloperImageTapped() {
+        
+        changeDeveloperName(targetDeveloperLabel: rightDeveloperName)
+    }
+    
+    private func changeDeveloperName(targetDeveloperLabel: UILabel) {
         let alertController = UIAlertController(title: "Developer Name?", message: "", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             let field = alertController.textFields![0] as UITextField
             guard let developerName = field.text else { return }
-            AppSettings().developerNames = DeveloperNames(left: developerName , right: self.rightDeveloperName.text!)
-            self.leftDevloperName.text = developerName
+            targetDeveloperLabel.text = developerName
+            AppSettings().developerNames = DeveloperNames(left: self.leftDevloperName.text! , right: self.rightDeveloperName.text!)
         }
         
         alertController.addTextField(configurationHandler: { textField in
             textField.placeholder = "Name"
-            textField.text = self.leftDevloperName.text!
+            textField.text = targetDeveloperLabel.text!
         })
         
         alertController.addAction(confirmAction)
         
         present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc private func rightDeveloperImageTapped() {
-        
     }
 }
 
