@@ -50,8 +50,8 @@ class AppSettings {
     var developerNames: DeveloperNames {
         get {
             return DeveloperNames(
-                    left: userDefaults.string(forKey: ConfigurationKey.LeftDeveloperName.rawValue) ?? "n/a",
-                    right: userDefaults.string(forKey: ConfigurationKey.RightDeveloperName.rawValue) ?? "n/a")
+                    left: userDefaults.string(forKey: ConfigurationKey.LeftDeveloperName.rawValue) ?? "Developer 1",
+                    right: userDefaults.string(forKey: ConfigurationKey.RightDeveloperName.rawValue) ?? "Developer 2")
         }
         set(developerNames) {
             userDefaults.set(developerNames.left, forKey: ConfigurationKey.LeftDeveloperName.rawValue)
