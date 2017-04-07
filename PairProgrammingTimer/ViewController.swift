@@ -44,9 +44,13 @@ class ViewController: UIViewController {
         initializeNotifications()
         initializeConfigurationChangeNotification()
         
-        let developerNames = AppSettings().LastState.developerNames
+        let developerNames = AppSettings().developerNames
         leftDevloperName.text = developerNames.left
         rightDeveloperName.text = developerNames.right
+        
+        let leftDevTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.leftDevloperImageTapped))
+        leftDeveloperImageView.isUserInteractionEnabled = true
+        leftDeveloperImageView.addGestureRecognizer(leftDevTapGestureRecognizer)
         
         updateUserInterface(developer: sessionControl!.developer)
     }
@@ -106,9 +110,8 @@ class ViewController: UIViewController {
             AppState(
                 currentDeveloper: developer ?? sessionControl.developer,
                 sessionState: sessionState,
-                sessionEndsOn: sessionEndsOn,
-                developerNames: DeveloperNames(left: leftDevloperName.text ?? "", right: rightDeveloperName.text ?? "")
-        )
+                sessionEndsOn: sessionEndsOn
+            )
     }
     
     
@@ -191,6 +194,31 @@ class ViewController: UIViewController {
         
         initializeProgrammingSession()
         updateRemainingTime()
+    }
+    
+    @objc private func leftDevloperImageTapped() {
+        
+        let alertController = UIAlertController(title: "Developer Name?", message: "", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            let field = alertController.textFields![0] as UITextField
+            guard let developerName = field.text else { return }
+            AppSettings().developerNames = DeveloperNames(left: developerName , right: self.rightDeveloperName.text!)
+            self.leftDevloperName.text = developerName
+        }
+        
+        alertController.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Name"
+            textField.text = self.leftDevloperName.text!
+        })
+        
+        alertController.addAction(confirmAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc private func rightDeveloperImageTapped() {
+        
     }
 }
 

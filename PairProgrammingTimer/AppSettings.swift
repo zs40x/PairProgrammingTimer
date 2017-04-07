@@ -37,16 +37,25 @@ class AppSettings {
             return AppState(
                     currentDeveloper: Developer(rawValue: userDefaults.integer(forKey: ConfigurationKey.CurrentDeveloper.rawValue))!,
                     sessionState: SessionState(rawValue: userDefaults.integer(forKey: ConfigurationKey.SessionState.rawValue))!,
-                    sessionEndsOn: userDefaults.object(forKey: ConfigurationKey.SessionEndsOn.rawValue) as? Date ?? Date(),
-                    developerNames: DeveloperNames(
-                                        left: userDefaults.string(forKey: ConfigurationKey.LeftDeveloperName.rawValue) ?? "",
-                                        right: userDefaults.string(forKey: ConfigurationKey.RightDeveloperName.rawValue) ?? "")
+                    sessionEndsOn: userDefaults.object(forKey: ConfigurationKey.SessionEndsOn.rawValue) as? Date ?? Date()
                 )
         }
         set (appState) {
             userDefaults.set(appState.currentDeveloper.rawValue, forKey: ConfigurationKey.CurrentDeveloper.rawValue)
             userDefaults.set(appState.sessionState.rawValue, forKey: ConfigurationKey.SessionState.rawValue)
             userDefaults.set(appState.sessionEndsOn, forKey: ConfigurationKey.SessionEndsOn.rawValue)
+        }
+    }
+    
+    var developerNames: DeveloperNames {
+        get {
+            return DeveloperNames(
+                    left: userDefaults.string(forKey: ConfigurationKey.LeftDeveloperName.rawValue) ?? "n/a",
+                    right: userDefaults.string(forKey: ConfigurationKey.RightDeveloperName.rawValue) ?? "n/a")
+        }
+        set(developerNames) {
+            userDefaults.set(developerNames.left, forKey: ConfigurationKey.LeftDeveloperName.rawValue)
+            userDefaults.set(developerNames.right, forKey: ConfigurationKey.RightDeveloperName.rawValue)
         }
     }
 }
