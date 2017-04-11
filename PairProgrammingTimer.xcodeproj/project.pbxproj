@@ -12,7 +12,7 @@
 		D4031F1C1E8D82970068F075 /* SessionDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4031F1B1E8D82970068F075 /* SessionDuration.swift */; };
 		D4031F1E1E8D83320068F075 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4031F1D1E8D83320068F075 /* AppState.swift */; };
 		D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA31E2D42A90005350B /* AppDelegate.swift */; };
-		D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA51E2D42A90005350B /* ViewController.swift */; };
+		D40BCBA61E2D42A90005350B /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BCBA51E2D42A90005350B /* SessionViewController.swift */; };
 		D40BCBA91E2D42A90005350B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBA71E2D42A90005350B /* Main.storyboard */; };
 		D40BCBAB1E2D42A90005350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAA1E2D42A90005350B /* Assets.xcassets */; };
 		D40BCBAE1E2D42A90005350B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */; };
@@ -35,6 +35,7 @@
 		D4B1203C1E37D85E003C93CF /* FakeSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */; };
 		D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1203D1E3CA2C6003C93CF /* DateTime.swift */; };
 		D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120431E3EFE73003C93CF /* FakeDateTime.swift */; };
+		D4EC22511E9CF34D0058B01E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22501E9CF34D0058B01E /* MainViewController.swift */; };
 		D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */; };
 		D4F3A6751E977CC0004F79C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A6771E977CC0004F79C4 /* Localizable.strings */; };
 		D4F3A67A1E977CC1004F79C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A67C1E977CC1004F79C4 /* InfoPlist.strings */; };
@@ -58,7 +59,7 @@
 		D4031F1D1E8D83320068F075 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Data/AppState.swift; sourceTree = "<group>"; };
 		D40BCBA01E2D42A90005350B /* PairProgrammingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PairProgrammingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBA31E2D42A90005350B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D40BCBA51E2D42A90005350B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D40BCBA51E2D42A90005350B /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		D40BCBA81E2D42A90005350B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D40BCBAA1E2D42A90005350B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D40BCBAD1E2D42A90005350B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeSessionDelegate.swift; path = Fakes/FakeSessionDelegate.swift; sourceTree = "<group>"; };
 		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDateTime.swift; path = Fakes/FakeDateTime.swift; sourceTree = "<group>"; };
+		D4EC22501E9CF34D0058B01E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
 		D4F3A6691E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D4F3A66A1E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -149,7 +151,8 @@
 				D4B120301E367BA4003C93CF /* Logic */,
 				D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */,
 				D40BCBA31E2D42A90005350B /* AppDelegate.swift */,
-				D40BCBA51E2D42A90005350B /* ViewController.swift */,
+				D4EC22501E9CF34D0058B01E /* MainViewController.swift */,
+				D40BCBA51E2D42A90005350B /* SessionViewController.swift */,
 				D40BCBA71E2D42A90005350B /* Main.storyboard */,
 				D40BCBAA1E2D42A90005350B /* Assets.xcassets */,
 				D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */,
@@ -357,7 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40BCBC41E2D56B20005350B /* Timer.swift in Sources */,
-				D40BCBA61E2D42A90005350B /* ViewController.swift in Sources */,
+				D40BCBA61E2D42A90005350B /* SessionViewController.swift in Sources */,
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 				D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */,
 				D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */,
@@ -365,6 +368,7 @@
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
 				D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */,
 				D4031F1A1E8AE7060068F075 /* AppSettings.swift in Sources */,
+				D4EC22511E9CF34D0058B01E /* MainViewController.swift in Sources */,
 				D444A67F1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift in Sources */,
 				D4A172491E43A54600B655A9 /* SecondsToHumanReadableDuration.swift in Sources */,
 				D4031F1E1E8D83320068F075 /* AppState.swift in Sources */,

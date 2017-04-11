@@ -11,7 +11,7 @@ import AVFoundation
 import UserNotifications
 import NotificationCenter
 
-class ViewController: UIViewController {
+class SessionViewController: UIViewController {
     
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
@@ -213,7 +213,7 @@ class ViewController: UIViewController {
             .default
             .addObserver(
                 self,
-                selector: #selector(ViewController.configurationChanged),
+                selector: #selector(SessionViewController.configurationChanged),
                 name: UserDefaults.didChangeNotification,
                 object: nil)
     }
@@ -261,7 +261,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CountdownTimerExpiredDelegate {
+extension SessionViewController: CountdownTimerExpiredDelegate {
     
     func timerExpired() {
         
@@ -269,7 +269,7 @@ extension ViewController: CountdownTimerExpiredDelegate {
     }
 }
 
-extension ViewController: SessionDelegate {
+extension SessionViewController: SessionDelegate {
     
     func developerChanged(developer: Developer) {
         
@@ -320,7 +320,7 @@ extension ViewController: SessionDelegate {
     }
 }
 
-extension ViewController : UNUserNotificationCenterDelegate {
+extension SessionViewController : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
