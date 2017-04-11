@@ -19,7 +19,7 @@ class SessionViewController: UIViewController {
     
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
-    
+    static let sessionLog = SessionLog(dateTime: SystemDateTime())
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var leftDevloperName: UILabel!
@@ -48,7 +48,6 @@ class SessionViewController: UIViewController {
         updateUserInterface(developer: sessionControl!.developer)
     }
     
-
     @IBAction func actionFlipDeveloper(_ sender: Any) {
         
         sessionControl = sessionControl?.changeDevelopers()
@@ -118,7 +117,14 @@ class SessionViewController: UIViewController {
         sessionControl =
             ProgrammingSession(
                 withDeveloper: lastState.currentDeveloper,
-                delegate: SessionDelegateNotificationDecorator(other: self, notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)),
+                delegate:
+                    SessionDelegateNotificationDecorator(
+                        other: SessionDelegateLogDecorator(
+                                    other: self,
+                                    log: SessionViewController.sessionLog
+                                ),
+                        notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)
+                    ),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
                 sessionDuration: sessionDuration)

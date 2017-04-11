@@ -8,31 +8,41 @@
 
 import Foundation
 
-class SessionLog {
-    
-    fileprivate(set) var entries = [SessionLogEntry]()
+protocol SessionLogDelegate {
+    func logUpdated()
 }
 
-extension SessionLog: SessionDelegate {
+class SessionLog {
     
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
+    private let dateTime: DateTime
+    private(set) var entries = [SessionLogEntry]()
+    
+    var delegate: SessionLogDelegate?
+    
+    
+    init(dateTime: DateTime) {
+        self.dateTime = dateTime
+    }
+ 
+    func sessionStarted(forDeveloper: Developer) {
     
         entries.append(
             SessionLogEntry(
                 uuid: UUID(),
-                startedOn: Date(),
+                startedOn: dateTime.currentDateTime(),
                 endedOn: nil,
                 developerName: "n/a"))
+        
+        delegate?.logUpdated()
     }
     
     func sessionEnded() {
         
         guard var lastEntry = entries.last else { return }
         
-        lastEntry.endedOn = Date()
+        lastEntry.endedOn = dateTime.currentDateTime()
+        
+        delegate?.logUpdated()
     }
     
-    func countdownExpired() { }
-    
-    func developerChanged(developer: Developer) { }
 }

@@ -39,6 +39,7 @@
 		D4EC22531E9CF8410058B01E /* SessionLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */; };
 		D4EC22551E9D1F750058B01E /* SessionLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */; };
 		D4EC22571E9D1FC80058B01E /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22561E9D1FC80058B01E /* SessionLog.swift */; };
+		D4EC22591E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */; };
 		D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */; };
 		D4F3A6751E977CC0004F79C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A6771E977CC0004F79C4 /* Localizable.strings */; };
 		D4F3A67A1E977CC1004F79C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A67C1E977CC1004F79C4 /* InfoPlist.strings */; };
@@ -93,6 +94,7 @@
 		D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogViewController.swift; sourceTree = "<group>"; };
 		D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogEntry.swift; sourceTree = "<group>"; };
 		D4EC22561E9D1FC80058B01E /* SessionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLog.swift; path = Logic/SessionLog.swift; sourceTree = "<group>"; };
+		D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateLogDecorator.swift; path = Logic/SessionDelegateLogDecorator.swift; sourceTree = "<group>"; };
 		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
 		D4F3A6691E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D4F3A66A1E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				D4B120311E367C58003C93CF /* Session.swift */,
 				D4A172481E43A54600B655A9 /* SecondsToHumanReadableDuration.swift */,
+				D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */,
 				D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */,
 				D4EC22561E9D1FC80058B01E /* SessionLog.swift */,
 			);
@@ -368,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EC22591E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift in Sources */,
 				D4EC22551E9D1F750058B01E /* SessionLogEntry.swift in Sources */,
 				D40BCBC41E2D56B20005350B /* Timer.swift in Sources */,
 				D40BCBA61E2D42A90005350B /* SessionViewController.swift in Sources */,
