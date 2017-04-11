@@ -27,18 +27,6 @@ class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             animated: true,
             completion: nil)
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        for view in view.subviews {
-            if view is UIScrollView {
-                view.frame = UIScreen.main.bounds
-            }
-            else if view is UIPageControl {
-                view.backgroundColor = UIColor.clear
-            }
-        }
-    }
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
