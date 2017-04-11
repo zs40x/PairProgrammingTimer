@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    let pages = ["SessionViewController"]
+    let pages = ["SessionViewController", "SessionLogViewController"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

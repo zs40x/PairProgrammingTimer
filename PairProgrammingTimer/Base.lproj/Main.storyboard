@@ -13,7 +13,7 @@
         <!--Session View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SessionViewController" id="BYZ-38-t0r" customClass="SessionViewController" customModule="PairProgrammingTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SessionViewController" customModule="PairProgrammingTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -169,7 +169,7 @@
         <!--Session Log View Controller-->
         <scene sceneID="bbI-cV-NaZ">
             <objects>
-                <viewController id="LFL-KI-Bn6" customClass="SessionLogViewController" customModule="PairProgrammingTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionLogViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LFL-KI-Bn6" customClass="SessionLogViewController" customModule="PairProgrammingTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pdn-Fs-am4"/>
                         <viewControllerLayoutGuide type="bottom" id="aGt-gt-DZc"/>
