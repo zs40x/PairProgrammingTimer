@@ -24,7 +24,7 @@ class SessionLog {
         self.dateTime = dateTime
     }
  
-    func sessionStarted(forDeveloper: Developer) {
+    func sessionStarted(developerName: String) {
     
         endLastEntry()
         
@@ -33,7 +33,7 @@ class SessionLog {
                 uuid: UUID(),
                 startedOn: dateTime.currentDateTime(),
                 endedOn: nil,
-                developerName: "n/a"))
+                developerName: developerName))
         
         delegate?.logUpdated()
     }
