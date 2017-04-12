@@ -40,7 +40,9 @@ class SessionLog {
         
         guard var lastEntry = entries.last else { return }
         
+        entries.removeLast()
         lastEntry.endedOn = dateTime.currentDateTime()
+        entries.append(lastEntry)
         
         delegate?.logUpdated()
     }
