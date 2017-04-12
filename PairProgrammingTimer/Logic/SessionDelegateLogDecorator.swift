@@ -22,6 +22,7 @@ class SessionDelegateLogDecorator {
 extension SessionDelegateLogDecorator: SessionDelegate {
     
     func developerChanged(developer: Developer) {
+        log.sessionEnded()
         other.developerChanged(developer: developer)
     }
     
