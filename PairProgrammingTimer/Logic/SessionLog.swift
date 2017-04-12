@@ -26,6 +26,8 @@ class SessionLog {
  
     func sessionStarted(forDeveloper: Developer) {
     
+        endLastEntry()
+        
         entries.append(
             SessionLogEntry(
                 uuid: UUID(),
@@ -38,13 +40,18 @@ class SessionLog {
     
     func sessionEnded() {
         
-        guard var lastEntry = entries.last else { return }
-        
-        entries.removeLast()
-        lastEntry.endedOn = dateTime.currentDateTime()
-        entries.append(lastEntry)
+        endLastEntry()
         
         delegate?.logUpdated()
     }
     
+    private func endLastEntry() {
+        
+        guard var lastEntry = entries.last else { return }
+        guard lastEntry.endedOn == nil else { return }
+        
+        entries.removeLast()
+        lastEntry.endedOn = dateTime.currentDateTime()
+        entries.append(lastEntry)
+    }
 }
