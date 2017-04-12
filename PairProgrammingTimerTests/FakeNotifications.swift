@@ -14,7 +14,7 @@ class FakeNotifications: Notifications {
     var registered = false
     var pendingCancelled = false
     
-    func register() {
+    func register(developerName: String) {
         self.registered = true
     }
     

@@ -40,6 +40,7 @@
 		D4EC22551E9D1F750058B01E /* SessionLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */; };
 		D4EC22571E9D1FC80058B01E /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22561E9D1FC80058B01E /* SessionLog.swift */; };
 		D4EC22591E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */; };
+		D4EC225B1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC225A1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift */; };
 		D4F3A6671E96C928004F79C4 /* DeveloperNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */; };
 		D4F3A6751E977CC0004F79C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A6771E977CC0004F79C4 /* Localizable.strings */; };
 		D4F3A67A1E977CC1004F79C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F3A67C1E977CC1004F79C4 /* InfoPlist.strings */; };
@@ -95,6 +96,7 @@
 		D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogEntry.swift; sourceTree = "<group>"; };
 		D4EC22561E9D1FC80058B01E /* SessionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLog.swift; path = Logic/SessionLog.swift; sourceTree = "<group>"; };
 		D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateLogDecorator.swift; path = Logic/SessionDelegateLogDecorator.swift; sourceTree = "<group>"; };
+		D4EC225A1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionLogTests.swift; path = Session/ProgrammingSessionLogTests.swift; sourceTree = "<group>"; };
 		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
 		D4F3A6691E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D4F3A66A1E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				D44AF3B61E92C33D0035C17C /* ProgrammingSessionTests_RestoreState.swift */,
 				D4A172461E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift */,
 				D444A6841E7B996E000E6682 /* SessionDelegateNotificationsDecoratorTests.swift */,
+				D4EC225A1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 			files = (
 				D4A1724C1E43A62300B655A9 /* SecondsToHumanReadableDurationTests.swift in Sources */,
 				D4A172451E41054C00B655A9 /* ProgrammingSessionTests_RemainingTime.swift in Sources */,
+				D4EC225B1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift in Sources */,
 				D4B1203C1E37D85E003C93CF /* FakeSessionDelegate.swift in Sources */,
 				D444A6871E7B999F000E6682 /* FakeNotifications.swift in Sources */,
 				D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */,
