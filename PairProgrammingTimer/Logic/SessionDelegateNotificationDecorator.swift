@@ -30,9 +30,9 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
     }
     
-    func sessionEnded() {
+    func sessionEnded(forDeveloper: Developer) {
         notifications.cancelPending()
-        other.sessionEnded()
+        other.sessionEnded(forDeveloper: forDeveloper)
     }
     
     func countdownExpired() {

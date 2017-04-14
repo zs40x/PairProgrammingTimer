@@ -53,7 +53,7 @@ class SessionDelegateNotificationDecoratorTests: XCTestCase {
     
     func testSessionEnded() {
         
-        testInstance?.sessionEnded()
+        testInstance?.sessionEnded(forDeveloper: .left)
         
         XCTAssert(!fakeNotifications!.registered)
         XCTAssert(fakeNotifications!.pendingCancelled)

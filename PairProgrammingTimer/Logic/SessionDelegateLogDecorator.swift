@@ -22,7 +22,11 @@ class SessionDelegateLogDecorator {
 extension SessionDelegateLogDecorator: SessionDelegate {
     
     func developerChanged(developer: Developer) {
-        log.sessionEnded()
+        
+        log.sessionEnded(
+            developerName: developerName(developer),
+            otherDeveloperName: otherDeveloperName(developer))
+        
         other.developerChanged(developer: developer)
     }
     
@@ -37,9 +41,13 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
     }
     
-    func sessionEnded() {
-        log.sessionEnded()
-        other.sessionEnded()
+    func sessionEnded(forDeveloper: Developer) {
+        
+        log.sessionEnded(
+            developerName: developerName(forDeveloper),
+            otherDeveloperName: otherDeveloperName(forDeveloper))
+
+        other.sessionEnded(forDeveloper: forDeveloper)
     }
     
     func countdownExpired() {

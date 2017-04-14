@@ -44,11 +44,13 @@ class SessionLog {
         delegate?.logUpdated()
     }
     
-    func sessionEnded() {
+    func sessionEnded(developerName: String, otherDeveloperName: String) {
         
         guard var lastEntry = sessionLogService.allLogEntries().last else { return }
         guard lastEntry.endedOn == nil else { return }
         
+        lastEntry.developerName = developerName
+        lastEntry.otherDeveloperName = otherDeveloperName
         lastEntry.endedOn = dateTime.currentDateTime()
         sessionLogService.updateLogEntry(lastEntry)
         

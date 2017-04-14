@@ -28,7 +28,7 @@ class FakeSessionDelegate: SessionDelegate {
         sessionStartedForDeveloper = forDeveloper
     }
     
-    func sessionEnded() {
+    func sessionEnded(forDeveloper: Developer) {
         sessionEndedWasCalled = true
     }
     

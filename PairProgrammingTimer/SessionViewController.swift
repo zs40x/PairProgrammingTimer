@@ -297,7 +297,7 @@ extension SessionViewController: SessionDelegate {
         persistAppState(developer: forDeveloper, sessionState: .active, sessionEndsOn: sessionEndsOn)
     }
     
-    func sessionEnded() {
+    func sessionEnded(forDeveloper: Developer) {
         
         NSLog("SessionDelegage.sessionEnded()")
          
