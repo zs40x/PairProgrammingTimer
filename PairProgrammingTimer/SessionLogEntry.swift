@@ -10,16 +10,27 @@ import Foundation
 
 struct SessionLogEntry {
     
+    private var _endedOn: Date?
+    
     var uuid: UUID
     var startedOn: Date
-    var endedOn: Date?
+    var endedOn: Date? {
+        get {
+            guard let endedOn = _endedOn else { return nil }
+            guard endedOn > startedOn else { return nil }
+            return endedOn
+        }
+        set(newEndedOn) {
+            _endedOn = newEndedOn
+        }
+    }
     var developerName: String
     var otherDeveloperName: String
     
     init(uuid: UUID, startedOn: Date, endedOn: Date?, developerName: String, otherDeveloperName: String) {
         self.uuid = uuid
         self.startedOn = startedOn
-        self.endedOn = endedOn
+        self._endedOn = endedOn
         self.developerName = developerName
         self.otherDeveloperName = otherDeveloperName
     }
