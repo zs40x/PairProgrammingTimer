@@ -37,7 +37,7 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         if !restored {
             log.sessionStarted(
                 developerName: developerNameService.nameOf(developer: forDeveloper),
-                otherDeveloperName: developerNameService.nameOf(developer:otherDeveloper(forDeveloper)))
+                otherDeveloperName: developerNameService.nameOf(developer:otherDeveloper(forDeveloper)), duration: duration)
         }
         
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored, duration: duration)

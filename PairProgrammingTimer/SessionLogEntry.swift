@@ -24,13 +24,15 @@ struct SessionLogEntry {
             _endedOn = newEndedOn
         }
     }
+    var duration: SessionDuration
     var developerName: String
     var otherDeveloperName: String
     
-    init(uuid: UUID, startedOn: Date, endedOn: Date?, developerName: String, otherDeveloperName: String) {
+    init(uuid: UUID, startedOn: Date, endedOn: Date?, duration: SessionDuration, developerName: String, otherDeveloperName: String) {
         self.uuid = uuid
         self.startedOn = startedOn
         self._endedOn = endedOn
+        self.duration = duration
         self.developerName = developerName
         self.otherDeveloperName = otherDeveloperName
     }
@@ -42,6 +44,7 @@ struct SessionLogEntry {
             let uuid = jsonDict?["uuid"],
             let startedOn = jsonDict?["startedOn"],
             let endedOn = jsonDict?["endedOn"],
+            let duration = jsonDict?["duration"],
             let developerName = jsonDict?["developerName"],
             let otherDeveloperName = jsonDict?["otherDeveloperName"]
             else { return nil }
@@ -50,6 +53,7 @@ struct SessionLogEntry {
             uuid: UUID.init(uuidString: uuid) ?? UUID(),
             startedOn: Date(timeIntervalSince1970: Double(startedOn) ?? 0),
             endedOn: Date(timeIntervalSince1970: Double(endedOn) ?? 0),
+            duration: SessionDuration(minutes: Int(Double(duration) ?? 0)),
             developerName: developerName,
             otherDeveloperName: otherDeveloperName
         )
@@ -62,6 +66,7 @@ struct SessionLogEntry {
                 "uuid": uuid.uuidString,
                 "startedOn" : String(startedOn.timeIntervalSince1970),
                 "endedOn" : String(endedOn?.timeIntervalSince1970 ?? 0),
+                "duration" : String(duration.TotalMinutes),
                 "developerName" : developerName,
                 "otherDeveloperName" : otherDeveloperName
         ]

@@ -31,13 +31,14 @@ class SessionLog {
         }
     }
  
-    func sessionStarted(developerName: String, otherDeveloperName: String) {
+    func sessionStarted(developerName: String, otherDeveloperName: String, duration: SessionDuration) {
     
         sessionLogService.addNewLogEntry(
             SessionLogEntry(
                 uuid: UUID(),
                 startedOn: dateTime.currentDateTime(),
                 endedOn: nil,
+                duration: duration,
                 developerName: developerName,
                 otherDeveloperName: otherDeveloperName))
         
