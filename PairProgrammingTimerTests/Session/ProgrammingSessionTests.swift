@@ -11,7 +11,7 @@ import XCTest
 
 class ProgrammingSessionTests: XCTestCase {
     
-    let sessionDurationInMinutes = 15.0
+    let sessionDuration = SessionDuration(minutes: 15)
     var testInstance: ProgrammingSession?
     var fakeSessionDelegate: FakeSessionDelegate?
     var fakeTimer: FakeTimer?
@@ -32,7 +32,7 @@ class ProgrammingSessionTests: XCTestCase {
                 delegate: fakeSessionDelegate!,
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
-                sessionDuration: SessionDuration(minutes: Int(sessionDurationInMinutes))
+                sessionDuration: sessionDuration
             )
     }
 }

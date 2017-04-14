@@ -13,6 +13,7 @@ import XCTest
 
 class SessionDelegateNotificationDecoratorTests: XCTestCase {
     
+    let sessionDuration = SessionDuration(minutes: 15)
     var otherSessionDelegate: FakeSessionDelegate?
     var fakeNotifications: FakeNotifications?
     var testInstance: SessionDelegateNotificationDecorator?
@@ -44,7 +45,7 @@ class SessionDelegateNotificationDecoratorTests: XCTestCase {
     
     func testSessionStarted() {
         
-        testInstance?.sessionStarted(sessionEndsOn: Date(), forDeveloper: .left, restored: false)
+        testInstance?.sessionStarted(sessionEndsOn: Date(), forDeveloper: .left, restored: false, duration: sessionDuration)
         
         XCTAssert(fakeNotifications!.registered)
         XCTAssert(!fakeNotifications!.pendingCancelled)

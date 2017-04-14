@@ -288,7 +288,7 @@ extension SessionViewController: SessionDelegate {
         persistAppState(developer: developer, sessionState: sessionControl!.sessionState, sessionEndsOn: Date())
     }
     
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool) {
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool, duration: SessionDuration) {
         
         NSLog("SessionDelegage.sessionStarted()")
         

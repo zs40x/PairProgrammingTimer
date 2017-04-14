@@ -25,7 +25,7 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
                 delegate: SessionDelegateLogDecorator(other: fakeSessionDelegate!, log: sessionLog!, developerNameService: FakeDeveloperNameService()),
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
-                sessionDuration: SessionDuration(minutes: Int(sessionDurationInMinutes)))
+                sessionDuration: sessionDuration)
     }
     
     func testStartedSessionLogEntry() {

@@ -31,7 +31,7 @@ class ProgrammingSessionTests_RemainingTime: ProgrammingSessionTests {
         
         let startedSession = testInstance?.toggleState()
         
-        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(sessionDurationInMinutes * 60)
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval(sessionDuration.TotalMinutes * 60)
         
         XCTAssertEqual(0.0, startedSession?.timeRemaingInSeconds())
     }
@@ -40,7 +40,7 @@ class ProgrammingSessionTests_RemainingTime: ProgrammingSessionTests {
         
         let startedSession = testInstance?.toggleState()
         
-        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval((sessionDurationInMinutes + 5) * 60)
+        fakeDateTime?.dateToReturn = startedOnDate.addingTimeInterval((sessionDuration.TotalMinutes + 5) * 60)
         
         XCTAssertEqual((5 * 60) * -1, startedSession?.timeRemaingInSeconds())
     }
@@ -54,6 +54,6 @@ class ProgrammingSessionTests_RemainingTime: ProgrammingSessionTests {
         
         let changedDeveloperSession = stoppedSession?.changeDevelopers()
         
-        XCTAssertEqual(sessionDurationInMinutes * 60, changedDeveloperSession?.timeRemaingInSeconds())
+        XCTAssertEqual(sessionDuration.TotalMinutes * 60, changedDeveloperSession?.timeRemaingInSeconds())
     }
 }

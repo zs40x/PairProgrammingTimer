@@ -228,8 +228,8 @@
 		D4B120301E367BA4003C93CF /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				D4B120311E367C58003C93CF /* Session.swift */,
 				D4A172481E43A54600B655A9 /* SecondsToHumanReadableDuration.swift */,
+				D4B120311E367C58003C93CF /* Session.swift */,
 				D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */,
 				D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */,
 				D4EC22561E9D1FC80058B01E /* SessionLog.swift */,

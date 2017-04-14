@@ -32,7 +32,7 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         other.developerChanged(developer: developer)
     }
     
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool) {
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool, duration: SessionDuration) {
         
         if !restored {
             log.sessionStarted(
@@ -40,7 +40,7 @@ extension SessionDelegateLogDecorator: SessionDelegate {
                 otherDeveloperName: developerNameService.nameOf(developer:otherDeveloper(forDeveloper)))
         }
         
-        other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
+        other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored, duration: duration)
     }
     
     func sessionEnded(forDeveloper: Developer) {

@@ -22,7 +22,7 @@ class FakeSessionDelegate: SessionDelegate {
         developerChangedWasCalled = true
     }
     
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool) {
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool, duration: SessionDuration) {
         sessionStartedWasCalled = true
         sessionStartedWasCalledWithEndDateTime = sessionEndsOn
         sessionStartedForDeveloper = forDeveloper
