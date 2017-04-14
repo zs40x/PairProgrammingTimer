@@ -14,4 +14,11 @@ struct SessionLogEntry {
     var startedOn: Date
     var endedOn: Date?
     var developerName: String
+    
+    func durationInMinutes() -> Double {
+        
+        guard let endedOn = endedOn else { return 0 }
+        
+        return Double(endedOn.timeIntervalSince(startedOn) / 60)
+    }
 }

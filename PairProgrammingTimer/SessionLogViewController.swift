@@ -12,6 +12,7 @@ class SessionLogEntryCell : UITableViewCell {
     @IBOutlet weak var developerName: UILabel!
     @IBOutlet weak var from: UILabel!
     @IBOutlet weak var until: UILabel!
+    @IBOutlet weak var duration: UILabel!
 }
 
 class SessionLogViewController: UIViewController {
@@ -78,6 +79,8 @@ extension SessionLogViewController : UITableViewDataSource {
         } else {
             cell.until.text = ""
         }
+        
+        cell.duration.text = String(format: "%.2f", logEntry.durationInMinutes())
         
         return cell
     }
