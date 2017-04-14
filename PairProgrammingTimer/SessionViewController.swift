@@ -113,6 +113,7 @@ class SessionViewController: UIViewController {
         let appSettings = AppSettings()
         let sessionDuration = appSettings.ConfiguredSessionDuration
         let lastState = appSettings.LastState
+        let developerNameService = DeveloperNameAppSettingsService()
         
         sessionControl =
             ProgrammingSession(
@@ -122,9 +123,9 @@ class SessionViewController: UIViewController {
                         other: SessionDelegateLogDecorator(
                                     other: self,
                                     log: SessionViewController.sessionLog,
-                                    developerNameService: DeveloperNameAppSettingsService()
+                                    developerNameService: developerNameService
                                 ),
-                        notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)
+                        notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds), developerNameService: developerNameService
                     ),
                 timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
                 dateTime: SystemDateTime(),

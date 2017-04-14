@@ -12,10 +12,12 @@ class SessionDelegateNotificationDecorator {
     
     fileprivate let other: SessionDelegate
     fileprivate let notifications: Notifications
+    fileprivate let developerNameService: DeveloperNameService
     
-    init(other: SessionDelegate, notifications: Notifications) {
+    init(other: SessionDelegate, notifications: Notifications, developerNameService: DeveloperNameService) {
         self.other = other
         self.notifications = notifications
+        self.developerNameService = developerNameService
     }
 }
 
@@ -26,7 +28,7 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
     }
     
     func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool) {
-        notifications.register(developerName: developerName(forDeveloper))
+        notifications.register(developerName: developerNameService.nameOf(developer: forDeveloper))
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
     }
     
@@ -37,11 +39,5 @@ extension SessionDelegateNotificationDecorator: SessionDelegate {
     
     func countdownExpired() {
         other.countdownExpired()
-    }
-    
-    private func developerName(_ developer: Developer) -> String {
-        let developerNames = AppSettings().developerNames
-        
-        return developer == .left ? developerNames.left : developerNames.right
     }
 }

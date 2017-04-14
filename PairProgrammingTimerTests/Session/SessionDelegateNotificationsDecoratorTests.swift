@@ -25,7 +25,8 @@ class SessionDelegateNotificationDecoratorTests: XCTestCase {
         testInstance =
             SessionDelegateNotificationDecorator(
                 other: otherSessionDelegate!,
-                notifications: fakeNotifications!)
+                notifications: fakeNotifications!,
+                developerNameService: FakeDeveloperNameService())
     }
     
     
