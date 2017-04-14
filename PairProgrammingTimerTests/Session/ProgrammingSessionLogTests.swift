@@ -56,4 +56,11 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
         XCTAssertEqual(fakeDateTime?.currentDateTime(), sessionLog?.entries.first?.endedOn)
 
     }
+    
+    func testRestoredSessionDoesNotCreateANewLogEntry() {
+        
+        programingSession = programingSession?.restoreState(sessionState: .active, sessionEndsOn: Date())
+        
+        XCTAssertEqual(0, sessionLog?.entries.count)
+    }
 }

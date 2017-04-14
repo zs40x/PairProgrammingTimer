@@ -24,7 +24,7 @@ protocol Session  {
 
 protocol SessionDelegate {
     func developerChanged(developer: Developer)
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer)
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool)
     func sessionEnded()
     func countdownExpired()
 }
@@ -68,18 +68,18 @@ class ProgrammingSession: Session {
         return start()
     }
     
-    fileprivate func startSession(sessionEndsOn: Date) -> Session {
+    fileprivate func startSession(sessionEndsOn: Date, restored: Bool) -> Session {
         
         timer.start(callDelegateWhenExpired: self)
         
-        delegate?.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: developer)
+        delegate?.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: developer, restored: restored)
         
         return makeNewInstance(withDeveloper: developer, sessionEndsOn: sessionEndsOn)
     }
     
     private func start() -> Session {
         
-        return startSession(sessionEndsOn: dateTime.currentDateTime().addingTimeInterval(sessionDuration.TotalSeconds))
+        return startSession(sessionEndsOn: dateTime.currentDateTime().addingTimeInterval(sessionDuration.TotalSeconds), restored: false)
     }
     
     private func stop() -> Session {
@@ -166,6 +166,6 @@ class RestoredProgrammingSession : ProgrammingSession {
     
     func makeRestoredSession(sessionEndsOn: Date) -> Session {
         
-        return startSession(sessionEndsOn: sessionEndsOn)
+        return startSession(sessionEndsOn: sessionEndsOn, restored: true)
     }
 }

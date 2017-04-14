@@ -26,9 +26,15 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         other.developerChanged(developer: developer)
     }
     
-    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
-        log.sessionStarted(developerName: developerName(forDeveloper), otherDeveloperName: otherDeveloperName(forDeveloper))
-        other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper)
+    func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool) {
+        
+        if !restored {
+            log.sessionStarted(
+                developerName: developerName(forDeveloper),
+                otherDeveloperName: otherDeveloperName(forDeveloper))
+        }
+        
+        other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
     }
     
     func sessionEnded() {
