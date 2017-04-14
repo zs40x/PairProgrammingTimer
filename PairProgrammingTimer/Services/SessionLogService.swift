@@ -11,6 +11,7 @@ import Foundation
 protocol SessionLogService {
     func allLogEntries() -> [SessionLogEntry]
     func addNewLogEntry(_ newLogEntry: SessionLogEntry)
+    func updateLogEntry(_ logEntry: SessionLogEntry)
 }
 
 class SessionUserDefaultsLogService: SessionLogService {
@@ -30,6 +31,20 @@ class SessionUserDefaultsLogService: SessionLogService {
         var logEntries = allLogEntries()
         
         logEntries.append(newLogEntry)
+        
+        persistSessionLogEntriesAsJson(logEntries)
+    }
+    
+    func updateLogEntry(_ logEntry: SessionLogEntry) {
+        
+        var logEntries = allLogEntries().filter { $0.uuid != logEntry.uuid }
+        
+        logEntries.append(logEntry)
+        
+        persistSessionLogEntriesAsJson(logEntries)
+    }
+    
+    private func persistSessionLogEntriesAsJson(_ logEntries: [SessionLogEntry]) {
         
         let jsonStringArray = logEntries.map { $0.jsonRepresentation }
         

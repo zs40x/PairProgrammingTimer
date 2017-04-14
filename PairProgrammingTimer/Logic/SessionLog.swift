@@ -15,18 +15,25 @@ protocol SessionLogDelegate {
 class SessionLog {
     
     private let dateTime: DateTime
-    private(set) var entries = [SessionLogEntry]()
+    private let sessionLogService: SessionLogService
     
     var delegate: SessionLogDelegate?
     
     
-    init(dateTime: DateTime) {
+    init(dateTime: DateTime, sessionLogService: SessionLogService) {
         self.dateTime = dateTime
+        self.sessionLogService = sessionLogService
+    }
+    
+    var entries:  [SessionLogEntry] {
+        get {
+            return sessionLogService.allLogEntries()
+        }
     }
  
     func sessionStarted(developerName: String, otherDeveloperName: String) {
     
-        entries.append(
+        sessionLogService.addNewLogEntry(
             SessionLogEntry(
                 uuid: UUID(),
                 startedOn: dateTime.currentDateTime(),
@@ -39,12 +46,11 @@ class SessionLog {
     
     func sessionEnded() {
         
-        guard var lastEntry = entries.last else { return }
+        guard var lastEntry = sessionLogService.allLogEntries().last else { return }
         guard lastEntry.endedOn == nil else { return }
         
-        entries.removeLast()
         lastEntry.endedOn = dateTime.currentDateTime()
-        entries.append(lastEntry)
+        sessionLogService.updateLogEntry(lastEntry)
         
         delegate?.logUpdated()
     }

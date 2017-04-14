@@ -29,6 +29,7 @@
 		D4A172471E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172461E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift */; };
 		D4A172491E43A54600B655A9 /* SecondsToHumanReadableDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A172481E43A54600B655A9 /* SecondsToHumanReadableDuration.swift */; };
 		D4A1724C1E43A62300B655A9 /* SecondsToHumanReadableDurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A1724B1E43A62300B655A9 /* SecondsToHumanReadableDurationTests.swift */; };
+		D4A9FB221EA08B630087681C /* FakeSessionLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FB211EA08B630087681C /* FakeSessionLogService.swift */; };
 		D4B120321E367C58003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* Session.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */; };
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
@@ -85,6 +86,7 @@
 		D4A172461E4106BB00B655A9 /* ProgrammingSessionTests_StateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_StateChanges.swift; path = Session/ProgrammingSessionTests_StateChanges.swift; sourceTree = "<group>"; };
 		D4A172481E43A54600B655A9 /* SecondsToHumanReadableDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondsToHumanReadableDuration.swift; path = Logic/SecondsToHumanReadableDuration.swift; sourceTree = "<group>"; };
 		D4A1724B1E43A62300B655A9 /* SecondsToHumanReadableDurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondsToHumanReadableDurationTests.swift; sourceTree = "<group>"; };
+		D4A9FB211EA08B630087681C /* FakeSessionLogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSessionLogService.swift; sourceTree = "<group>"; };
 		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
 		D4B120311E367C58003C93CF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Logic/Session.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests.swift; path = Session/ProgrammingSessionTests.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */,
 				D4B120431E3EFE73003C93CF /* FakeDateTime.swift */,
 				D444A6861E7B999F000E6682 /* FakeNotifications.swift */,
+				D4A9FB211EA08B630087681C /* FakeSessionLogService.swift */,
 			);
 			name = Fakes;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				D4EC225B1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift in Sources */,
 				D4B1203C1E37D85E003C93CF /* FakeSessionDelegate.swift in Sources */,
 				D444A6871E7B999F000E6682 /* FakeNotifications.swift in Sources */,
+				D4A9FB221EA08B630087681C /* FakeSessionLogService.swift in Sources */,
 				D4A172431E4104A300B655A9 /* ProgrammingSessionTests_Delegate.swift in Sources */,
 				D4B120441E3EFE73003C93CF /* FakeDateTime.swift in Sources */,
 				D4B120351E36803B003C93CF /* ProgrammingSessionTests.swift in Sources */,

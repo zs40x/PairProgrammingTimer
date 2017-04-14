@@ -17,7 +17,7 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
     override func setUp() {
         super.setUp()
         
-        sessionLog = SessionLog(dateTime: fakeDateTime!)
+        sessionLog = SessionLog(dateTime: fakeDateTime!, sessionLogService: FakeSessionLogService())
         
         programingSession =
             ProgrammingSession(

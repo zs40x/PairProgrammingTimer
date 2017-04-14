@@ -19,7 +19,7 @@ class SessionViewController: UIViewController {
     
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
-    static let sessionLog = SessionLog(dateTime: SystemDateTime())
+    static let sessionLog = SessionLog(dateTime: SystemDateTime(), sessionLogService: SessionUserDefaultsLogService())
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var leftDevloperName: UILabel!
