@@ -12,10 +12,12 @@ class SessionDelegateLogDecorator {
     
     fileprivate let other: SessionDelegate
     fileprivate let log: SessionLog
+    fileprivate let developerNameService: DeveloperNameService
     
-    init(other: SessionDelegate, log: SessionLog) {
+    init(other: SessionDelegate, log: SessionLog, developerNameService: DeveloperNameService) {
         self.other = other
         self.log = log
+        self.developerNameService = developerNameService
     }
 }
 
@@ -24,8 +26,8 @@ extension SessionDelegateLogDecorator: SessionDelegate {
     func developerChanged(developer: Developer) {
         
         log.sessionEnded(
-            developerName: developerName(developer),
-            otherDeveloperName: otherDeveloperName(developer))
+            developerName: developerNameService.nameOf(developer: otherDeveloper(developer)),
+            otherDeveloperName: developerNameService.nameOf(developer:developer))
         
         other.developerChanged(developer: developer)
     }
@@ -34,8 +36,8 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         
         if !restored {
             log.sessionStarted(
-                developerName: developerName(forDeveloper),
-                otherDeveloperName: otherDeveloperName(forDeveloper))
+                developerName: developerNameService.nameOf(developer: forDeveloper),
+                otherDeveloperName: developerNameService.nameOf(developer:otherDeveloper(forDeveloper)))
         }
         
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper, restored: restored)
@@ -44,8 +46,8 @@ extension SessionDelegateLogDecorator: SessionDelegate {
     func sessionEnded(forDeveloper: Developer) {
         
         log.sessionEnded(
-            developerName: developerName(forDeveloper),
-            otherDeveloperName: otherDeveloperName(forDeveloper))
+            developerName: developerNameService.nameOf(developer: forDeveloper),
+            otherDeveloperName: developerNameService.nameOf(developer:otherDeveloper(forDeveloper)))
 
         other.sessionEnded(forDeveloper: forDeveloper)
     }
@@ -54,15 +56,8 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         other.countdownExpired()
     }
     
-    private func developerName(_ developer: Developer) -> String {
-        let developerNames = AppSettings().developerNames
+    private func otherDeveloper(_ developer: Developer) -> Developer {
         
-        return developer == .left ? developerNames.left : developerNames.right
-    }
-    
-    private func otherDeveloperName(_ developer: Developer) -> String {
-        let developerNames = AppSettings().developerNames
-        
-        return developer == .left ? developerNames.right : developerNames.left
+        return developer == .left ? .right : .left
     }
 }

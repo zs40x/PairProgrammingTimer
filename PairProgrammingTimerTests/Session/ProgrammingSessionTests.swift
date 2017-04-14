@@ -17,6 +17,8 @@ class ProgrammingSessionTests: XCTestCase {
     var fakeTimer: FakeTimer?
     var fakeDateTime: FakeDateTime?
     let startedOnDate = Date.init(timeIntervalSinceReferenceDate: 0.0) // January 1, 2001, at 12:00 a.m. GMT.
+    let leftDeveloperName = String(Developer.left.rawValue)
+    let rightDeveloperName = String(Developer.right.rawValue)
     
     override func setUp() {
         

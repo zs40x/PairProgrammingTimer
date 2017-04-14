@@ -22,7 +22,7 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
         programingSession =
             ProgrammingSession(
                 withDeveloper: .left,
-                delegate: SessionDelegateLogDecorator(other: fakeSessionDelegate!, log: sessionLog!),
+                delegate: SessionDelegateLogDecorator(other: fakeSessionDelegate!, log: sessionLog!, developerNameService: FakeDeveloperNameService()),
                 timer: fakeTimer!,
                 dateTime: fakeDateTime!,
                 sessionDuration: SessionDuration(minutes: Int(sessionDurationInMinutes)))
@@ -44,6 +44,9 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
         XCTAssertEqual(1, sessionLog?.entries.count)
         
         XCTAssertEqual(fakeDateTime?.currentDateTime(), sessionLog?.entries.first?.endedOn)
+        
+        XCTAssertEqual(leftDeveloperName, sessionLog?.entries.first?.developerName)
+        XCTAssertEqual(rightDeveloperName, sessionLog?.entries.first?.otherDeveloperName)
     }
     
     func testChangedDeveloperSessionLogEntries() {
@@ -54,7 +57,12 @@ class ProgrammingSessionLogTests: ProgrammingSessionTests {
         
         XCTAssertEqual(fakeDateTime?.currentDateTime(), sessionLog?.entries.first?.startedOn)
         XCTAssertEqual(fakeDateTime?.currentDateTime(), sessionLog?.entries.first?.endedOn)
-
+        
+        XCTAssertEqual(leftDeveloperName, sessionLog?.entries.first?.developerName)
+        XCTAssertEqual(rightDeveloperName, sessionLog?.entries.first?.otherDeveloperName)
+        
+        XCTAssertEqual(rightDeveloperName, sessionLog?.entries.last?.developerName)
+        XCTAssertEqual(leftDeveloperName, sessionLog?.entries.last?.otherDeveloperName)
     }
     
     func testRestoredSessionDoesNotCreateANewLogEntry() {

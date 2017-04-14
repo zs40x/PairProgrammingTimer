@@ -121,7 +121,8 @@ class SessionViewController: UIViewController {
                     SessionDelegateNotificationDecorator(
                         other: SessionDelegateLogDecorator(
                                     other: self,
-                                    log: SessionViewController.sessionLog
+                                    log: SessionViewController.sessionLog,
+                                    developerNameService: DeveloperNameAppSettingsService()
                                 ),
                         notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds)
                     ),
