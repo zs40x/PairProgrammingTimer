@@ -73,7 +73,7 @@ extension SessionLogViewController : UITableViewDataSource {
         cell.otherDeveloperName.text = logEntry.otherDeveloperName
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY HH:mm:SS"
+        dateFormatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
         
         cell.from.text = dateFormatter.string(from: logEntry.startedOn)
         
