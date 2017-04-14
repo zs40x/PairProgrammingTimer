@@ -16,6 +16,51 @@ struct SessionLogEntry {
     var developerName: String
     var otherDeveloperName: String
     
+    init(uuid: UUID, startedOn: Date, endedOn: Date?, developerName: String, otherDeveloperName: String) {
+        self.uuid = uuid
+        self.startedOn = startedOn
+        self.endedOn = endedOn
+        self.developerName = developerName
+        self.otherDeveloperName = otherDeveloperName
+    }
+    
+    init?(json : String) {
+        
+        guard let data = json.data(using: .utf8),
+            let jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:String],
+            let uuid = jsonDict?["uuid"],
+            let startedOn = jsonDict?["startedOn"],
+            let endedOn = jsonDict?["endedOn"],
+            let developerName = jsonDict?["developerName"],
+            let otherDeveloperName = jsonDict?["otherDeveloperName"]
+            else { return nil }
+        
+        self.init(
+            uuid: UUID.init(uuidString: uuid) ?? UUID(),
+            startedOn: Date(timeIntervalSince1970: Double(startedOn) ?? 0),
+            endedOn: Date(timeIntervalSince1970: Double(endedOn) ?? 0),
+            developerName: developerName,
+            otherDeveloperName: otherDeveloperName
+        )
+    }
+    
+    var jsonRepresentation : String {
+        
+        let jsonDict =
+            [
+                "uuid": uuid.uuidString,
+                "startedOn" : String(startedOn.timeIntervalSince1970),
+                "endedOn" : String(endedOn?.timeIntervalSince1970 ?? 0),
+                "developerName" : developerName,
+                "otherDeveloperName" : otherDeveloperName
+        ]
+        
+        if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: []),
+            let jsonString = String(data:data, encoding:.utf8) {
+            return jsonString
+        } else { return "" }
+    }
+    
     func durationInMinutes() -> Double {
         
         guard let endedOn = endedOn else { return 0 }
