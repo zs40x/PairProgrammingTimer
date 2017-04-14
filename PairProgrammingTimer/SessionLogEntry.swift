@@ -17,7 +17,7 @@ struct SessionLogEntry {
     var endedOn: Date? {
         get {
             guard let endedOn = _endedOn else { return nil }
-            guard endedOn > startedOn else { return nil }
+            guard endedOn >= startedOn else { return nil }
             return endedOn
         }
         set(newEndedOn) {
