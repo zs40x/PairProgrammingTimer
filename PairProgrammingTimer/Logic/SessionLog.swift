@@ -24,14 +24,15 @@ class SessionLog {
         self.dateTime = dateTime
     }
  
-    func sessionStarted(developerName: String) {
+    func sessionStarted(developerName: String, otherDeveloperName: String) {
     
         entries.append(
             SessionLogEntry(
                 uuid: UUID(),
                 startedOn: dateTime.currentDateTime(),
                 endedOn: nil,
-                developerName: developerName))
+                developerName: developerName,
+                otherDeveloperName: otherDeveloperName))
         
         delegate?.logUpdated()
     }

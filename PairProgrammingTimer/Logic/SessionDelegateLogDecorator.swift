@@ -27,7 +27,7 @@ extension SessionDelegateLogDecorator: SessionDelegate {
     }
     
     func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer) {
-        log.sessionStarted(developerName: developerName(forDeveloper))
+        log.sessionStarted(developerName: developerName(forDeveloper), otherDeveloperName: otherDeveloperName(forDeveloper))
         other.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: forDeveloper)
     }
     
@@ -44,5 +44,11 @@ extension SessionDelegateLogDecorator: SessionDelegate {
         let developerNames = AppSettings().developerNames
         
         return developer == .left ? developerNames.left : developerNames.right
+    }
+    
+    private func otherDeveloperName(_ developer: Developer) -> String {
+        let developerNames = AppSettings().developerNames
+        
+        return developer == .left ? developerNames.right : developerNames.left
     }
 }

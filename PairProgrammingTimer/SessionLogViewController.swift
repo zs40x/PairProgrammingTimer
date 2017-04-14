@@ -10,6 +10,7 @@ import UIKit
 
 class SessionLogEntryCell : UITableViewCell {
     @IBOutlet weak var developerName: UILabel!
+    @IBOutlet weak var otherDeveloperName: UILabel!
     @IBOutlet weak var from: UILabel!
     @IBOutlet weak var until: UILabel!
     @IBOutlet weak var duration: UILabel!
@@ -68,6 +69,7 @@ extension SessionLogViewController : UITableViewDataSource {
         
         let logEntry = logEntries[(indexPath as NSIndexPath).row]
         cell.developerName.text = logEntry.developerName
+        cell.otherDeveloperName.text = logEntry.otherDeveloperName
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YYYY HH:mm:SS"

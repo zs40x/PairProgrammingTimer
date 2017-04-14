@@ -14,6 +14,7 @@ struct SessionLogEntry {
     var startedOn: Date
     var endedOn: Date?
     var developerName: String
+    var otherDeveloperName: String
     
     func durationInMinutes() -> Double {
         
