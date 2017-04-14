@@ -42,7 +42,8 @@ class SessionLogViewController: UIViewController {
         
         guard let sessionLog = self.sessionLog else { return }
         
-        logEntries = sessionLog.entries
+        logEntries =
+            sessionLog.entries.sorted(by: { $0.startedOn > $1.startedOn })
         
         tableViewLogEntries.reloadData()
     }
