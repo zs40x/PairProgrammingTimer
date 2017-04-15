@@ -61,4 +61,8 @@ class SessionLog {
         
         delegate?.logUpdated()
     }
+    
+    func clear() {
+        sessionLogService.clearLog()
+    }
 }

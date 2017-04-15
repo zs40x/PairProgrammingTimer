@@ -12,6 +12,7 @@ protocol SessionLogService {
     func allLogEntries() -> [SessionLogEntry]
     func addNewLogEntry(_ newLogEntry: SessionLogEntry)
     func updateLogEntry(_ logEntry: SessionLogEntry)
+    func clearLog()
 }
 
 class SessionUserDefaultsLogService: SessionLogService {
@@ -42,6 +43,10 @@ class SessionUserDefaultsLogService: SessionLogService {
         logEntries.append(logEntry)
         
         persistSessionLogEntriesAsJson(logEntries)
+    }
+    
+    func clearLog() {
+        persistSessionLogEntriesAsJson([SessionLogEntry]())
     }
     
     private func persistSessionLogEntriesAsJson(_ logEntries: [SessionLogEntry]) {

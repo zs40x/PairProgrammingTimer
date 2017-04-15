@@ -310,7 +310,11 @@
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Fcm-b7-t3T">
                                         <rect key="frame" x="0.0" y="672" width="414" height="44"/>
                                         <items>
-                                            <barButtonItem title="Item" id="6XM-ep-pRK"/>
+                                            <barButtonItem title="Clear log" id="6XM-ep-pRK">
+                                                <connections>
+                                                    <action selector="actionClearLog:" destination="LFL-KI-Bn6" id="jqf-9X-3ki"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                 </subviews>

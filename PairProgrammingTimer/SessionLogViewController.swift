@@ -46,6 +46,30 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
         
         tableViewLogEntries.reloadData()
     }
+    
+    @IBAction func actionClearLog(_ sender: Any) {
+        
+        let alertView =
+            UIAlertController(
+                title: NSLocalizedString("ClearLog", comment: "Clear log"),
+                message: NSLocalizedString("InfoAllLogEntriesWillBeDeleted", comment: "All log entries will be deleted!"),
+                preferredStyle: .actionSheet)
+        
+        let confirmAction =
+            UIAlertAction(title: NSLocalizedString("Confirm", comment: "Confirm"),
+                          style: .destructive,
+                          handler: { _ in
+                                self.sessionLog?.clear()
+                                self.updateTableView()
+                            })
+        alertView.addAction(confirmAction)
+        
+        let abortAction =
+            UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
+        alertView.addAction(abortAction)
+        
+        present(alertView, animated: true, completion: nil)
+    }
 }
 
 extension SessionLogViewController: SessionLogDelegate {
