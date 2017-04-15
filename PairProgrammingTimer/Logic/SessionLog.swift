@@ -38,7 +38,7 @@ class SessionLog {
                 uuid: UUID(),
                 startedOn: dateTime.currentDateTime(),
                 endedOn: nil,
-                duration: duration,
+                plannedDuration: duration,
                 developerName: developerName,
                 otherDeveloperName: otherDeveloperName))
         
