@@ -15,6 +15,7 @@ class SessionLogEntryCell : UITableViewCell {
     @IBOutlet weak var until: UILabel!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var sessionDuration: UILabel!
+    @IBOutlet weak var sessionDurationDifference: UILabel!
 }
 
 class SessionLogViewController: UIViewController {
@@ -86,6 +87,12 @@ extension SessionLogViewController : UITableViewDataSource {
         
         cell.duration.text = String(format: "%.2f", logEntry.actualDuration)
         cell.sessionDuration.text = String(format: "%.0f", logEntry.plannedDuration.TotalMinutes)
+        
+        var durationDifference = String(format: "%0.2f", logEntry.durationDifference)
+        if logEntry.durationDifference > 0 {
+           durationDifference = "+\(durationDifference)"
+        }
+        cell.sessionDurationDifference.text = durationDifference
         
         return cell
     }

@@ -84,4 +84,10 @@ struct SessionLogEntry {
             return Double(endedOn.timeIntervalSince(startedOn) / 60)
         }
     }
+    
+    var durationDifference: Double {
+        get {
+            return (plannedDuration.TotalMinutes - actualDuration) * -1
+        }
+    }
 }
