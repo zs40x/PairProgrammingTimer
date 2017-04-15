@@ -77,10 +77,11 @@ struct SessionLogEntry {
         } else { return "" }
     }
     
-    func durationInMinutes() -> Double {
+    var actualDuration: Double {
+        get {
+            guard let endedOn = endedOn else { return 0 }
         
-        guard let endedOn = endedOn else { return 0 }
-        
-        return Double(endedOn.timeIntervalSince(startedOn) / 60)
+            return Double(endedOn.timeIntervalSince(startedOn) / 60)
+        }
     }
 }

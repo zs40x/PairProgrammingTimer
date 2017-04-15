@@ -84,7 +84,7 @@ extension SessionLogViewController : UITableViewDataSource {
             cell.until.text = ""
         }
         
-        cell.duration.text = String(format: "%.2f", logEntry.durationInMinutes())
+        cell.duration.text = String(format: "%.2f", logEntry.actualDuration)
         cell.sessionDuration.text = String(format: "%.0f", logEntry.plannedDuration.TotalMinutes)
         
         return cell
