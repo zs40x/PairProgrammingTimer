@@ -74,13 +74,15 @@ extension SessionLogViewController : UITableViewDataSource {
         cell.developerName.text = logEntry.developerName
         cell.otherDeveloperName.text = logEntry.otherDeveloperName
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
+        let longDateFormatter = DateFormatter()
+        longDateFormatter.dateFormat = "dd.MM.YYYY HH:mm:ss"
+        cell.from.text = longDateFormatter.string(from: logEntry.startedOn)
         
-        cell.from.text = dateFormatter.string(from: logEntry.startedOn)
         
+        let shortDateFormatter = DateFormatter()
+        shortDateFormatter.dateFormat = "HH:mm:ss"
         if let until = logEntry.endedOn {
-            cell.until.text = dateFormatter.string(from: until)
+            cell.until.text = shortDateFormatter.string(from: until)
         } else {
             cell.until.text = ""
         }
