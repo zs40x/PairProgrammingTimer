@@ -11,7 +11,7 @@ import AVFoundation
 import UserNotifications
 import NotificationCenter
 
-class SessionViewController: UIViewController {
+class SessionViewController: UIViewController, SessionLogConsumer {
     
     private let activeOffset: CGFloat = 5
     private let inactiveOffset: CGFloat = 25
@@ -19,7 +19,7 @@ class SessionViewController: UIViewController {
     
     fileprivate var sessionControl: Session?
     fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
-    static let sessionLog = SessionLog(dateTime: SystemDateTime(), sessionLogService: SessionUserDefaultsLogService())
+    var sessionLog: SessionLog?
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
     @IBOutlet weak var leftDevloperName: UILabel!
@@ -122,7 +122,7 @@ class SessionViewController: UIViewController {
                     SessionDelegateNotificationDecorator(
                         other: SessionDelegateLogDecorator(
                                     other: self,
-                                    log: SessionViewController.sessionLog,
+                                    log: sessionLog!,
                                     developerNameService: developerNameService
                                 ),
                         notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds), developerNameService: developerNameService

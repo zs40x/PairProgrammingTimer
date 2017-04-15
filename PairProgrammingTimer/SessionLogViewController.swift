@@ -18,20 +18,17 @@ class SessionLogEntryCell : UITableViewCell {
     @IBOutlet weak var sessionDurationDifference: UILabel!
 }
 
-class SessionLogViewController: UIViewController {
+class SessionLogViewController: UIViewController, SessionLogConsumer {
     
     @IBOutlet weak var tableViewLogEntries: UITableView!
     
-    weak var sessionLog: SessionLog?
+    var sessionLog: SessionLog?
     
     fileprivate var logEntries = [SessionLogEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sessionLog = SessionViewController.sessionLog
-        sessionLog?.delegate = self
-        
         tableViewLogEntries.dataSource = self
     }
     

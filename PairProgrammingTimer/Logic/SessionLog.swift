@@ -12,6 +12,10 @@ protocol SessionLogDelegate {
     func logUpdated()
 }
 
+protocol SessionLogConsumer {
+    var sessionLog: SessionLog? { get set }
+}
+
 class SessionLog {
     
     private let dateTime: DateTime

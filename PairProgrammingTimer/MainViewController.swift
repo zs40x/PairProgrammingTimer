@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
+    let sessionLog = SessionLog(dateTime: SystemDateTime(), sessionLogService: SessionUserDefaultsLogService())
+    
     let pages = ["SessionViewController", "SessionLogViewController"]
 
     override func viewDidLoad() {
@@ -22,7 +24,7 @@ class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     override func viewDidAppear(_ animated: Bool) {
         
         setViewControllers(
-            [(self.storyboard?.instantiateViewController(withIdentifier: pages[0]))!],
+            [(instantiateAndInitViewController(withIdentifier: pages[0]))!],
             direction: .forward,
             animated: true,
             completion: nil)
@@ -33,7 +35,7 @@ class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         if let identifier = viewController.restorationIdentifier {
             if let index = pages.index(of: identifier) {
                 if index > 0 {
-                    return self.storyboard?.instantiateViewController(withIdentifier: pages[index-1])
+                    return instantiateAndInitViewController(withIdentifier: pages[index-1])
                 }
             }
         }
@@ -45,7 +47,7 @@ class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         if let identifier = viewController.restorationIdentifier {
             if let index = pages.index(of: identifier) {
                 if index < pages.count - 1 {
-                    return self.storyboard?.instantiateViewController(withIdentifier: pages[index+1])
+                    return instantiateAndInitViewController(withIdentifier: pages[index+1])
                 }
             }
         }
@@ -65,4 +67,17 @@ class MainViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         return 0
     }
 
+    private func instantiateAndInitViewController(withIdentifier identifier: String) -> UIViewController? {
+        
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier) else {
+            NSLog("Failed to instantiate viewController with identifier: \(identifier)")
+            return nil
+        }
+        
+        if var sessionLogConsumer = viewController as? SessionLogConsumer {
+            sessionLogConsumer.sessionLog = sessionLog
+        }
+        
+        return viewController
+    }
 }
