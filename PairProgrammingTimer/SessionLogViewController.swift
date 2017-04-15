@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SessionLogEntryCell : UITableViewCell {
     @IBOutlet weak var developerName: UILabel!
@@ -21,6 +22,7 @@ class SessionLogEntryCell : UITableViewCell {
 class SessionLogViewController: UIViewController, SessionLogConsumer {
     
     @IBOutlet weak var tableViewLogEntries: UITableView!
+    @IBOutlet weak var menuButtonSendAsMail: UIBarButtonItem!
     
     var sessionLog: SessionLog?
     
@@ -35,6 +37,12 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
     override func viewWillAppear(_ animated: Bool) {
         
         updateTableView()
+        
+        guard MFMessageComposeViewController.canSendAttachments() else {
+            NSLog("Cannot send mails with attachments")
+            menuButtonSendAsMail.isEnabled = false
+            return
+        }
     }
     
     fileprivate func updateTableView() {
@@ -69,6 +77,23 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
         alertView.addAction(abortAction)
         
         present(alertView, animated: true, completion: nil)
+    }
+    
+    @IBAction func actionSendAsMail(_ sender: Any) {
+    
+        
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        
+        let jsonStringArray = logEntries.map { $0.jsonRepresentation }
+        
+        guard let data = try? JSONSerialization.data(withJSONObject: jsonStringArray, options: []) else { return }
+        
+        mailComposer.setSubject("PairProgrammingTimer log")
+        mailComposer.setMessageBody("The log is attached!", isHTML: false)
+        mailComposer.addAttachmentData(data, mimeType: "text/json", fileName: "PairProgTimer.log.json")
+        
+        present(mailComposer, animated: true, completion: nil)
     }
 }
 
@@ -118,5 +143,12 @@ extension SessionLogViewController : UITableViewDataSource {
         cell.sessionDurationDifference.text = durationDifference
         
         return cell
+    }
+}
+
+extension SessionLogViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

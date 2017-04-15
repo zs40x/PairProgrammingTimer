@@ -315,6 +315,12 @@
                                                     <action selector="actionClearLog:" destination="LFL-KI-Bn6" id="jqf-9X-3ki"/>
                                                 </connections>
                                             </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="8eC-96-Qpw"/>
+                                            <barButtonItem title="Send as mail" id="ytC-No-NqC">
+                                                <connections>
+                                                    <action selector="actionSendAsMail:" destination="LFL-KI-Bn6" id="iWH-0P-gGV"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                 </subviews>
@@ -329,6 +335,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="menuButtonSendAsMail" destination="ytC-No-NqC" id="eXX-tb-wUR"/>
                         <outlet property="tableViewLogEntries" destination="sdH-l3-s6o" id="0AE-xz-klr"/>
                     </connections>
                 </viewController>
