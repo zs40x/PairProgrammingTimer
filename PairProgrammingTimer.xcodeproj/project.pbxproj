@@ -70,7 +70,7 @@
 		D4031F1D1E8D83320068F075 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Data/AppState.swift; sourceTree = "<group>"; };
 		D40BCBA01E2D42A90005350B /* PairProgrammingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PairProgrammingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBA31E2D42A90005350B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D40BCBA51E2D42A90005350B /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
+		D40BCBA51E2D42A90005350B /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionViewController.swift; path = ViewController/SessionViewController.swift; sourceTree = "<group>"; };
 		D40BCBA81E2D42A90005350B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D40BCBAA1E2D42A90005350B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D40BCBAD1E2D42A90005350B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 		D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeSessionDelegate.swift; path = Fakes/FakeSessionDelegate.swift; sourceTree = "<group>"; };
 		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTime.swift; path = API/DateTime.swift; sourceTree = "<group>"; };
 		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDateTime.swift; path = Fakes/FakeDateTime.swift; sourceTree = "<group>"; };
-		D4EC22501E9CF34D0058B01E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogViewController.swift; sourceTree = "<group>"; };
+		D4EC22501E9CF34D0058B01E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
+		D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLogViewController.swift; path = ViewController/SessionLogViewController.swift; sourceTree = "<group>"; };
 		D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLogEntry.swift; path = Data/SessionLogEntry.swift; sourceTree = "<group>"; };
 		D4EC22561E9D1FC80058B01E /* SessionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLog.swift; path = Logic/SessionLog.swift; sourceTree = "<group>"; };
 		D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateLogDecorator.swift; path = Logic/SessionDelegateLogDecorator.swift; sourceTree = "<group>"; };
@@ -173,11 +173,9 @@
 				D4A9FB281EA3352B0087681C /* Extensions */,
 				D4B120301E367BA4003C93CF /* Logic */,
 				D4EC22601EA088450058B01E /* Services */,
+				D4A9FB2D1EA3FD6A0087681C /* ViewController */,
 				D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */,
 				D40BCBA31E2D42A90005350B /* AppDelegate.swift */,
-				D4EC22501E9CF34D0058B01E /* MainViewController.swift */,
-				D40BCBA51E2D42A90005350B /* SessionViewController.swift */,
-				D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */,
 				D40BCBA71E2D42A90005350B /* Main.storyboard */,
 				D40BCBAA1E2D42A90005350B /* Assets.xcassets */,
 				D40BCBAC1E2D42A90005350B /* LaunchScreen.storyboard */,
@@ -237,6 +235,16 @@
 				D4A9FB2B1EA3FA190087681C /* Date+formattedString.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D4A9FB2D1EA3FD6A0087681C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D4EC22501E9CF34D0058B01E /* MainViewController.swift */,
+				D40BCBA51E2D42A90005350B /* SessionViewController.swift */,
+				D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		D4B120301E367BA4003C93CF /* Logic */ = {
