@@ -33,6 +33,7 @@
 		D4A9FB241EA110450087681C /* DeveloperNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FB231EA110450087681C /* DeveloperNameService.swift */; };
 		D4A9FB261EA134140087681C /* FakeDeveloperNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FB251EA134140087681C /* FakeDeveloperNameService.swift */; };
 		D4A9FB2A1EA335510087681C /* UIViewController+showErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FB291EA335510087681C /* UIViewController+showErrorMessage.swift */; };
+		D4A9FB2C1EA3FA190087681C /* Date+formattedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FB2B1EA3FA190087681C /* Date+formattedString.swift */; };
 		D4B120321E367C58003C93CF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120311E367C58003C93CF /* Session.swift */; };
 		D4B120351E36803B003C93CF /* ProgrammingSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */; };
 		D4B120371E37CCB8003C93CF /* FakeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120361E37CCB8003C93CF /* FakeTimer.swift */; };
@@ -93,6 +94,7 @@
 		D4A9FB231EA110450087681C /* DeveloperNameService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperNameService.swift; path = Services/DeveloperNameService.swift; sourceTree = "<group>"; };
 		D4A9FB251EA134140087681C /* FakeDeveloperNameService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDeveloperNameService.swift; path = Fakes/FakeDeveloperNameService.swift; sourceTree = "<group>"; };
 		D4A9FB291EA335510087681C /* UIViewController+showErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+showErrorMessage.swift"; path = "Extensions/UIViewController+showErrorMessage.swift"; sourceTree = "<group>"; };
+		D4A9FB2B1EA3FA190087681C /* Date+formattedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+formattedString.swift"; path = "Extensions/Date+formattedString.swift"; sourceTree = "<group>"; };
 		D4B1202D1E3075DA003C93CF /* PairProgrammingTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PairProgrammingTimer.entitlements; sourceTree = "<group>"; };
 		D4B120311E367C58003C93CF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Logic/Session.swift; sourceTree = "<group>"; };
 		D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests.swift; path = Session/ProgrammingSessionTests.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A9FB291EA335510087681C /* UIViewController+showErrorMessage.swift */,
+				D4A9FB2B1EA3FA190087681C /* Date+formattedString.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				D40BCBA41E2D42A90005350B /* AppDelegate.swift in Sources */,
 				D444A6811E7B97CC000E6682 /* SessionState.swift in Sources */,
 				D4EC22571E9D1FC80058B01E /* SessionLog.swift in Sources */,
+				D4A9FB2C1EA3FA190087681C /* Date+formattedString.swift in Sources */,
 				D444A6831E7B98BE000E6682 /* Notifications.swift in Sources */,
 				D4B1203E1E3CA2C6003C93CF /* DateTime.swift in Sources */,
 				D4B120321E367C58003C93CF /* Session.swift in Sources */,
