@@ -66,7 +66,7 @@
 /* Begin PBXFileReference section */
 		D4031F161E84586C0068F075 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D4031F191E8AE7060068F075 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		D4031F1B1E8D82970068F075 /* SessionDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDuration.swift; sourceTree = "<group>"; };
+		D4031F1B1E8D82970068F075 /* SessionDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDuration.swift; path = Data/SessionDuration.swift; sourceTree = "<group>"; };
 		D4031F1D1E8D83320068F075 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Data/AppState.swift; sourceTree = "<group>"; };
 		D40BCBA01E2D42A90005350B /* PairProgrammingTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PairProgrammingTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBA31E2D42A90005350B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,11 +77,11 @@
 		D40BCBAF1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D40BCBB41E2D42A90005350B /* PairProgrammingTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PairProgrammingTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BCBBA1E2D42A90005350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		D40BCBC31E2D56B20005350B /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timer.swift; path = API/Timer.swift; sourceTree = "<group>"; };
 		D444A67B1E7A4B64000E6682 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Developer.swift; path = Data/Developer.swift; sourceTree = "<group>"; };
 		D444A67E1E7B9796000E6682 /* SessionDelegateNotificationDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationDecorator.swift; path = Logic/SessionDelegateNotificationDecorator.swift; sourceTree = "<group>"; };
 		D444A6801E7B97CC000E6682 /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionState.swift; path = Data/SessionState.swift; sourceTree = "<group>"; };
-		D444A6821E7B98BE000E6682 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		D444A6821E7B98BE000E6682 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = API/Notifications.swift; sourceTree = "<group>"; };
 		D444A6841E7B996E000E6682 /* SessionDelegateNotificationsDecoratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateNotificationsDecoratorTests.swift; path = Session/SessionDelegateNotificationsDecoratorTests.swift; sourceTree = "<group>"; };
 		D444A6861E7B999F000E6682 /* FakeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeNotifications.swift; sourceTree = "<group>"; };
 		D44AF3B61E92C33D0035C17C /* ProgrammingSessionTests_RestoreState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests_RestoreState.swift; path = Session/ProgrammingSessionTests_RestoreState.swift; sourceTree = "<group>"; };
@@ -100,16 +100,16 @@
 		D4B120341E36803B003C93CF /* ProgrammingSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionTests.swift; path = Session/ProgrammingSessionTests.swift; sourceTree = "<group>"; };
 		D4B120361E37CCB8003C93CF /* FakeTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeTimer.swift; path = Fakes/FakeTimer.swift; sourceTree = "<group>"; };
 		D4B1203B1E37D85E003C93CF /* FakeSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeSessionDelegate.swift; path = Fakes/FakeSessionDelegate.swift; sourceTree = "<group>"; };
-		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		D4B1203D1E3CA2C6003C93CF /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTime.swift; path = API/DateTime.swift; sourceTree = "<group>"; };
 		D4B120431E3EFE73003C93CF /* FakeDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeDateTime.swift; path = Fakes/FakeDateTime.swift; sourceTree = "<group>"; };
 		D4EC22501E9CF34D0058B01E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4EC22521E9CF8410058B01E /* SessionLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogViewController.swift; sourceTree = "<group>"; };
-		D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionLogEntry.swift; sourceTree = "<group>"; };
+		D4EC22541E9D1F750058B01E /* SessionLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLogEntry.swift; path = Data/SessionLogEntry.swift; sourceTree = "<group>"; };
 		D4EC22561E9D1FC80058B01E /* SessionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLog.swift; path = Logic/SessionLog.swift; sourceTree = "<group>"; };
 		D4EC22581E9D4D4B0058B01E /* SessionDelegateLogDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDelegateLogDecorator.swift; path = Logic/SessionDelegateLogDecorator.swift; sourceTree = "<group>"; };
 		D4EC225A1E9DD6B80058B01E /* ProgrammingSessionLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingSessionLogTests.swift; path = Session/ProgrammingSessionLogTests.swift; sourceTree = "<group>"; };
 		D4EC225E1EA0883F0058B01E /* SessionLogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionLogService.swift; path = Services/SessionLogService.swift; sourceTree = "<group>"; };
-		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperNames.swift; sourceTree = "<group>"; };
+		D4F3A6661E96C928004F79C4 /* DeveloperNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperNames.swift; path = Data/DeveloperNames.swift; sourceTree = "<group>"; };
 		D4F3A6691E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D4F3A66A1E97773A004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D4F3A6761E977CC0004F79C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
