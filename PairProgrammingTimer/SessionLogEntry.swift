@@ -87,6 +87,8 @@ struct SessionLogEntry {
     
     var durationDifference: Double {
         get {
+            guard actualDuration > 0 else { return 0 }
+            
             return (plannedDuration.TotalMinutes - actualDuration) * -1
         }
     }
