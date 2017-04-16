@@ -27,3 +27,9 @@
 
 /* Share Message */
 "ShareMessage" = "This is the exported PairProgrammingTimer log file.";
+
+/* Sharing failed */
+"SharingFailed" = "Sharing failed";
+
+/* Failed to export as file: detailed error message */
+"ExportFailedMsg" = "Failed to export log as file";

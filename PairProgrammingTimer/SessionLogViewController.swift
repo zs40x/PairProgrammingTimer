@@ -79,13 +79,16 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
             let fileUrl = try SessionUserDefaultsLogService().exportToFileSystem()
             
             guard fileUrl != nil else {
-                // ToDo: show error
-                NSLog("Error exporting the log to the filesystem")
+                
+                showErrorMessage(title: NSLocalizedString("SharingFailed", comment: "Sharing failed"),
+                                message: NSLocalizedString("ExportFailedMsg", comment: "Failed to export: detailed error"))
                 return
             }
             
             let activityViewController = UIActivityViewController(
-                activityItems: [NSLocalizedString("ShareMessage", comment: "This is the exported PairProgrammingTimer log file."), fileUrl as Any!],
+                activityItems:
+                    [NSLocalizedString("ShareMessage", comment: "Message to show when sharing an exported file."),
+                                        fileUrl as Any!],
                 applicationActivities: nil)
             
             if let popoverPresentationController = activityViewController.popoverPresentationController {
@@ -95,7 +98,8 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
             present(activityViewController, animated: true, completion: nil)
             
         } catch let error {
-            // ToDo: show error
+            showErrorMessage(title: NSLocalizedString("SharingFailed", comment: "Sharing failed"),
+                             message: error.localizedDescription)
             NSLog("Error sharing the PairProgTimer.log file: \(error.localizedDescription)")
             return
         }
