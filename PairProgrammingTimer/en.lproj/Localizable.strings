@@ -24,3 +24,6 @@
 
 /* Stop Session */
 "StopSession" = "Stop session";
+
+/* Share Message */
+"ShareMessage" = "This is the exported PairProgrammingTimer log file.";

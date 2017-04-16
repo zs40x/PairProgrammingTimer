@@ -49,6 +49,21 @@ class SessionUserDefaultsLogService: SessionLogService {
         persistSessionLogEntriesAsJson([SessionLogEntry]())
     }
     
+    func exportToFileSystem() throws -> URL? {
+        
+        let jsonStringArray = allLogEntries().map { $0.jsonRepresentation }
+        
+        guard let data = try? JSONSerialization.data(withJSONObject: jsonStringArray, options: []) else { return nil }
+        
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        
+        let fileUrl = path.appendingPathComponent("PairProgTimerLog.json")
+        
+        try data.write(to: fileUrl, options: [])
+        
+        return fileUrl
+    }
+    
     private func persistSessionLogEntriesAsJson(_ logEntries: [SessionLogEntry]) {
         
         let jsonStringArray = logEntries.map { $0.jsonRepresentation }

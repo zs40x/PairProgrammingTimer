@@ -37,12 +37,6 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
     override func viewWillAppear(_ animated: Bool) {
         
         updateTableView()
-        
-        guard MFMessageComposeViewController.canSendAttachments() else {
-            NSLog("Cannot send mails with attachments")
-            menuButtonSendAsMail.isEnabled = false
-            return
-        }
     }
     
     fileprivate func updateTableView() {
@@ -80,20 +74,31 @@ class SessionLogViewController: UIViewController, SessionLogConsumer {
     }
     
     @IBAction func actionSendAsMail(_ sender: Any) {
-    
         
-        let mailComposer = MFMailComposeViewController()
-        mailComposer.mailComposeDelegate = self
-        
-        let jsonStringArray = logEntries.map { $0.jsonRepresentation }
-        
-        guard let data = try? JSONSerialization.data(withJSONObject: jsonStringArray, options: []) else { return }
-        
-        mailComposer.setSubject("PairProgrammingTimer log")
-        mailComposer.setMessageBody("The log is attached!", isHTML: false)
-        mailComposer.addAttachmentData(data, mimeType: "text/json", fileName: "PairProgTimer.log.json")
-        
-        present(mailComposer, animated: true, completion: nil)
+        do {
+            let fileUrl = try SessionUserDefaultsLogService().exportToFileSystem()
+            
+            guard fileUrl != nil else {
+                // ToDo: show error
+                NSLog("Error exporting the log to the filesystem")
+                return
+            }
+            
+            let activityViewController = UIActivityViewController(
+                activityItems: [NSLocalizedString("ShareMessage", comment: "This is the exported PairProgrammingTimer log file."), fileUrl as Any!],
+                applicationActivities: nil)
+            
+            if let popoverPresentationController = activityViewController.popoverPresentationController {
+                popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
+            }
+            
+            present(activityViewController, animated: true, completion: nil)
+            
+        } catch let error {
+            // ToDo: show error
+            NSLog("Error sharing the PairProgTimer.log file: \(error.localizedDescription)")
+            return
+        }
     }
 }
 
