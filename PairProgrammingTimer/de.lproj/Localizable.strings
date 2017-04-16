@@ -1,14 +1,23 @@
-/* Change developer */
-"ChangeDeveloper" = "Entwickler wechseln";
-
 /* Cancel */
 "Cancel" = "Abbrechen";
 
-/* No comment provided by engineer. */
+/* Change developer */
+"ChangeDeveloper" = "Entwickler wechseln";
+
+/* Clear log */
+"ClearLog" = "Protokoll leeren?";
+
+/* Confirm */
 "Confirm" = "Bestätigen";
 
 /* No comment provided by engineer. */
 "EnterDeveloperName" = "Name des Entwicklers?";
+
+/* Failed to export: detailed error */
+"ExportFailedMsg" = "Fehler beim exportieren des Protokolls.";
+
+/* All log entries will be deleted! */
+"InfoAllLogEntriesWillBeDeleted" = "Alle Einträge werden gelöscht!";
 
 /* No comment provided by engineer. */
 "Name" = "Name";
@@ -16,11 +25,20 @@
 /* Notifications are disabled */
 "NotificationsDisabled" = "Benachrichtigungen sind deaktiviert";
 
+/* OK */
+"OK" = "OK";
+
 /* Ask user to enable the notifications */
 "PleaseEnableNotifications" = "Um eine abgelaufene Sitzung zu melden wenn die App nicht geöffnet ist müssen die Benachrichtigungen aktiviert sein. Bitte aktivieren Sie diese in den Einstellungen der App.";
 
 /* Session timer expired! */
 "SessionTimerExpired" = "Sitzung abgelaufen!";
+
+/* Message to show when sharing an exported file. */
+"ShareMessage" = "Dies ist das aus dem PairProgrammingTimer exportiert Protokoll.";
+
+/* Sharing failed */
+"SharingFailed" = "Fehler beim freigeben.";
 
 /* Stop Session */
 "StopSession" = "Sitzung beenden";

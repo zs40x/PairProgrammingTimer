@@ -357,6 +357,6 @@
         <image name="developer_inactive" width="464" height="444"/>
         <image name="flip_100" width="100" height="100"/>
         <image name="play-100" width="100" height="100"/>
-        <image name="share-100" width="100" height="100"/>
+        <image name="share-100" width="25" height="25"/>
     </resources>
 </document>
