@@ -33,3 +33,9 @@
 
 /* Failed to export as file: detailed error message */
 "ExportFailedMsg" = "Failed to export log as file";
+
+/* Clear the log */
+"ClearLog" = "Clear log?";
+
+/* Question: should the log be cleared? */
+"InfoAllLogEntriesWillBeDeleted" = "All log entries will be deleted!";
