@@ -281,7 +281,7 @@ extension SessionViewController: SessionDelegate {
     
     func developerChanged(developer: Developer) {
         
-        NSLog("SessionDelegage.developerChanged()")
+        NSLog("SessionDelegate.developerChanged()")
      
         updateUserInterface(developer: developer)
         
@@ -290,7 +290,7 @@ extension SessionViewController: SessionDelegate {
     
     func sessionStarted(sessionEndsOn: Date, forDeveloper: Developer, restored: Bool, duration: SessionDuration) {
         
-        NSLog("SessionDelegage.sessionStarted()")
+        NSLog("SessionDelegate.sessionStarted()")
         
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .active)
@@ -301,7 +301,7 @@ extension SessionViewController: SessionDelegate {
     
     func sessionEnded(forDeveloper: Developer) {
         
-        NSLog("SessionDelegage.sessionEnded()")
+        NSLog("SessionDelegate.sessionEnded()")
          
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .idle)
@@ -313,7 +313,7 @@ extension SessionViewController: SessionDelegate {
     
     func countdownExpired() {
         
-        NSLog("SessionDelegage.countdownExpired()")
+        NSLog("SessionDelegate.countdownExpired()")
         
         DispatchQueue.main.async {
             AudioServicesPlaySystemSound(1006)
