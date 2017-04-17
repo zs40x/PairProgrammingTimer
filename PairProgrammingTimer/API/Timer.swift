@@ -13,23 +13,21 @@ protocol CountdownTimerExpiredDelegate {
 }
 
 protocol CountdownTimer {
-    func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate)
+    func start(durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate)
     func stop()
 }
 
 class SystemTimer: CountdownTimer {
     
-    private let durationInSeconds: Double
     private let repeatWhenExpired: Bool
     private var timer: Foundation.Timer?
     private var expiredDelegate: CountdownTimerExpiredDelegate?
     
-    init(durationInSeconds: Double, repeatWhenExpired: Bool) {
-        self.durationInSeconds = durationInSeconds
+    init(repeatWhenExpired: Bool) {
         self.repeatWhenExpired = repeatWhenExpired
     }
     
-    func start(callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
+    func start(durationInSeconds: Double, callDelegateWhenExpired: CountdownTimerExpiredDelegate) {
         
         expiredDelegate = callDelegateWhenExpired
         

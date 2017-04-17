@@ -70,7 +70,7 @@ class ProgrammingSession: Session {
     
     fileprivate func startSession(sessionEndsOn: Date, restored: Bool) -> Session {
         
-        timer.start(callDelegateWhenExpired: self)
+        timer.start(durationInSeconds: remainingDurationInSeconds(sessionEndsOn), callDelegateWhenExpired: self)
         
         delegate?.sessionStarted(sessionEndsOn: sessionEndsOn, forDeveloper: developer, restored: restored, duration: sessionDuration)
         
@@ -152,6 +152,10 @@ class ProgrammingSession: Session {
             delegate: delegate)
     }
 
+    private func remainingDurationInSeconds(_ sessionEndsOn: Date) -> Double {
+        
+        return sessionEndsOn.timeIntervalSince(dateTime.currentDateTime())
+    }
 }
 
 extension ProgrammingSession: CountdownTimerExpiredDelegate {

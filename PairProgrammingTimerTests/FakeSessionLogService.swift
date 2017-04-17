@@ -25,4 +25,8 @@ class FakeSessionLogService: SessionLogService {
         entries = entries.filter { $0.uuid != logEntry.uuid }
         entries.append(logEntry)
     }
+    
+    func clearLog() {
+        entries.removeAll()
+    }
 }

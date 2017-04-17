@@ -33,4 +33,14 @@ class ProgrammingSessionRestoreStateTests: ProgrammingSessionTests {
         
         XCTAssertTrue(testInstance!.isEqualTo(otherSession: testInstance!.restoreState(sessionState: .active, sessionEndsOn: endDateInThePast)))
     }
+    
+    func testActiveSessionSetsTimerToTheRemainingTime() {
+        
+        let endDateInTheFuture = startedOnDate.addingTimeInterval((sessionDuration.TotalMinutes - 10.0) * 60)
+        
+        _ = testInstance?.restoreState(sessionState: .active, sessionEndsOn: endDateInTheFuture)
+        
+        // timer should be set only for the remaining 5 minutes
+        XCTAssertEqual(fakeTimer?.startedWithDurationInSeconds, 5 * 60)
+    }
 }

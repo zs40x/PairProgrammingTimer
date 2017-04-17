@@ -18,7 +18,7 @@ class SessionViewController: UIViewController, SessionLogConsumer {
     private var disableNotificationWarningShown = false
     
     fileprivate var sessionControl: Session?
-    fileprivate let updateTimer = SystemTimer(durationInSeconds: 0.25, repeatWhenExpired: true)
+    fileprivate let updateTimer = SystemTimer(repeatWhenExpired: true)
     var sessionLog: SessionLog?
     
     @IBOutlet weak var leftDeveloperImageView: UIImageView!
@@ -127,7 +127,7 @@ class SessionViewController: UIViewController, SessionLogConsumer {
                                 ),
                         notifications: LocalNotifications(timeInterval: sessionDuration.TotalSeconds), developerNameService: developerNameService
                     ),
-                timer: SystemTimer(durationInSeconds: sessionDuration.TotalSeconds, repeatWhenExpired: false),
+                timer: SystemTimer(repeatWhenExpired: false),
                 dateTime: SystemDateTime(),
                 sessionDuration: sessionDuration)
         
@@ -294,7 +294,7 @@ extension SessionViewController: SessionDelegate {
         
         labelTimer.layer.removeAllAnimations()
         updateCurrentState(sessionState: .active)
-        updateTimer.start(callDelegateWhenExpired: self)
+        updateTimer.start(durationInSeconds: 0.25, callDelegateWhenExpired: self)
         
         persistAppState(developer: forDeveloper, sessionState: .active, sessionEndsOn: sessionEndsOn)
     }
